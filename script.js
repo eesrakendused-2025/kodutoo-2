@@ -72,6 +72,17 @@ class Typer{
             }
             this.showResults(this.resultCount);
         })
+        $('#showResults').click(()=>{
+            $('#resultsModal').css("display", "block");
+        })
+        $(window).click((event) => {
+            if ($(event.target).is('#resultsModal')) {
+                $('#resultsModal').css("display", "none");
+            }
+        });
+        $('#close').click(()=>{
+            $('#resultsModal').css("display", "none");
+        })
         this.showResults(this.resultCount);
     }
 

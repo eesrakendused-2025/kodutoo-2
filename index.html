@@ -21,14 +21,19 @@
             Siia tuleb sõnade arv 1/5
         </div>
     </div>
-    <div id="resultsContainer">
-        <div id="results">
-            <div>tulemus</div>
-            <div>tulemus</div>
-            <div>tulemus</div>
-            <div>tulemus</div>
+    
+    <!-- Trigger/Open The Modal -->
+    <button id="showResults">Show results</button>
+
+    <!-- The Modal -->
+    <div id="resultsModal" class="modal">
+        <span id="close">&times;</span>
+        <!-- Modal content -->
+        <div id="resultsContainer" class="modal-content">
+            <div id="results"></div>
+            <button id="loadResults">Laadi veel tulemusi</button>
         </div>
-        <button id="loadResults">Laadi tulemusi</button>
+
     </div>
 </body>
 </html>
