@@ -15,9 +15,12 @@ class Typer{
         this.typedCount = 0;
         this.allResults = JSON.parse(localStorage.getItem('typer')) || [];
         this.score = 0;
+        this.bonus = 0;
+        this.bonusKoef = 200;
+        this.resultCount = 30;
 
         this.loadFromFile();
-        this.showAllResults();
+        //this.showResults(this.resultCount);
     }
 
     loadFromFile(){
@@ -52,9 +55,24 @@ class Typer{
     }
 
     startTyper(){
+        let urlParams = new URLSearchParams(window.location.search)
+        if(urlParams.get("words")){
+            this.wordsInGame = urlParams.get("words");
+        }
+        console.log(urlParams.get("words"));
         this.generateWords();
         this.startTime = performance.now();
         $(document).keypress((event) => {this.shortenWords(event.key)});
+        $('#loadResults').click(() => {
+            this.resultCount = this.resultCount + 50;
+            console.log(this.allResults.length, this.resultCount)
+            if(this.resultCount >= this.allResults.length){
+                this.resultCount = this.allResults.length;
+                $("#loadResults").hide();
+            }
+            this.showResults(this.resultCount);
+        })
+        this.showResults(this.resultCount);
     }
 
     generateWords(){
@@ -87,23 +105,31 @@ class Typer{
     shortenWords(keyCode){
         console.log(keyCode);
         if(keyCode != this.word.charAt(0)){
-            setTimeout(function(){
-                $('#container').css(
-                    "background-color", "lightblue"
-                )
-            }, 100)
-            $('#container').css(
-                "background-color", "red"
-            )
+            this.changeBackground('wrong-button', 100);
+            this.bonus = 0;
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
             this.endGame();
+            document.getElementById('audioPlayer').play();
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
+            this.changeBackground('right-word', 400);
             this.selectWord();
+            this.bonus = this.bonus - this.bonusKoef;
         } else if (this.word.length > 0 && keyCode == this.word.charAt(0)){
+            this.changeBackground('right-button', 100);
             this.word = this.word.slice(1);
+            this.bonus = this.bonus - this.bonusKoef;
         }
 
         this.drawWord();
+    }
+
+    changeBackground(color, time){
+        setTimeout(function(){
+            $('#container').removeClass(color);
+        }, time)
+
+        $('#container').addClass(color);
+
     }
 
     endGame(){
@@ -115,7 +141,8 @@ class Typer{
     }
 
     calculateAndShowScore(){
-        this.score = ((this.endTime - this.startTime) / 1000).toFixed(2);
+        console.log(this.bonus, this.endTime, this.startTime)
+        this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
         $("#score").html(this.score).show();
         this.saveResult();
     }
@@ -123,20 +150,33 @@ class Typer{
     saveResult(){
         let result = {
             name: this.name,
-            score: this.score
+            score: this.score,
+            words: this.wordsInGame
         }
         this.allResults.push(result);
         this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
         console.log(this.allResults);
         localStorage.setItem('typer', JSON.stringify(this.allResults));
         this.saveToFile();
-        this.showAllResults();
+        this.showResults(this.resultCount);
+    }
+
+    showResults(count){
+        $('#results').html("");
+        for(let i = 0; i < count; i++){
+            $('#results').append("<div>" + this.allResults[i].name + " " + 
+                this.allResults[i].score + 
+                " (" + this.allResults[i].words + ")" +"</div>");
+        }
     }
 
     showAllResults(){
         $('#results').html("");
+
         for(let i = 0; i < this.allResults.length; i++){
-            $('#results').append("<div>" + this.allResults[i].name + " " + this.allResults[i].score + "</div>");
+            $('#results').append("<div>" + this.allResults[i].name + " " + 
+                this.allResults[i].score + 
+                " (" + this.allResults[i].words + ")" +"</div>");
         }
 
     }
