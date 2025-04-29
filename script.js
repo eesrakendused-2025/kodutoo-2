@@ -172,12 +172,28 @@ class Typer{
         this.showResults(this.resultCount);
     }
 
-    showResults(count){
-        $('#results').html("");
-        for(let i = 0; i < count; i++){
-            $('#results').append("<div>" + this.allResults[i].name + " " + 
-                this.allResults[i].score + 
-                " (" + this.allResults[i].words + ")" +"</div>");
+    showResults(count) {
+        $('#results').html(`
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Nimi</th>
+                        <th>Kiirus (sek)</th>
+                        <th>Sõnade arv</th>
+                    </tr>
+                </thead>
+                <tbody id="resultsBody"></tbody>
+            </table>
+        `);
+        for (let i = 0; i < count; i++) {
+            const result = this.allResults[i];
+            $('#resultsBody').append(`
+                <tr>
+                    <td>${result.name}</td>
+                    <td>${result.score}</td>
+                    <td>${result.words}</td>
+                </tr>
+            `);
         }
     }
 
