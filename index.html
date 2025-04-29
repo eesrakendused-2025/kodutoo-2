@@ -1,35 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiirkirjutamine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
-    <title>Typer</title>
 </head>
 <body>
-    <div id="container">
-        <div id="wordDiv">Siia tuleb sõna</div>
-        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
-    </div>
-    <div id="infoContainer">
-        <div id="info">
-            Siia tuleb sõnade arv 1/5
-        </div>
-    </div>
-    <div id="resultsContainer">
-        <div id="results">
-            <div>tulemus</div>
-            <div>tulemus</div>
-            <div>tulemus</div>
-            <div>tulemus</div>
-        </div>
-        <button id="loadResults">Laadi tulemusi</button>
+    <div id="countdown"></div>
+    
+    <div id="controls">
+        <button id="restartButton">🔄 Alusta uuesti</button>
+        <button id="showResults">🏆 Edetabel</button>
+        <button id="themeToggle">🌓</button>
     </div>
 
-    
-    <audio style="display:none;" id="audioPlayer" src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20240912183739/chatbot-response.mp3"></audio>
+    <div id="container">
+        <div id="progressBar">
+            <div id="progress"></div>
+        </div>
+        <div id="wordDiv">⏳ Laen sõnu...</div>
+        <div id="score"></div>
+        <div id="nextKey"></div>
+    </div>
+
+    <!-- Modaalaken -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>🏆 Edetabel</h2>
+            <div id="resultsHeader">
+                <span>Koht</span>
+                <span>Nimi</span>
+                <span>Kiirus</span>
+                <span>Hinne</span>
+            </div>
+            <div id="results"></div>
+        </div>
+    </div>
+
+    <!-- Helifailid -->
+    <audio id="startSound" src="start.mp3"></audio>
+    <audio id="keySound" src="key.mp3"></audio>
+    <audio id="endSound" src="end.mp3"></audio>
+    <audio id="highscoreSound" src="highscore.mp3"></audio>
 </body>
 </html>

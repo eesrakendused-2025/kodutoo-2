@@ -1,52 +1,181 @@
-body{
-    margin:0;
-    padding: 0;
+/* Üldstiilid */
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: #1a1a1a;
+    color: #e0e0e0;
+    margin: 0;
+    transition: background 0.3s;
 }
 
-#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 60vh;
-    background-color: lightblue;
+.dark-theme {
+    background: #e0e0e0;
+    color: #1a1a1a;
 }
 
-#infoContainer{
-    width: 100vw;
-    font-size: 32px;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.wrong-button{
-    background-color: red !important;
-}
-
-.right-button{
-    background-color: lightgreen !important;
-}
-
-.right-word{
-    background-color: green !important;
-}
-
-
-#results{
-    width: 100vw;
-    font-size: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-}
-
-#wordDiv{
-    font-size: 36px;
-}
-
-#score{
+/* Loendur */
+#countdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8em;
+    font-family: 'Press Start 2P', cursive;
+    color: #4CAF50;
+    text-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
+    z-index: 1000;
     display: none;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Mängu ala */
+#container {
+    background: #2d2d2d;
+    height: 60vh;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+#wordDiv {
+    font-size: 2.5em;
+    font-family: 'Press Start 2P', cursive;
+    color: #4CAF50;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Progressiriba */
+#progressBar {
+    width: 80%;
+    height: 10px;
+    background: #333;
+    border-radius: 5px;
+}
+
+#progress {
+    height: 100%;
+    background: #4CAF50;
+    width: 0%;
+    transition: width 0.3s;
+    border-radius: 5px;
+}
+
+/* Nupud */
+#controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px;
+}
+
+button {
+    background: #4CAF50;
+    border: none;
+    padding: 12px 25px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1em;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Modaal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    z-index: 1000;
+}
+
+.modal-content {
+    background: #2d2d2d;
+    margin: 10% auto;
+    padding: 20px;
+    width: 70%;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #fff;
+}
+
+/* Tulemused */
+#resultsHeader {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr 2fr;
+    padding: 10px;
+    background: #333;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.result-item {
+    display: grid;
+    grid-template-columns: 1fr 3fr 2fr 2fr;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.result-item:nth-child(odd) {
+    background: #333;
+}
+
+.result-item:nth-child(even) {
+    background: #2d2d2d;
+}
+
+.result-item:has(img[alt*="🚀"]) {
+    border-left: 5px solid #4CAF50;
+}
+
+/* Mobiil */
+@media (max-width: 768px) {
+    #container {
+        height: 50vh;
+        margin: 10px;
+    }
+
+    #wordDiv {
+        font-size: 1.5em;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    #countdown {
+        font-size: 4em;
+    }
 }
