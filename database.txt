@@ -1,0 +1,1 @@
+{"content":[{"name":"aaaa","score":"3.26"},{"name":"nikitaaaaa","score":"3.67"},{"name":"nikita","score":"4.94"},{"name":"nikitaaa","score":"6.39"},{"name":"test","score":"8.71"},{"name":"nikita","score":"9.23"}],"last_modified":1745934478}
