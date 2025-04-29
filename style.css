@@ -1,18 +1,35 @@
-/* Üldstiilid */
-body {
-    font-family: 'Roboto Mono', monospace;
-    background: #1a1a1a;
-    color: #e0e0e0;
-    margin: 0;
-    transition: background 0.3s;
+:root {
+    --bg-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --container-bg: #2d2d2d;
+    --button-bg: #4CAF50;
+    --progress-bg: #333;
+    --progress-fill: #4CAF50;
+    --modal-bg: #2d2d2d;
+    --result-odd: #333;
+    --result-even: #2d2d2d;
 }
 
 .dark-theme {
-    background: #e0e0e0;
-    color: #1a1a1a;
+    --bg-color: #e0e0e0;
+    --text-color: #1a1a1a;
+    --container-bg: #f5f5f5;
+    --button-bg: #388E3C;
+    --progress-bg: #ddd;
+    --progress-fill: #388E3C;
+    --modal-bg: #f5f5f5;
+    --result-odd: #e0e0e0;
+    --result-even: #f0f0f0;
 }
 
-/* Loendur */
+body {
+    font-family: 'Roboto Mono', monospace;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    transition: all 0.3s;
+}
+
 #countdown {
     position: fixed;
     top: 50%;
@@ -20,7 +37,7 @@ body {
     transform: translate(-50%, -50%);
     font-size: 8em;
     font-family: 'Press Start 2P', cursive;
-    color: #4CAF50;
+    color: var(--button-bg);
     text-shadow: 0 0 20px rgba(76, 175, 80, 0.8);
     z-index: 1000;
     display: none;
@@ -33,9 +50,8 @@ body {
     100% { transform: translate(-50%, -50%) scale(1); }
 }
 
-/* Mängu ala */
 #container {
-    background: #2d2d2d;
+    background: var(--container-bg);
     height: 60vh;
     margin: 20px;
     border-radius: 10px;
@@ -44,34 +60,32 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 #wordDiv {
     font-size: 2.5em;
     font-family: 'Press Start 2P', cursive;
-    color: #4CAF50;
+    color: var(--button-bg);
     text-align: center;
     padding: 20px;
 }
 
-/* Progressiriba */
 #progressBar {
     width: 80%;
     height: 10px;
-    background: #333;
+    background: var(--progress-bg);
     border-radius: 5px;
 }
 
 #progress {
     height: 100%;
-    background: #4CAF50;
+    background: var(--progress-fill);
     width: 0%;
     transition: width 0.3s;
     border-radius: 5px;
 }
 
-/* Nupud */
 #controls {
     display: flex;
     gap: 15px;
@@ -80,7 +94,7 @@ body {
 }
 
 button {
-    background: #4CAF50;
+    background: var(--button-bg);
     border: none;
     padding: 12px 25px;
     color: white;
@@ -92,14 +106,13 @@ button {
 
 button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 button:active {
     transform: scale(0.95);
 }
 
-/* Modaal */
 .modal {
     display: none;
     position: fixed;
@@ -112,55 +125,98 @@ button:active {
 }
 
 .modal-content {
-    background: #2d2d2d;
+    background: var(--modal-bg);
     margin: 10% auto;
     padding: 20px;
     width: 70%;
     border-radius: 10px;
     position: relative;
+    color: var(--text-color);
 }
 
 .close {
-    color: #aaa;
+    color: var(--text-color);
     float: right;
     font-size: 28px;
     cursor: pointer;
 }
 
 .close:hover {
-    color: #fff;
+    color: var(--button-bg);
 }
 
-/* Tulemused */
 #resultsHeader {
     display: grid;
     grid-template-columns: 1fr 3fr 2fr 2fr;
     padding: 10px;
-    background: #333;
+    background: var(--result-odd);
     border-radius: 5px;
     margin-bottom: 10px;
+}
+
+#results {
+    max-height: 60vh;
+    overflow-y: auto;
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--button-bg) var(--progress-bg);
+}
+
+#results::-webkit-scrollbar {
+    width: 8px;
+}
+
+#results::-webkit-scrollbar-track {
+    background: var(--progress-bg);
+    border-radius: 4px;
+}
+
+#results::-webkit-scrollbar-thumb {
+    background-color: var(--button-bg);
+    border-radius: 4px;
+    border: 1px solid var(--progress-bg);
+}
+
+.modal-content {
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#resultsHeader {
+    position: sticky;
+    top: 0;
+    background: var(--modal-bg);
+    z-index: 10;
+    padding: 10px 0;
 }
 
 .result-item {
     display: grid;
     grid-template-columns: 1fr 3fr 2fr 2fr;
     padding: 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid var(--progress-bg);
 }
 
 .result-item:nth-child(odd) {
-    background: #333;
+    background: var(--result-odd);
 }
 
 .result-item:nth-child(even) {
-    background: #2d2d2d;
+    background: var(--result-even);
 }
 
-.result-item:has(img[alt*="🚀"]) {
-    border-left: 5px solid #4CAF50;
+.result-item:has(span:contains("🚀")) {
+    border-left: 5px solid var(--button-bg);
 }
 
-/* Mobiil */
+#nextKey {
+    font-size: 1.2em;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
 @media (max-width: 768px) {
     #container {
         height: 50vh;
@@ -171,8 +227,13 @@ button:active {
         font-size: 1.5em;
     }
 
+    #results {
+        max-height: 50vh;
+    }
+
     .modal-content {
-        width: 90%;
+        width: 95%;
+        max-height: 70vh;
     }
 
     #countdown {

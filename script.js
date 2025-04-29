@@ -1,6 +1,6 @@
 class Typer {
-    constructor(pname) {
-        this.name = pname || "Mängija";
+    constructor() {
+        this.name = "Külaline";
         this.wordsInGame = 5;
         this.words = [];
         this.typeWords = [];
@@ -33,6 +33,7 @@ class Typer {
     }
 
     showCountdown(onComplete) {
+        $("#nextKey").hide();
         let count = 3;
         $("#countdown").text(count).fadeIn(100);
         
@@ -58,6 +59,7 @@ class Typer {
         this.startTime = performance.now();
         this.typedCount = 0;
         this.updateProgress(0);
+        $("#nextKey").show();
         this.selectWord();
     }
 
@@ -65,9 +67,16 @@ class Typer {
         if(this.typedCount >= this.wordsInGame) return this.endGame();
         this.word = this.typeWords[this.typedCount];
         $("#wordDiv").text(this.word);
-        $("#nextKey").text(`Järgmine klahv: ${this.word[0]}`);
+        this.updateNextKeyDisplay();
         this.typedCount++;
-        $("#info").text(`Sõnu: ${this.typedCount}/${this.wordsInGame}`);
+    }
+    
+    updateNextKeyDisplay() {
+        if(this.word && this.word.length > 0) {
+            $("#nextKey").text(`Järgmine klahv: ${this.word[0]}`);
+        } else {
+            $("#nextKey").text("");
+        }
     }
 
     handleKeypress(key) {
@@ -82,6 +91,7 @@ class Typer {
         document.getElementById("keySound").play();
         this.word = this.word.slice(1);
         $("#wordDiv").text(this.word);
+        this.updateNextKeyDisplay();
 
         if(this.word.length === 0) {
             this.updateProgress((this.typedCount / this.wordsInGame) * 100);
@@ -92,6 +102,10 @@ class Typer {
     endGame() {
         this.endTime = performance.now();
         const totalTime = ((this.endTime - this.startTime) / 1000).toFixed(2);
+        
+        const playerName = prompt("Palun sisesta oma nimi edetabelisse:") || "Külaline";
+        this.name = playerName;
+
         $("#score").html(`⏱️ Aeg: ${totalTime}s`).show();
         document.getElementById("endSound").play();
         this.saveResult();
@@ -117,7 +131,7 @@ class Typer {
     showResults() {
         $("#results").empty();
         this.allResults.slice(0, 30).forEach((res, i) => {
-            const icon = res.score < 30 ? "🚀" : res.score < 45 ? "🐆" : "🐢";
+            const icon = res.score <= 4.6 ? "🚀" : res.score <= 5.5 ? "🐆" : "🐢";
             $("#results").append(`
                 <div class="result-item">
                     <span>${i+1}.</span>
@@ -127,6 +141,8 @@ class Typer {
                 </div>
             `);
         });
+
+        $("#results").scrollTop(0);
     }
 
     updateProgress(percent) {
@@ -142,14 +158,11 @@ class Typer {
     }
 }
 
-// Käivitus
 let typer;
 $(document).ready(() => {
-    const name = prompt("Sisesta oma nimi:") || "Mängija";
-    typer = new Typer(name);
+    typer = new Typer();
 });
 
-// Blokeeri klaviatuur loenduri ajal
 $(document).on("keypress", function(e) {
     if($("#countdown").is(":visible")) e.preventDefault();
 });
