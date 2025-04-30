@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap" rel="stylesheet">
+
+    <title>Typer</title>
+</head>
+<body>
+
+    <div id="setupContainer" class="funnel-display">
+        <label for="wordCountSelect">Vali sõnade arv:</label>
+        <select id="wordCountSelect">
+            <option value="3">3 sõna</option>
+            <option value="5">5 sõna</option>
+            <option value="10">10 sõna</option>
+        </select>
+        <button id="startGameBtn">Alusta mängu</button>
+    </div>
+
+
+    <div id="container" class="funnel-display">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div>Aeg:</div><div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+    
+        <button id="playAgainBtn" style="display: none;">Mängi uuesti</button>
+            <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Vaata tulemusi</button>
+    </div>
+    
+    <div id="infoContainer" class="funnel-display">
+        <div id="progressInfo">Sõnad: 1/5</div>
+        <div id="cpmSection">
+            <div id="cpmText">CPM: 0</div>
+            <div id="speedLevelText">Tase: –</div>
+            <img id="speedImage" src="" alt="Kiirus" />
+        </div>
+    </div>
+    
+<!-- Modali html saadud w3schools lehelt: https://www.w3schools.com/howto/howto_css_modals.asp -->
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        
+        <!-- tulemuse filtreerimine nime järgi -->
+        <div id="filterOptions" style="margin-bottom: 10px;">
+            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
+                <input type="text" id="nameFilter" placeholder="otsi nime järgi" style="padding: 5px; font-size: 18px; width: 60%;">
+              </div>              
+        </div>
+        
+
+        <div id="results">
+        </div>
+      </div>
+</div>
+<!-- audio failid -->
+<audio id="startSound" src="audio/start.mp3"></audio>
+<audio id="typeSound" src="audio/typing.mp3"></audio>
+<audio id="endSound" src="audio/end.mp3"></audio>
+<audio id="highscoreSound" src="audio/highscore.mp3"></audio>
+
+</body>
+</html>

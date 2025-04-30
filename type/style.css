@@ -1,0 +1,282 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Funnel Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    background-color: #f0e4d7;
+    color: #222222;
+}
+
+/* google font */
+.funnel-display {
+    font-family: "Funnel Display", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 26px;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    background-color: #fff5e6;
+}
+
+#infoContainer {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: #f7f1eb;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#progressInfo {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#cpmSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#cpmText, #speedLevelText {
+    font-size: 22px;
+}
+
+#speedImage {
+    height: 100px;
+    width: auto;
+    margin-top: 5px;
+}
+
+.wrong-button {
+    background-color: #e57373 !important;
+}
+
+.right-button {
+    background-color: #aed581 !important;
+}
+
+.right-word {
+    background-color: #81c784 !important;
+}
+
+#results {
+    width: 100vw;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#wordDiv {
+    font-size: 40px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+#score {
+    display: none;
+    margin-top: 10px;
+}
+
+/* modali css saadud w3schools lehelt: https://www.w3schools.com/howto/howto_css_modals.asp */
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #f7f1eb;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    width: 80%;
+    border-radius: 8px;
+}
+
+.close {
+    color: #888;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #b71c1c;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#results {
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 20px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    background-color: #fff5e6;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.result-header {
+    font-weight: bold;
+    background-color: #ecd9c6;
+    padding: 10px 0;
+    border-bottom: 2px solid #d6d6d6;
+}
+
+.result-row {
+    padding: 8px 0;
+    border-bottom: 1px solid #d6d6d6;
+}
+
+.result-row:nth-child(even) {
+    background-color: #f0e4d7;
+}
+
+#cpmInfo {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#cpmText, #speedLevelText {
+    margin-bottom: 5px;
+}
+
+#speedImage {
+    display: block;
+    margin: 10px auto;
+    height: 70px;
+}
+
+#myBtn,
+#startGameBtn,
+#playAgainBtn {
+  display: inline-block;
+  background-color: #e8d7c5;
+  color: #2c2c2c;
+  border: 2px solid #d2bba2;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-family: "Funnel Display", sans-serif;
+  border-radius: 10px;
+  margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+#wordCountSelect {
+    background-color: #e8d7c5;
+  color: #2c2c2c;
+  border: 2px solid #d2bba2;
+  padding: 12px 24px;
+  font-size: 20px;
+  font-family: "Funnel Display", sans-serif;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* w3schools lehelt saadud alus: https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+/* katsetasin brauseri responsive design mode peal */
+@media only screen and (max-width: 600px) {
+    #infoContainer {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .infoCard {
+      width: 90%;
+    }
+  
+    #wordDiv {
+      font-size: 28px;
+      text-align: center;
+    }
+  
+    #speedImage {
+      height: 45px;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 30% auto;
+    }
+}
+
+/* pseudoklassid */
+#myBtn:hover,
+#startGameBtn:hover,
+#playAgainBtn:hover {
+  background-color: #f1c996;
+  color: #1f1f1f;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+input:focus {
+    outline: 2px solid #9ea09a;
+    background-color: #f0fff0;
+}
+
+/* esimesed kolm kohta kollase taustavärviga resultside all */
+
+.result-row:nth-child(2) {
+  background-color: #d1e212;
+}
+
+.result-row:nth-child(3) {
+  background-color: #b2bf21;
+}
+
+.result-row:nth-child(4) {
+    background-color: #80872a;
+}
+
+/* chatgptlt saadud, teavitab kui results tühi on */
+/* prompt: "I need a pseudo class notifying user when results should be empty" */
+#results:empty::before {
+    content: "Hetkel pole ühtegi tulemust.";
+    color: #999;
+    display: block;
+    text-align: center;
+    padding: 20px;
+}
+  
+
+
+
+  
+  
+  
+  
