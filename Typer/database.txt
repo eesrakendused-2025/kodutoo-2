@@ -1,0 +1,1 @@
+{"content":[{"name":"Fredu","score":"3.68","cpm":279,"style":"B"},{"name":"Fredu","score":"4.08","cpm":241,"style":"C"}],"last_modified":1745329017}
