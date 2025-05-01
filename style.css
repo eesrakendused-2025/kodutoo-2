@@ -4,6 +4,27 @@ body{
     font-family: 'Space Grotesk', sans-serif;  /* 1. Fondi kuvamiseks lisasin selle body juurde */
 }
 
+/* 4. Juurde lisatud index.html-i päringu alusel kuni .wordCountBtn  */
+#startScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    background-color: #f0f8ff;
+}
+
+#startScreen h2 {
+    margin-bottom: 20px;
+}
+
+.wordCountBtn {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    font-family: "Playfair Display", serif;
+}
+
 #container{
     display: flex;
     justify-content: center;
@@ -142,5 +163,16 @@ button {
     font-weight: bold;
 }
 
+/* 4. Kujundus 4 ülesandele, loodud eelmiste kujunduste põhjal. */
+#feedbackBox {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+#feedbackBox img {
+    max-width: 300px;
+    margin-top: 10px;
+}
 
 

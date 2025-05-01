@@ -17,20 +17,29 @@
     <title>Typer Marcus Puust</title>
 </head>
 <body>
-    <div id="container">
+    <!-- Uus: sõnade arvu valik -->
+    <div id="startScreen">
+        <h2>Vali sõnade arv:</h2>
+        <button class="wordCountBtn" data-count="3">3 sõna</button>
+        <button class="wordCountBtn" data-count="5">5 sõna</button>
+        <button class="wordCountBtn" data-count="10">10 sõna</button>
+    </div>
+
+    <!-- 4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. 
+     Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti
+     Lisasin juurde selle, andes oma eelnev kood chatGPT ja ülesande kirjeldus, lisas ta juurde järgmise, mida muutsin vastavalt vajadusele: -->
+    <div id="container" style="display:none;">
         <div id="wordDiv">Siia tuleb sõna</div>
         <div id="score"></div>
+        <div id="feedbackBox"></div>
     </div>
-    
 
     <div id="infoContainer">
-        <div id="info">
-            Siia tuleb sõnade arv 1/5
-        </div>
+        <div id="info">Siia tuleb sõnade arv 1/5</div>
     </div>
 
     <div id="resultsContainer">
-        <button id="loadResults">Laadi tulemusi</button>
+        <button id="loadResults">Vaata tulemusi</button>
     </div>
 
     <!-- 2.Tulemused peavad tulema välja nupule vajutades ja minema peitu x vajutades. Võimalus kasutada tavalist modalit või sidebari.

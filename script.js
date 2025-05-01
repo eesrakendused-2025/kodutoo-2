@@ -1,12 +1,25 @@
 console.log("scripti fail õigesti ühendatud")
 
-let playerName = prompt("Palun sisesta oma nimi");
+let playerName = "";
+let typer = null;
+
+// Alusta pärast sõnade arvu valikut
+$(".wordCountBtn").click(function () {
+    let wordCount = parseInt($(this).data("count"));
+    playerName = prompt("Palun sisesta oma nimi");
+    $("#startScreen").hide();
+    $("#container").show();
+
+    typer = new Typer(playerName, wordCount);
+});
+
+
 
 class Typer {
-    constructor(name) {
+    constructor(name, wordCount) {
         this.name = name;
-        this.wordsInGame = 3;
-        this.startingWordLength = 3;
+        this.wordsInGame = wordCount; // 9.Üks feature: Lisasin siia wordCount, et mängija saab alguses valida, mitu sõna ta soovib, et mängus oleks
+        this.startingWordLength = 3;  // Päring: Loo mängu alguses võimalus valida, mitu sõna tuleb mängus.
         this.words = [];
         this.word = "START";
         this.typeWords = [];
@@ -44,24 +57,24 @@ class Typer {
             }
             this.words[wordLength].push(data[i]);
         }
-        console.log(this.words);
         this.startTyper();
     }
 
-    startTyper() {
-        let urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get("words")) {
-            this.wordsInGame = urlParams.get("words");
-        }
+    startTyper() { //4. Päringu tulemusel saadud muudatus kuni 2. punktini.
+        $("#score").hide();
+        $("#feedbackBox").html("");
 
         this.generateWords();
         this.startTime = performance.now();
 
-        $(document).keypress((event) => { this.shortenWords(event.key) });
+        $(document).off("keypress").on("keypress", (event) => {
+            this.shortenWords(event.key);
+        });
 
         //2. Kui vajutatakse "Laadi tulemusi" nuppu, avatakse modal-aken. Võetud ülesande lingilt
         $('#loadResults').click(() => {
-            $('#resultsModal').css('display', 'block'); // Näita modali
+            $('#resultsModal').css('display', 'block');
+            this.resultCount = Math.min(this.resultCount, this.allResults.length); // lisatud juurde 4. punktis
             this.showResults(this.resultCount);         // Kuva tulemused modalisse
         });
 
@@ -134,6 +147,7 @@ class Typer {
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
         $("#score").html(this.score).show(); //Kuvatakse ainult skoor (ilma tekstita)
         this.saveResult();
+        this.showFeedbackImage(); // Lisatud 4. punkti juures
     }
 
     saveResult() {
@@ -166,7 +180,7 @@ class Typer {
         `);
     
         // 3.Mängu sooritanud tulemuste tsükkel, et tulemusi kuvada
-        for (let i = 0; i < count; i++) {
+        for (let i = 0; i < count && i < this.allResults.length; i++) { //Täinedatud 4. punktis päringu tulemusel (kirjas index.html-is)
             const r = this.allResults[i];
         
             // Kujunduse poolest lisan, et eristada esimest, teist ja kolmandat kohta need read vastavalt seda värvi medaliteks
@@ -186,6 +200,38 @@ class Typer {
         }
         
     }
+    //4. ülesande päringu tulemusel. Lisasin päringule hiljem juurde, et saaksin pilte kuvada vastavalt, kas
+    // on beginner, intermediate või expert. Tulemuseks Juurde lisatud osa kuni saveToFile().
+    showFeedbackImage() {
+        let totalChars = this.typeWords.join('').length;
+        let seconds = (this.endTime - this.startTime) / 1000;
+
+        let cpm = Math.round((totalChars / seconds) * 60);
+        let wpm = Math.round(cpm / 5);
+
+        let imagePath = "";
+        let levelText = "";
+
+        if (wpm < 20) {
+            imagePath = "images/beginner.png";
+            levelText = "Algaja";
+        } else if (wpm < 40) {
+            imagePath = "images/intermediate.png";
+            levelText = "Edasijõudnu";
+        } else {
+            imagePath = "images/expert.png";
+            levelText = "Ekspert";
+        }
+
+        $("#feedbackBox").html(`
+            <p>
+                Kirjutamise tase: <strong>${levelText}</strong><br>
+                Tähemärke minutis: <strong>${cpm}</strong><br>
+                Sõnu minutis: <strong>${wpm}</strong>
+            </p>
+            <img src="${imagePath}" alt="${levelText}">
+        `);
+    }
     
     saveToFile() {
         $.post('server.php', { save: this.allResults }).fail(() => {
@@ -194,5 +240,5 @@ class Typer {
     }
 }
 
-let typer = new Typer(playerName);
+// let typer = new Typer(playerName); eemaldatud punktis 4.
 
