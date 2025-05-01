@@ -1,0 +1,8 @@
+{"content":[
+    {"name":"CAPPUCINO ASSASINO","score":"3.98","words":"3"},
+    {"name":"grape","score":"20.75","words":"3"}],
+    {"name":"CAPPUCINO ASSASINO","score":"3.5","words":"3"},
+    {"name":"CAPPUCINO ASSASINO","score":"2.5","words":"3"},
+    {"name":"CAPPUCINO ASSASINO","score":"5.5","words":"3"},
+    {"name":"CAPPUCINO ASSASINO","score":"6.5","words":"3"}
+    "last_modified":1745332027}

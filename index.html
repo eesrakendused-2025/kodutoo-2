@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+        <img id="resultImage">
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div>
+        
+    </div>
+    
+    <button id="showResultsBtn">Show Results</button>
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <!--
+            <div id="results">
+                <div>tulemus</div>
+                <div>tulemus</div>
+                <div>tulemus</div>
+                <div>tulemus</div>
+            </div>
+            <table id="tableNames">
+                <tr>
+                    <th>name</th>
+                    <th>time</th>
+                    <th>words</th>
+                </tr>
+            </table>
+            -->
+            <table id="results">
+                <tr>
+                    <th>name</th>
+                    <th>time</th>
+                    <th>words</th>
+                </tr>
+            </table>
+            <audio style="display: none;" id="audioPlayer" src="https://www.myinstants.com/media/sounds/woooo-yeah-baby.mp3"></audio>
+            <button id="loadResults">Laadi tulemusi</button>
+        </div>
+    </div>
+
+    <audio style="display: none;" id="audioPlayer" src="https://www.myinstants.com/media/sounds/caseoh-yeahhhhhhhhhhhhhhhhhhhhhhhhhhh.mp3"></audio>
+</body>
+</html>
