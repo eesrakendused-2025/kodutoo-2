@@ -2,9 +2,9 @@ console.log("scripti fail õigesti ühendatud")
 
 let playerName = prompt("Palun sisesta oma nimi");
 
-class Typer{
-    constructor(pname){
-        this.name = pname;
+class Typer {
+    constructor(name) {
+        this.name = name;
         this.wordsInGame = 3;
         this.startingWordLength = 3;
         this.words = [];
@@ -20,174 +20,148 @@ class Typer{
         this.resultCount = 30;
 
         this.loadFromFile();
-        //this.showResults(this.resultCount);
     }
 
-    loadFromFile(){
-        $.get("lemmad2013.txt", (data) => this.getWords(data))
+    loadFromFile() {
+        $.get("lemmad2013.txt", (data) => this.getWords(data));
         $.get("database.txt", (data) => {
             let content = JSON.parse(data).content;
             this.allResults = content;
             console.log(content);
-        })
+        });
     }
 
-    getWords(data){
-        //console.log(data);
+    getWords(data) {
         const dataFromFile = data.split("\n");
         this.separateWordsByLength(dataFromFile);
     }
 
-    separateWordsByLength(data){
-        for(let i = 0; i < data.length; i++){
+    separateWordsByLength(data) {
+        for (let i = 0; i < data.length; i++) {
             const wordLength = data[i].length;
-
-            if(this.words[wordLength] === undefined){
+            if (this.words[wordLength] === undefined) {
                 this.words[wordLength] = [];
             }
-
             this.words[wordLength].push(data[i]);
         }
-
         console.log(this.words);
-
         this.startTyper();
     }
 
-    startTyper(){
-        let urlParams = new URLSearchParams(window.location.search)
-        if(urlParams.get("words")){
+    startTyper() {
+        let urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get("words")) {
             this.wordsInGame = urlParams.get("words");
         }
-        console.log(urlParams.get("words"));
+
         this.generateWords();
         this.startTime = performance.now();
-        $(document).keypress((event) => {this.shortenWords(event.key)});
+
+        $(document).keypress((event) => { this.shortenWords(event.key) });
+
+        //2. Kui vajutatakse "Laadi tulemusi" nuppu, avatakse modal-aken. Võetud ülesande lingilt
         $('#loadResults').click(() => {
-            this.resultCount = this.resultCount + 50;
-            console.log(this.allResults.length, this.resultCount)
-            if(this.resultCount >= this.allResults.length){
-                this.resultCount = this.allResults.length;
-                $("#loadResults").hide();
-            }
-            this.showResults(this.resultCount);
-        })
+            $('#resultsModal').css('display', 'block'); // Näita modali
+            this.showResults(this.resultCount);         // Kuva tulemused modalisse
+        });
+
+        //2. Kui vajutatakse modali aknas "X" nuppu, suletakse modal
+        $('#closeResults').click(() => {
+            $('#resultsModal').css('display', 'none');
+        });
+
         this.showResults(this.resultCount);
     }
 
-    generateWords(){
-        for(let i = 0; i <this.wordsInGame; i++){
+    generateWords() {
+        for (let i = 0; i < this.wordsInGame; i++) {
             const wordLength = this.startingWordLength + i;
-            const randomWord = Math.round(Math.random() * this.words[wordLength].length);
-            //console.log(i, randomWord, this.words[wordLength]);
+            const randomWord = Math.floor(Math.random() * this.words[wordLength].length);
             this.typeWords[i] = this.words[wordLength][randomWord];
-            //console.log(this.typeWords)
         }
         this.selectWord();
-        
     }
 
-    drawWord(){
+    drawWord() {
         $("#wordDiv").html(this.word);
     }
 
-    selectWord(){
+    selectWord() {
         this.word = this.typeWords[this.typedCount];
         this.typedCount++;
         this.drawWord();
         this.updateInfo();
     }
 
-    updateInfo(){
+    updateInfo() {
         $('#info').html(this.typedCount + "/" + this.wordsInGame);
     }
 
-    shortenWords(keyCode){
-        console.log(keyCode);
-        if(keyCode != this.word.charAt(0)){
+    shortenWords(key) {
+        if (key !== this.word.charAt(0)) {
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
+        } else if (this.word.length === 1 && key === this.word.charAt(0) && this.typedCount === this.wordsInGame) {
             this.endGame();
             document.getElementById('audioPlayer').play();
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
+        } else if (this.word.length === 1 && key === this.word.charAt(0)) {
             this.changeBackground('right-word', 400);
             this.selectWord();
-            this.bonus = this.bonus - this.bonusKoef;
-        } else if (this.word.length > 0 && keyCode == this.word.charAt(0)){
+            this.bonus -= this.bonusKoef;
+        } else if (this.word.length > 0 && key === this.word.charAt(0)) {
             this.changeBackground('right-button', 100);
             this.word = this.word.slice(1);
-            this.bonus = this.bonus - this.bonusKoef;
+            this.bonus -= this.bonusKoef;
         }
 
         this.drawWord();
     }
 
-    changeBackground(color, time){
-        setTimeout(function(){
-            $('#container').removeClass(color);
-        }, time)
-
-        $('#container').addClass(color);
-
+    changeBackground(colorClass, time) {
+        setTimeout(() => {
+            $('#container').removeClass(colorClass);
+        }, time);
+        $('#container').addClass(colorClass);
     }
 
-    endGame(){
-        console.log("Mäng läbi");
+    endGame() {
         this.endTime = performance.now();
         $("#wordDiv").hide();
-        //$(document).off(keypress);
         this.calculateAndShowScore();
     }
 
-    calculateAndShowScore(){
-        console.log(this.bonus, this.endTime, this.startTime)
+    calculateAndShowScore() {
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
-        $("#score").html(this.score).show();
+        $("#score").html(this.score).show(); //Kuvatakse ainult skoor (ilma tekstita)
         this.saveResult();
     }
 
-    saveResult(){
+    saveResult() {
         let result = {
             name: this.name,
             score: this.score,
             words: this.wordsInGame
-        }
+        };
         this.allResults.push(result);
         this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
-        console.log(this.allResults);
         localStorage.setItem('typer', JSON.stringify(this.allResults));
         this.saveToFile();
         this.showResults(this.resultCount);
     }
 
-    showResults(count){
+    showResults(count) {
         $('#results').html("");
-        for(let i = 0; i < count; i++){
-            $('#results').append("<div>" + this.allResults[i].name + " " + 
-                this.allResults[i].score + 
-                " (" + this.allResults[i].words + ")" +"</div>");
+        for (let i = 0; i < count; i++) {
+            $('#results').append(`<div>${this.allResults[i].name} ${this.allResults[i].score} (${this.allResults[i].words})</div>`);
         }
     }
 
-    showAllResults(){
-        $('#results').html("");
-
-        for(let i = 0; i < this.allResults.length; i++){
-            $('#results').append("<div>" + this.allResults[i].name + " " + 
-                this.allResults[i].score + 
-                " (" + this.allResults[i].words + ")" +"</div>");
-        }
-
-    }
-
-    saveToFile(){
-        $.post('server.php', {save: this.allResults}).fail(
-            function(){
-                console.log("Fail");
-            }
-        )
+    saveToFile() {
+        $.post('server.php', { save: this.allResults }).fail(() => {
+            console.log("Fail");
+        });
     }
 }
 
 let typer = new Typer(playerName);
+
