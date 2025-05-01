@@ -9,9 +9,58 @@ $(".wordCountBtn").click(function () {
     playerName = prompt("Palun sisesta oma nimi");
     $("#startScreen").hide();
     $("#container").show();
+    $("#backToStart").show(); //  näita tagasi nuppu, kui mäng algab
+
 
     typer = new Typer(playerName, wordCount);
 });
+
+//Uuendusena (iseseisev täiendus): võimaldan kasutajal "Vaata tulemusi" nuppu vajutada ka enne mängu alustamist.
+// Lahendus: viisin tulemuste laadimise jQuery käsitlemise väljapoole Typer klassi ja teen selle `localStorage` põhjal.
+$(document).ready(function () {
+    
+    $('#loadResults').click(function () {
+        const results = JSON.parse(localStorage.getItem('typer')) || [];
+
+        $('#resultsModal').css('display', 'block');
+
+        $('#results').html(`
+            <div class="result-row result-header">
+                <div class="result-cell">Nimi</div>
+                <div class="result-cell">Aeg(s)</div>
+                <div class="result-cell">Sõnade arv</div>
+            </div>
+        `);
+
+        for (let i = 0; i < results.length && i < 30; i++) {
+            const r = results[i];
+            let rowClass = "";
+            if (i === 0) rowClass = "first-place";
+            else if (i === 1) rowClass = "second-place";
+            else if (i === 2) rowClass = "third-place";
+
+            $('#results').append(`
+                <div class="result-row ${rowClass}">
+                    <div class="result-cell">${r.name}</div>
+                    <div class="result-cell">${r.score}</div>
+                    <div class="result-cell">${r.words}</div>
+                </div>
+            `);
+        }
+        
+    });
+
+    $('#closeResults').click(function () {
+        $('#resultsModal').css('display', 'none');
+    });
+    // Nupp: Tagasi algusesse – näitab uuesti stardi ekraani ja peidab teised osad. 
+    // Päring: Loo mulle nupp, millega saab tagasi algusesse, et mängu uuesti läbida
+    $('#backToStart').click(function () {
+    location.reload(); // Lihtne viis: lae leht uuesti, et naasta algusesse
+});
+
+});
+
 
 
 
@@ -206,16 +255,16 @@ class Typer {
         let totalChars = this.typeWords.join('').length;
         let seconds = (this.endTime - this.startTime) / 1000;
 
-        let cpm = Math.round((totalChars / seconds) * 60);
-        let wpm = Math.round(cpm / 5);
+        let cpm = Math.round((totalChars / seconds) * 60); //palju tähemärke minutis kirjutaks selle kiirusega
+        let wpm = Math.round(cpm / 5); // palju sõnu minutis kirjutaks selle kiirusega
 
         let imagePath = "";
         let levelText = "";
 
-        if (wpm < 20) {
+        if (wpm < 15) {
             imagePath = "images/beginner.png";
             levelText = "Algaja";
-        } else if (wpm < 40) {
+        } else if (wpm < 35) {
             imagePath = "images/intermediate.png";
             levelText = "Edasijõudnu";
         } else {
@@ -239,6 +288,7 @@ class Typer {
         });
     }
 }
+
 
 // let typer = new Typer(playerName); eemaldatud punktis 4.
 

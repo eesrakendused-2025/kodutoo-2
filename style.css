@@ -65,7 +65,22 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Tulemuste modali kerimisnupp, loodud päriniguga: kuidas lisada kerimisnupp vaata tulemusi alla, et näha kõiki tulemusi? */
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 10px;
 }
+
+#results::-webkit-scrollbar {
+    height: 3px; 
+  }
+  
+  #results::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3); /* Tume poolläbipaistev */
+    border-radius: 2px;                   /* Pehmem ots */
+  }
+
+
 
 /* 2. Modali stiilid, mis on lisatud ülesande lingi w3schools lehelt*/
 .modal {
@@ -82,22 +97,30 @@ body{
 }
 
 .modal-content {
-  background-color: white;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  font-size: 30px;
-}
+    background-color: white;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 95%;          /* Suurem laius, katab enamuse ekraanist */
+    max-width: 600px;   /* Et ei läheks liiga laiaks suurel ekraanil */
+    max-height: 80vh;    /* Piira kõrgust, et ei läheks üle ekraani */
+    overflow: hidden;
+    font-size: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2); /* lisab veidi sügavust */
+  }
+  
 
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 38px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: -20px;
-}
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 38px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -30px;     /* rohkem üles */
+    margin-right: -15px;   /* rohkem paremale */
+  }
+  
 
 .close:hover,
 .close:focus {
@@ -171,8 +194,51 @@ button {
 }
 
 #feedbackBox img {
-    max-width: 300px;
+    max-width: 500px;
     margin-top: 10px;
 }
 
+/* "Tagasi algusesse" nupu stiil, loodud eelmiste näidete põhjal */
+#backToStart {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 1000;
+}
 
+/* 5. Vastavalt W3Schools õpetusele lisatud meedia-päring, et telefoniseadmetes oleks kasutajasõbralikum vaade.
+https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+
+    .modal-content {
+        width: 75%;
+        font-size: 15px;
+    }
+
+    #results {
+        font-size: 20px;
+        padding: 5px;
+    }
+
+    #backToStart {
+        font-size: 14px;
+        padding: 4px 8px;
+    }
+
+    #feedbackBox img {
+        max-width: 60%;
+        height: auto;
+        display: block;
+        margin: 10px auto;
+    }
+}
