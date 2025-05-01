@@ -149,13 +149,44 @@ class Typer {
         this.showResults(this.resultCount);
     }
 
+    //3. Kuva tulemused paremini välja, kui praegu. 
+    // Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. 
+    // Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne).
+    // Lasin ChatGPT selle valmis kirjutada päringuga: "Loo mulle modali tabeli kujul tulemused, kus on pealkirjadeks "nimi", "aeg (s) ja sõnade arv"
     showResults(count) {
         $('#results').html("");
+    
+        // 3.Pealkirjade rida
+        $('#results').append(`
+            <div class="result-row result-header">
+                <div class="result-cell">Nimi</div>
+                <div class="result-cell">Aeg(s)</div>
+                <div class="result-cell">Sõnade arv</div>
+            </div>
+        `);
+    
+        // 3.Mängu sooritanud tulemuste tsükkel, et tulemusi kuvada
         for (let i = 0; i < count; i++) {
-            $('#results').append(`<div>${this.allResults[i].name} ${this.allResults[i].score} (${this.allResults[i].words})</div>`);
+            const r = this.allResults[i];
+        
+            // Kujunduse poolest lisan, et eristada esimest, teist ja kolmandat kohta need read vastavalt seda värvi medaliteks
+            // GPT päring: "Loo mulle nii, et esimesed 3 rida on nagu medalid, esimene kuldne, teine hõbedane ja kolmas pronks."
+            let rowClass = "";
+            if (i === 0) rowClass = "first-place";
+            else if (i === 1) rowClass = "second-place";
+            else if (i === 2) rowClass = "third-place";
+        
+            $('#results').append(`
+                <div class="result-row ${rowClass}">
+                    <div class="result-cell">${r.name}</div>
+                    <div class="result-cell">${r.score}</div>
+                    <div class="result-cell">${r.words}</div>
+                </div>
+            `);
         }
+        
     }
-
+    
     saveToFile() {
         $.post('server.php', { save: this.allResults }).fail(() => {
             console.log("Fail");

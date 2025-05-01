@@ -26,7 +26,7 @@ body{
 }
 
 .right-button{
-    background-color: lightgreen !important;
+    background-color: rgb(28, 183, 28) !important;
 }
 
 .right-word{
@@ -61,7 +61,7 @@ body{
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: white;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
@@ -102,4 +102,45 @@ button {
     padding: 10px 10px; 
     cursor: pointer;
 }
+
+/* 3.  Tulemuste tabeli kujundus, loodud eelmiste nuppude põhjal. */
+.result-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    max-width: 600px;
+}
+
+.result-header {
+    font-weight: bold;
+    border-bottom: 2px solid #000;
+    background-color: #f0f0f0;
+}
+
+.result-cell {
+    flex: 1;
+    text-align: center;
+    font-size: 20px;
+}
+
+/* 3. Tulemuste kujundus, spetsiaalne esimene, teise ja kolmanda koha tulemuse kujundus */
+.first-place {
+    background-color: #ffd700; /* kuldne */
+    font-weight: bold;
+}
+
+.second-place {
+    background-color: #c0c0c0; /* hõbe */
+    font-weight: bold;
+}
+
+.third-place {
+    background-color: #cd7f32; /* pronks */
+    font-weight: bold;
+}
+
+
 
