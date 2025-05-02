@@ -14,16 +14,17 @@ $(".wordCountBtn").click(function () {
 
     typer = new Typer(playerName, wordCount);
 });
-
+ 
 //Uuendusena (iseseisev täiendus): võimaldan kasutajal "Vaata tulemusi" nuppu vajutada ka enne mängu alustamist.
 // Lahendus: viisin tulemuste laadimise jQuery käsitlemise väljapoole Typer klassi ja teen selle `localStorage` põhjal.
 $(document).ready(function () {
     
     $('#loadResults').click(function () {
         const results = JSON.parse(localStorage.getItem('typer')) || [];
-
+    
         $('#resultsModal').css('display', 'block');
-
+    
+       
         $('#results').html(`
             <div class="result-row result-header">
                 <div class="result-cell">Nimi</div>
@@ -31,14 +32,15 @@ $(document).ready(function () {
                 <div class="result-cell">Sõnade arv</div>
             </div>
         `);
-
+    
+        
         for (let i = 0; i < results.length && i < 30; i++) {
             const r = results[i];
             let rowClass = "";
             if (i === 0) rowClass = "first-place";
             else if (i === 1) rowClass = "second-place";
             else if (i === 2) rowClass = "third-place";
-
+    
             $('#results').append(`
                 <div class="result-row ${rowClass}">
                     <div class="result-cell">${r.name}</div>
@@ -47,8 +49,8 @@ $(document).ready(function () {
                 </div>
             `);
         }
-        
     });
+    
 
     $('#closeResults').click(function () {
         $('#resultsModal').css('display', 'none');
@@ -291,4 +293,3 @@ class Typer {
 
 
 // let typer = new Typer(playerName); eemaldatud punktis 4.
-
