@@ -57,6 +57,12 @@
         </div>
     </div>
 
-    <audio style="display:none;" id="audioPlayer" src="https://media.geeksforgeeks.org/wp-content/uploads/20240912183739/chatbot-response.mp3"></audio>
+    <!-- 8. Rakenda 4 erinevat heliklippi mängu jooksul - alguse jaoks, mängu jooksul, lõpus ja kui tulemus jõuab edetabelisse. kasutasin abina: 
+     lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp -->
+    <audio id="startSound" src="sounds/go.mp3" preload="auto"></audio>'
+    <audio id="wrongSound" src="sounds/wrong.mp3" preload="auto"></audio>
+    <audio id="correctSound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="endSound" src="sounds/end.mp3" preload="auto"></audio>
+
 </body>
 </html>

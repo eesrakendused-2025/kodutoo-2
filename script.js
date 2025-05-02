@@ -3,17 +3,31 @@ console.log("scripti fail õigesti ühendatud")
 let playerName = "";
 let typer = null;
 
-// Alusta pärast sõnade arvu valikut
 $(".wordCountBtn").click(function () {
+    
+    //Küsi kasutaja nime
     let wordCount = parseInt($(this).data("count"));
     playerName = prompt("Palun sisesta oma nimi");
+
+    if (!playerName) return;
+    
+
+    // Alusta mängu
     $("#startScreen").hide();
     $("#container").show();
-    $("#backToStart").show(); //  näita tagasi nuppu, kui mäng algab
-
+    $("#backToStart").show();
 
     typer = new Typer(playerName, wordCount);
+    // 8. Mängi heli kohe, kui kasutaja vajutab "ok" nuppu. 
+    // lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp
+    const startSound = document.getElementById("startSound");
+    startSound.currentTime = 0;
+    startSound.play().catch((e) => {
+        console.warn("Heli ei mänginud:", e);
+    });
+
 });
+
  
 //Uuendusena (iseseisev täiendus): võimaldan kasutajal "Vaata tulemusi" nuppu vajutada ka enne mängu alustamist.
 // Lahendus: viisin tulemuste laadimise jQuery käsitlemise väljapoole Typer klassi ja teen selle `localStorage` põhjal.
@@ -34,7 +48,7 @@ $(document).ready(function () {
         `);
     
         
-        for (let i = 0; i < results.length && i < 30; i++) {
+        for (let i = 0; i < results.length && i < 200; i++) {
             const r = results[i];
             let rowClass = "";
             if (i === 0) rowClass = "first-place";
@@ -81,7 +95,7 @@ class Typer {
         this.score = 0;
         this.bonus = 0;
         this.bonusKoef = 200;
-        this.resultCount = 30;
+        this.resultCount = 200;
 
         this.loadFromFile();
     }
@@ -164,12 +178,19 @@ class Typer {
     shortenWords(key) {
         if (key !== this.word.charAt(0)) {
             this.changeBackground('wrong-button', 100);
+            //8. Heli mängib kui vajutad vale klahvi. Lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp
+            const wrongSound = document.getElementById("wrongSound");
+            wrongSound.currentTime = 0; // 
+            wrongSound.play().catch(() => {});
             this.bonus = 0;
         } else if (this.word.length === 1 && key === this.word.charAt(0) && this.typedCount === this.wordsInGame) {
             this.endGame();
-            document.getElementById('audioPlayer').play();
         } else if (this.word.length === 1 && key === this.word.charAt(0)) {
             this.changeBackground('right-word', 400);
+            //8. Heli mängib kui sisestad sõna õigesti. Lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp
+            const correctSound = document.getElementById("correctSound");
+            correctSound.currentTime = 0;
+            correctSound.play().catch(() => {});
             this.selectWord();
             this.bonus -= this.bonusKoef;
         } else if (this.word.length > 0 && key === this.word.charAt(0)) {
@@ -192,6 +213,10 @@ class Typer {
         this.endTime = performance.now();
         $("#wordDiv").hide();
         this.calculateAndShowScore();
+        //8. Heli mängib kui mäng saab läbi. Lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp
+        const endSound = document.getElementById("endSound");
+        endSound.currentTime = 0;
+        endSound.play().catch(() => {});
     }
 
     calculateAndShowScore() {
