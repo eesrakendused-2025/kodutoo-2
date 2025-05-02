@@ -16,6 +16,7 @@ $(".wordCountBtn").click(function () {
     $("#startScreen").hide();
     $("#container").show();
     $("#backToStart").show();
+    
 
     typer = new Typer(playerName, wordCount);
     // 8. Mängi heli kohe, kui kasutaja vajutab "ok" nuppu. 
@@ -26,59 +27,68 @@ $(".wordCountBtn").click(function () {
         console.warn("Heli ei mänginud:", e);
     });
 
+
+    $("#resultsContainer").addClass("compact");
 });
 
  
 //Uuendusena (iseseisev täiendus): võimaldan kasutajal "Vaata tulemusi" nuppu vajutada ka enne mängu alustamist.
-// Lahendus: viisin tulemuste laadimise jQuery käsitlemise väljapoole Typer klassi ja teen selle `localStorage` põhjal.
+// Kui mängu pole veel mängitud, siis kuvatakse ajutine Typer objekt, mis ei salvesta tulemusi. 
 $(document).ready(function () {
+    // ... olemasolev kood
+
+    $(".tableToggleBtn").click(function () {
+        const target = $(this).data("target");
+
+        // Peida kõik tabelid
+        $("#results3, #results5, #results10").hide();
+        $("#results h3").hide();
+
+        // Näita valitud tabelit ja pealkirja
+        $("#" + target).show();
+        $("#" + target).prev("h3").show();
+    });
+
+    let soundEnabled = true;
+
+    // 9. Uus feature Helinupp: on/off heli mängus. Kui heli on off, siis ühtegi heli ei tule. Päring: Loo mulle nupp, millega saab heli sisse ja välja lülitada.
+$("#toggleSoundBtn").click(function () {
+    soundEnabled = !soundEnabled;
+
+    $("audio").each(function () {
+        this.muted = !soundEnabled;
+    });
+
+    // Uuenda teksti ja ikooni vastavalt olekule
+    $(this).text(soundEnabled ? "🔉" : "🔇");
+});
+    
     
     $('#loadResults').click(function () {
-        const results = JSON.parse(localStorage.getItem('typer')) || [];
-    
         $('#resultsModal').css('display', 'block');
     
-       
-        $('#results').html(`
-            <div class="result-row result-header">
-                <div class="result-cell">Nimi</div>
-                <div class="result-cell">Aeg(s)</div>
-                <div class="result-cell">Sõnade arv</div>
-            </div>
-        `);
-    
-        
-        for (let i = 0; i < results.length && i < 200; i++) {
-            const r = results[i];
-            let rowClass = "";
-            if (i === 0) rowClass = "first-place";
-            else if (i === 1) rowClass = "second-place";
-            else if (i === 2) rowClass = "third-place";
-    
-            $('#results').append(`
-                <div class="result-row ${rowClass}">
-                    <div class="result-cell">${r.name}</div>
-                    <div class="result-cell">${r.score}</div>
-                    <div class="result-cell">${r.words}</div>
-                </div>
-            `);
+        // Kui mängu pole veel mängitud, loo ajutine Typer objekt
+        if (!typer) {
+            const dummy = new Typer("Külaline", 3); // mängija nimeks ajutine
+            dummy.showResults();
+        } else {
+            typer.showResults();
         }
     });
     
-
+    
+    // 2. Kui vajutatakse modali aknas "X" nuppu, suletakse modal, võetud ülesande lingilt
     $('#closeResults').click(function () {
         $('#resultsModal').css('display', 'none');
     });
     // Nupp: Tagasi algusesse – näitab uuesti stardi ekraani ja peidab teised osad. 
     // Päring: Loo mulle nupp, millega saab tagasi algusesse, et mängu uuesti läbida
     $('#backToStart').click(function () {
-    location.reload(); // Lihtne viis: lae leht uuesti, et naasta algusesse
-});
+        $("#resultsContainer").removeClass("compact");
+        location.reload(); // Lihtne viis: lae leht uuesti, et naasta algusesse
+    });
 
 });
-
-
-
 
 class Typer {
     constructor(name, wordCount) {
@@ -243,39 +253,52 @@ class Typer {
     // Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. 
     // Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne).
     // Lasin ChatGPT selle valmis kirjutada päringuga: "Loo mulle modali tabeli kujul tulemused, kus on pealkirjadeks "nimi", "aeg (s) ja sõnade arv"
-    showResults(count) {
-        $('#results').html("");
+    showResults() {
+        $("#results3, #results5, #results10").html("");
     
-        // 3.Pealkirjade rida
-        $('#results').append(`
+        const header = `
             <div class="result-row result-header">
                 <div class="result-cell">Nimi</div>
                 <div class="result-cell">Aeg(s)</div>
                 <div class="result-cell">Sõnade arv</div>
             </div>
-        `);
+        `;
+        //9. feature: Kasutajal on võimalus vaadata tulemusi eraldi 3, 5 ja 10 sõna kohta. Päring: Loo mulle nupud, millega saab vaadata edetabelis eraldi 3, 5 ja 10 sõna tulemusi.
+        $("#results3").append(header);
+        $("#results5").append(header);
+        $("#results10").append(header);
     
-        // 3.Mängu sooritanud tulemuste tsükkel, et tulemusi kuvada
-        for (let i = 0; i < count && i < this.allResults.length; i++) { //Täinedatud 4. punktis päringu tulemusel (kirjas index.html-is)
-            const r = this.allResults[i];
-        
-            // Kujunduse poolest lisan, et eristada esimest, teist ja kolmandat kohta need read vastavalt seda värvi medaliteks
-            // GPT päring: "Loo mulle nii, et esimesed 3 rida on nagu medalid, esimene kuldne, teine hõbedane ja kolmas pronks."
-            let rowClass = "";
-            if (i === 0) rowClass = "first-place";
-            else if (i === 1) rowClass = "second-place";
-            else if (i === 2) rowClass = "third-place";
-        
-            $('#results').append(`
-                <div class="result-row ${rowClass}">
-                    <div class="result-cell">${r.name}</div>
-                    <div class="result-cell">${r.score}</div>
-                    <div class="result-cell">${r.words}</div>
-                </div>
-            `);
+        const groupMap = { 3: [], 5: [], 10: [] };
+    
+        // Sorteeri tulemused gruppidesse
+        for (const r of this.allResults) {
+            if (groupMap[r.words]) groupMap[r.words].push(r);
         }
-        
+    
+        // Käi iga rühma kohta eraldi läbi ja lisa HTML
+        [3, 5, 10].forEach(wordCount => {
+            const group = groupMap[wordCount];
+            const containerId = "#results" + wordCount;
+    
+            for (let i = 0; i < group.length; i++) {
+                const r = group[i];
+                let rowClass = "";
+                if (i === 0) rowClass = "first-place";
+                else if (i === 1) rowClass = "second-place";
+                else if (i === 2) rowClass = "third-place";
+    
+                $(containerId).append(`
+                    <div class="result-row ${rowClass}">
+                        <div class="result-cell">${r.name}</div>
+                        <div class="result-cell">${r.score}</div>
+                        <div class="result-cell">${r.words}</div>
+                    </div>
+                `);
+            }
+        });
     }
+    
+    
     //4. ülesande päringu tulemusel. Lisasin päringule hiljem juurde, et saaksin pilte kuvada vastavalt, kas
     // on beginner, intermediate või expert. Tulemuseks Juurde lisatud osa kuni saveToFile().
     showFeedbackImage() {
@@ -288,6 +311,8 @@ class Typer {
         let imagePath = "";
         let levelText = "";
 
+        //4. Lisaks pildile juurde lisatud ka wpm(words per minute) ja cpm (characters per minute) tulemused, et saaks aru, mis tasemel on mängija. (ehk siis uus feature)
+        //Päring: Loo mulle arvutused, mis arvutavad sõnade ja tähemärkide arvu minutis.
         if (wpm < 15) {
             imagePath = "images/beginner.png";
             levelText = "Algaja";
@@ -298,7 +323,7 @@ class Typer {
             imagePath = "images/expert.png";
             levelText = "Ekspert";
         }
-
+        //4. Ülesande tagasiside sisu, mis tuli päringuga
         $("#feedbackBox").html(`
             <p>
                 Kirjutamise tase: <strong>${levelText}</strong><br>
