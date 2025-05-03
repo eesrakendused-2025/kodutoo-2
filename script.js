@@ -21,7 +21,51 @@ class Typer{
 
         this.loadFromFile();
         //this.showResults(this.resultCount);
+        $("#closeResults").hide();
+        this.showResultsToggle();
     }
+
+    showResultsToggle(){
+        $('#showResults').click(() => {
+            this.toggleResults();
+        })
+        $('#closeResults').click(() =>{
+            this.hideResults();
+        })
+
+        $('#loadResults').click(() => {
+            this.resultCount = this.resultCount + 50;
+            console.log("Laen rohkem tulemusi:", this.allResults.length, this.resultCount)
+            if (this.resultCount >= this.allResults.length) {
+                this.resultCount = this.allResults.length;
+                $("#loadResults").hide();
+            }
+            this.showResults(this.resultCount);
+        });
+    }
+
+    toggleResults() {
+        if (this.resultsVisible) {
+            this.hideResults();
+        } else {
+            this.showResultsPanel();
+        }
+    }
+
+    showResultsPanel() {
+        $("#resultsContainer").slideDown(300);
+        this.resultsVisible = true;
+        this.showResults(this.resultCount);
+    } //Laenatud claude.ai
+            //prompt: kuidas teha, et nupule vajutades tuleksid tulemused 
+            // nähtavale ja x nupule vajutades need läheksid peitu?
+    
+    hideResults() {
+        $("#resultsContainer").slideUp(300);
+        this.resultsVisible = false;
+    } //Laenatud claude.ai
+        //prompt: kuidas teha, et nupule vajutades tuleksid tulemused 
+        // nähtavale ja x nupule vajutades need läheksid peitu?
 
     loadFromFile(){
         $.get("lemmad2013.txt", (data) => this.getWords(data))
@@ -107,7 +151,8 @@ class Typer{
         if(keyCode != this.word.charAt(0)){
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
+        } else if(this.word.length == 1 && keyCode == this.word.charAt(0) 
+            && this.typedCount == this.wordsInGame){
             this.endGame();
             document.getElementById('audioPlayer').play();
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
