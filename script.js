@@ -2,6 +2,12 @@ console.log("scripti fail õigesti ühendatud")
 
 let playerName = prompt("Palun sisesta oma nimi");
 
+const introAudio = document.getElementById('start-audio');
+$(document).one("keydown", () => {
+    introAudio.play();
+}); //laenatud ChatGPT-lt
+        //prompt: how to play audio when user presses a key in JavaScript
+
 class Typer{
     constructor(name){
         this.name = name;
@@ -18,54 +24,23 @@ class Typer{
         this.bonus = 0;
         this.bonusKoef = 200;
         this.resultCount = 30;
+        this.resultsVisible = false;
 
+        this.setupModal();
         this.loadFromFile();
         //this.showResults(this.resultCount);
-        $("#closeResults").hide();
-        this.showResultsToggle();
     }
 
-    showResultsToggle(){
+    setupModal() {
         $('#showResults').click(() => {
-            this.toggleResults();
-        })
-        $('#closeResults').click(() =>{
-            this.hideResults();
-        })
-
-        $('#loadResults').click(() => {
-            this.resultCount = this.resultCount + 50;
-            console.log("Laen rohkem tulemusi:", this.allResults.length, this.resultCount)
-            if (this.resultCount >= this.allResults.length) {
-                this.resultCount = this.allResults.length;
-                $("#loadResults").hide();
-            }
-            this.showResults(this.resultCount);
+            $('#resultsModal').fadeIn(200);
+            this.showResults(this.allResults.length); 
+        });
+    
+        $('#closeResults').click(() => {
+            $('#resultsModal').fadeOut(200);
         });
     }
-
-    toggleResults() {
-        if (this.resultsVisible) {
-            this.hideResults();
-        } else {
-            this.showResultsPanel();
-        }
-    }
-
-    showResultsPanel() {
-        $("#resultsContainer").slideDown(300);
-        this.resultsVisible = true;
-        this.showResults(this.resultCount);
-    } //Laenatud claude.ai
-            //prompt: kuidas teha, et nupule vajutades tuleksid tulemused 
-            // nähtavale ja x nupule vajutades need läheksid peitu?
-    
-    hideResults() {
-        $("#resultsContainer").slideUp(300);
-        this.resultsVisible = false;
-    } //Laenatud claude.ai
-        //prompt: kuidas teha, et nupule vajutades tuleksid tulemused 
-        // nähtavale ja x nupule vajutades need läheksid peitu?
 
     loadFromFile(){
         $.get("lemmad2013.txt", (data) => this.getWords(data))
@@ -94,7 +69,7 @@ class Typer{
         }
 
         console.log(this.words);
-
+        $("#newGame").hide();
         this.startTyper();
     }
 
@@ -104,19 +79,10 @@ class Typer{
             this.wordsInGame = urlParams.get("words");
         }
         console.log(urlParams.get("words"));
+        
         this.generateWords();
         this.startTime = performance.now();
         $(document).keypress((event) => {this.shortenWords(event.key)});
-        $('#loadResults').click(() => {
-            this.resultCount = this.resultCount + 50;
-            console.log(this.allResults.length, this.resultCount)
-            if(this.resultCount >= this.allResults.length){
-                this.resultCount = this.allResults.length;
-                $("#loadResults").hide();
-            }
-            this.showResults(this.resultCount);
-        })
-        this.showResults(this.resultCount);
     }
 
     generateWords(){
@@ -148,21 +114,24 @@ class Typer{
 
     shortenWords(keyCode){
         console.log(keyCode);
-        if(keyCode != this.word.charAt(0)){
+        const startAudio = document.getElementById('typingAudio');
+        if (keyCode != this.word.charAt(0)) {
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0) 
-            && this.typedCount == this.wordsInGame){
+            startAudio.pause(); 
+        } else if (this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame) {
+            startAudio.pause();
             this.endGame();
-            document.getElementById('audioPlayer').play();
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
+        } else if (this.word.length == 1 && keyCode == this.word.charAt(0)) {
             this.changeBackground('right-word', 400);
             this.selectWord();
             this.bonus = this.bonus - this.bonusKoef;
-        } else if (this.word.length > 0 && keyCode == this.word.charAt(0)){
+            startAudio.pause();
+        } else if (this.word.length > 0 && keyCode == this.word.charAt(0)) {
             this.changeBackground('right-button', 100);
             this.word = this.word.slice(1);
             this.bonus = this.bonus - this.bonusKoef;
+            startAudio.play();
         }
 
         this.drawWord();
@@ -178,11 +147,22 @@ class Typer{
     }
 
     endGame(){
+        const endAudio = document.getElementById('endgame-audio');
+        
         console.log("Mäng läbi");
+        endAudio.play();
         this.endTime = performance.now();
         $("#wordDiv").hide();
         //$(document).off(keypress);
         this.calculateAndShowScore();
+        $("#newGame").show();
+    }
+
+    newGameStart(){
+        $('#newGame').click(() => {
+            $('#newGame').hide();
+            this.startTyper();
+        });
     }
 
     calculateAndShowScore(){
@@ -203,10 +183,13 @@ class Typer{
         console.log(this.allResults);
         localStorage.setItem('typer', JSON.stringify(this.allResults));
         this.saveToFile();
-        this.showResults(this.resultCount);
+        if (this.resultsVisible) {
+            this.showResults(this.resultCount);
+        }
     }
 
     showResults(count){
+        document.getElementById('resultsAudio').play();
         $('#results').html("");
         for(let i = 0; i < count; i++){
             if(this.allResults[i]){

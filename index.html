@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.7.1.js" i
-        ntegrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+    <script src="https://code.jquery.com/jquery-3.7.1.js" 
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
         crossorigin="anonymous"></script>
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +16,7 @@
     <title>Typer</title>
 </head>
 <body>
+    
     <div id="container">
         <div id="wordDiv" class="winky-rough-font">Siia tuleb sõna</div>
         <div id="score" class="winky-rough-font">Kuvame aega, mis kulus trükkimiseks</div>
@@ -25,19 +26,31 @@
             Siia tuleb sõnade arv 1/5
         </div>
     </div>
-    <div id="resultsContainer" class="winky-rough-font">
-        <div id="resultsHeader" class="result-row header-row">
-            <span class="name">Nimi</span>
-            <span class="speed">Kiirus</span>
-            <span class="words">Sõnu</span>
-        </div>
-        <div id="results"></div>
-        <button id="loadResults">Laadi tulemusi</button>
-        <button id="closeResults">X</button>
-    </div>
 
+    <div id="buttonsContainer">
+        <button id="showResults" class="winky-rough-font">Laadi tulemusi</button>
+        <br>
+        <button id="newGame">Uus mäng</button>
+    </div>
     
-    <audio style="display:none;" id="audioPlayer" src=
-"https://media.geeksforgeeks.org/wp-content/uploads/20240912183739/chatbot-response.mp3"></audio>
+    <div id="resultsModal" class="modal">
+        <div class="modal-content winky-rough-font">
+          <span id="closeResults" class="close">×</span>
+          <div id="resultsHeader" class="result-row header-row">
+              <span class="name">Nimi</span>
+              <span class="speed">Kiirus</span>
+              <span class="words">Sõnu</span>
+          </div>
+          <div id="results"></div>
+      </div>
+    </div>
+    <audio style="display:none;" id="start-audio" src=
+        "gamestart-272829.mp3"></audio>
+    <audio style="display:none;" id="resultsAudio" src=
+        "new-information-153314.mp3"></audio>
+    <audio style="display:none;" id="typingAudio" src=
+        "keyboard-typing-sound-effect-335503.mp3"></audio>
+    <audio style="display:none;" id="endgame-audio" src=
+        "level-win-6416.mp3"></audio>
 </body>
 </html>

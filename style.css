@@ -47,12 +47,11 @@ body{
 }
 
 #results{
-    width: 100vw;
-    font-size: 20px;
+    width: 100%;
+    max-width: 800px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
+    box-sizing: border-box;
 }
 
 #resultsContainer {
@@ -65,12 +64,16 @@ body{
     width: 100%;
 }
 
-#resultsHeader {
+.result-row, #resultsHeader {
+    width: 100%;
+    max-width: 800px;
     display: flex;
     justify-content: space-between;
-    width: 90vw;
-    max-width: 800px;
     padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+#resultsHeader {
     font-size: 20px;
     font-family: "Winky Rough", sans-serif;
     background-color: rgba(255, 255, 255, 0.8);
@@ -80,11 +83,6 @@ body{
 }
 
 .result-row {
-    display: flex;
-    justify-content: space-between;
-    width: 90vw;
-    max-width: 800px;
-    padding: 8px 12px;
     border-bottom: 1px solid #ccc;
     font-size: 18px;
     font-family: "Winky Rough", sans-serif;
@@ -120,23 +118,101 @@ body{
     display: none;
 }
 
-#loadResults{
+#buttonsContainer {
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+#showResults{
+    padding: 10px 20px;
+    margin: 0 auto;
     font-family: "Winky Rough", sans-serif;
     font-size: 18px;
     color: royalblue;
     background-color: rgb(220, 227, 249);
     border: solid 1px royalblue;
     border-radius: 10px;
-    margin-bottom: 10px;
 }
 
-#loadResults:hover{
+#showResults:hover{
     background-color: rgb(196, 208, 250);
     color: rgb(40, 86, 225);
     box-shadow: 0px 4px 8px 0px rgb(40, 86, 225);
 }
 
-#loadResults:active{
+#showResults:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 112, 250);
+    border: solid 1px rgb(255, 112, 250);
+    box-shadow: 0px 4px 8px 0px rgb(255, 112, 250);
+}
+
+#newGame{
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: #fefe59;
+    background-color: lightyellow;
+    border: solid 1px #fefe59;
+    border-radius: 10px;
+}
+
+#newGame:hover{
+    background-color: rgb(253, 253, 192);
+    color: #fafa3e;
+    box-shadow: 0px 4px 8px 0px #fafa3e;
+}
+
+#newGame:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 112, 250);
+    border: solid 1px rgb(255, 112, 250);
+    box-shadow: 0px 4px 8px 0px rgb(255, 112, 250);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    overflow-x: auto;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 3px solid #ff66cc;
+    width: 60%;
+    border-radius: 12px;
+    font-family: "Winky Rough", sans-serif;
+}
+
+.close {
+    float: right;
+    cursor: pointer;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: royalblue;
+    background-color: rgb(220, 227, 249);
+    border: solid 1px royalblue;
+    border-radius: 10px;
+}
+.close:hover {
+    background-color: rgb(196, 208, 250);
+    color: rgb(40, 86, 225);
+    box-shadow: 0px 4px 8px 0px rgb(40, 86, 225);
+}
+
+.close:active{
     background-color: rgb(255, 198, 253);
     color: rgb(255, 112, 250);
     border: solid 1px rgb(255, 112, 250);
