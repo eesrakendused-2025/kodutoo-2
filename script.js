@@ -133,7 +133,7 @@ class Typer{
     }
 
     endGame(){
-        console.log("Mأ¤ng lأ¤bi");
+        console.log("Mäng läbi");
         this.endTime = performance.now();
         $("#wordDiv").hide();
         //$(document).off(keypress);
@@ -165,7 +165,13 @@ class Typer{
         $('#results').html("");
         for(let i = 0; i < count; i++){
             if(this.allResults[i]){
-                $('#results').append("<div>" + this.allResults[i].name + " " + this.allResults[i].score + " (" + this.allResults[i].words + ")" +"</div>");
+                $('#results').append(`
+                    <div class="result-row">
+                      <span class="name">${this.allResults[i].name}</span>
+                      <span class="score">${this.allResults[i].score}</span>
+                      <span class="words">${this.allResults[i].words}</span>
+                    </div>
+                  `);
             }
             
         }
@@ -176,7 +182,13 @@ class Typer{
         $('#results').html("");
 
         for(let i = 0; i < this.allResults.length; i++){
-            $('#results').append("<div>" + this.allResults[i].name + " " + this.allResults[i].score + " (" + this.allResults[i].words + ")" +"</div>");
+            $('#results').append(`
+                <div class="result-row">
+                  <span class="name">${this.allResults[i].name}</span>
+                  <span class="score">${this.allResults[i].score}</span>
+                  <span class="words">(${this.allResults[i].words})</span>
+                </div>
+              `);
         }
 
     }

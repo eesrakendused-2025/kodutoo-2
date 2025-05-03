@@ -1,35 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
 body{
     margin: 0;
     padding: 0;
+    background-color: rgb(255, 198, 253);
 }
+
+.winky-rough-font {
+    font-family: "Winky Rough", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+} 
 
 #container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: auto;
     height: 60vh;
-    background-color: lightblue;
+    width: 90vw;
+    background-color: rgb(255, 112, 250);
+    border-radius: 20px;
 }
 
 #infoContainer{
     width: 100vw;
-    font-size: 32px;
+    font-size: 40px;
     display: flex;
     justify-content: space-between;
     padding: 15px;
+    margin-left: 50px;
 }
 
 .wrong-button{
-    background-color: red !important;
+    background-color: rgb(255, 98, 98) !important;
 }
 
 .right-button{
-    background-color: lightgreen !important;
+    background-color: rgb(164, 230, 164) !important;
 }
 
 .right-word{
-    background-color: green !important;
+    background-color: rgb(108, 233, 108) !important;
 }
 
 #results{
@@ -41,10 +55,90 @@ body{
     flex-direction: column;
 }
 
+#resultsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+#resultsHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 800px;
+    padding: 8px 12px;
+    font-size: 20px;
+    font-family: "Winky Rough", sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px; 
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 800px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    font-family: "Winky Rough", sans-serif;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+.result-row span {
+    flex: 1;
+    text-align: center;
+}
+
+.result-row .name {
+    text-align: left;
+}
+
+.result-row .speed {
+    text-align: center;
+}
+
+.result-row .words {
+    text-align: right;
+    font-style: italic;
+    color: #444;
+}
+
 #wordDiv{
-    font-size: 36px;
+    font-size: 50px;
 }
 
 #score{
     display: none;
+}
+
+#loadResults{
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: royalblue;
+    background-color: rgb(220, 227, 249);
+    border: solid 1px royalblue;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+#loadResults:hover{
+    background-color: rgb(196, 208, 250);
+    color: rgb(40, 86, 225);
+    box-shadow: 0px 4px 8px 0px rgb(40, 86, 225);
+}
+
+#loadResults:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 112, 250);
+    border: solid 1px rgb(255, 112, 250);
+    box-shadow: 0px 4px 8px 0px rgb(255, 112, 250);
 }
