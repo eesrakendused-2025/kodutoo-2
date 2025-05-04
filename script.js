@@ -63,7 +63,7 @@ class Typer{
         this.generateWords();
         this.startTime = performance.now();
         $(document).keypress((event) => {this.shortenWords(event.key)});
-        $('#loadResults').click(() => {
+        /*$('#loadResults').click(() => {
             this.resultCount = this.resultCount + 50;
             console.log(this.allResults.length, this.resultCount)
             if(this.resultCount >= this.allResults.length){
@@ -71,7 +71,7 @@ class Typer{
                 $("#loadResults").hide();
             }
             this.showResults(this.resultCount);
-        })
+        })*/
         this.showResults(this.resultCount);
     }
 
@@ -104,22 +104,49 @@ class Typer{
 
     shortenWords(keyCode){
         console.log(keyCode);
+        const  correctSound = document.getElementById("correctIput").cloneNode();/* how can I overlap sounds? */
+        const errorSound = document.getElementById("error").cloneNode();
+        const endSound = document.getElementById("endSound");
+        const music = document.getElementById("music");
+        correctSound.volume = 0.7; /* how can I change audio volume in js */
+        errorSound.volume = 0.6;
+        endSound.volume = 0.15;
+        music.volume = 0.15;
+        if (keyCode) {
+            document.getElementById("bgGif").style.transition = "opacity 80s, z-index 10s";
+            document.getElementById("bgGif").style.opacity = 0.7;
+            document.getElementById("bgGif").style.zIndex = 1;
+            
+            
+            music.play();
+        }
         if(keyCode != this.word.charAt(0)){
+            document.getElementById("snakeSprite").src="https://media1.tenor.com/m/DwaJbYyLGyYAAAAC/solid-snake-blink.gif";
             this.changeBackground('wrong-button', 100);
+            errorSound.play();
             this.bonus = 0;
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
+            document.getElementById("bgGif").style.transition = "opacity 1s, z-index 1s";
+            correctSound.play();
+            endSound.play();
+            music.pause();
+            document.getElementById("bgGif").style.opacity = 0;
+            document.getElementById("bgGif").style.zIndex = -1;
             this.endGame();
-            document.getElementById('audioPlayer').play();
+            document.getElementById("snakeSprite").src="https://media1.tenor.com/m/DwaJbYyLGyYAAAAC/solid-snake-blink.gif";
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
+            correctSound.play();
             this.changeBackground('right-word', 400);
             this.selectWord();
             this.bonus = this.bonus - this.bonusKoef;
         } else if (this.word.length > 0 && keyCode == this.word.charAt(0)){
+            document.getElementById("snakeSprite").src="https://media.tenor.com/Xm3aw7T3mOQAAAAM/solid-snake-talking.gif";
+            correctSound.play();
             this.changeBackground('right-button', 100);
             this.word = this.word.slice(1);
             this.bonus = this.bonus - this.bonusKoef;
         }
-
+        
         this.drawWord();
     }
 
@@ -212,11 +239,15 @@ let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
+    document.getElementById("moduleOn").volume = 0.4;
+    document.getElementById("moduleOn").play();
     modal.style.display = "block";
 }
 
 
 span.onclick = function() {
+    document.getElementById("moduleOff").volume = 0.4;
+    document.getElementById("moduleOff").play();
     modal.style.display = "none";
 }
 
