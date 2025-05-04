@@ -1,0 +1,83 @@
+<!-- Iga koodirida, mis on juurde tekitatud, lisan juurde, millise ülesandega seoses on juurde lisatud, juurde lisan ka kuidas sain/kust laenasin -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+
+   <!-- 1. Kasuta veebilehel mõnda Google fonti, otsustasin kasutada fonti space grotesk, mille leidsin ülesande juures olnud lingilt.
+    https://fonts.google.com/ -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&family=Playfair+Display&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+    <title>Typer Marcus Puust</title>
+</head>
+<body>
+ 
+    <!--Lisatud nupp: "Tagasi algusesse", kuvatakse ainult mängu ajal -->
+    <button id="backToStart" style="display:none;">Tagasi algusesse</button>
+    <button id="toggleSoundBtn">🔉</button>
+
+
+    <!-- 9. Uus feature, saad enne mängu alustamist valida sõnade arvu mänguks -->
+    <div id="startScreen">
+        <h2>Vali sõnade arv:</h2>
+        <button class="wordCountBtn" data-count="3">3 sõna</button>
+        <button class="wordCountBtn" data-count="5">5 sõna</button>
+        <button class="wordCountBtn" data-count="10">10 sõna</button>
+    </div>
+
+    <!-- 4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. 
+     Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti
+     Lisasin juurde selle, andes oma eelnev kood chatGPT ja ülesande kirjeldus, lisas ta juurde järgmise, mida muutsin vastavalt vajadusele: -->
+    <div id="container" style="display:none;">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score"></div>
+        <div id="feedbackBox"></div>
+    </div>
+
+    <div id="infoContainer">
+        <div id="info">Siia tuleb sõnade arv:  </div>
+    </div>
+
+    <div id="resultsContainer">
+        <button id="loadResults">Vaata tulemusi</button>
+    </div>
+
+    <!-- 2.Tulemused peavad tulema välja nupule vajutades ja minema peitu x vajutades. Võimalus kasutada tavalist modalit või sidebari.
+      Results Modal, sisu võetud ülesande lingilt -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeResults">&times;</span>
+            <div id="results">
+                <div id="tableSelector">
+                  <button class="tableToggleBtn" data-target="results3">3 sõna</button>
+                  <button class="tableToggleBtn" data-target="results5">5 sõna</button>
+                  <button class="tableToggleBtn" data-target="results10">10 sõna</button>
+                </div>
+              
+                <h3>3 sõna</h3>
+                <div id="results3" class="resultsGroup"></div>
+              
+                <h3>5 sõna</h3>
+                <div id="results5" class="resultsGroup"></div>
+              
+                <h3>10 sõna</h3>
+                <div id="results10" class="resultsGroup"></div>
+              </div>
+        </div>
+    </div>
+
+    <!-- 8. Rakenda 4 erinevat heliklippi mängu jooksul - alguse jaoks, mängu jooksul, lõpus ja kui tulemus jõuab edetabelisse. kasutasin abina: 
+     lingid: https://www.w3schools.com/TAGs/tag_audio.asp ja https://www.w3schools.com/jsref/met_audio_play.asp -->
+    <audio id="startSound" src="sounds/go.mp3" preload="auto"></audio>
+    <audio id="wrongSound" src="sounds/wrong.mp3" preload="auto"></audio>
+    <audio id="correctSound" src="sounds/correct.mp3" preload="auto"></audio>
+    <audio id="endSound" src="sounds/end.mp3" preload="auto"></audio>
+
+</body>
+</html>
