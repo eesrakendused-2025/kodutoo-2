@@ -28,6 +28,7 @@ class Typer{
 
         this.setupModal();
         this.loadFromFile();
+        $("#resultPhoto").hide();
         //this.showResults(this.resultCount);
     }
 
@@ -156,12 +157,15 @@ class Typer{
         //$(document).off(keypress);
         this.calculateAndShowScore();
         $("#newGame").show();
+        this.shareResults();
+        this.newGameStart();
+        this.showConfetti();
     }
 
     newGameStart(){
         $('#newGame').click(() => {
             $('#newGame').hide();
-            this.startTyper();
+            window.location.reload();
         });
     }
 
@@ -170,6 +174,22 @@ class Typer{
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
         $("#score").html(this.score).show();
         this.saveResult();
+        this.resultPhoto();
+    }
+    
+    resultPhoto(){
+        $('#resultPhoto').show();
+        if(this.score <= 3){
+            $('#resultPhoto').attr("src", "trophy.jpg");
+        } else if(this.score <= 5 && this.score > 3){
+            $('#resultPhoto').attr("src", "cheers.jpg");
+        } else if(this.score <= 10 && this.score > 5){
+            $('#resultPhoto').attr("src", "thumbs-up.jpg");
+        } else if(this.score <= 20 && this.score > 10){
+            $('#resultPhoto').attr("src", "no.jpg");
+        } else {
+            $('#resultPhoto').attr("src", "thumbs-down.png");
+        }
     }
 
     saveResult(){
@@ -220,6 +240,30 @@ class Typer{
         }
 
     }
+
+    shareResults() {
+        let score = this.score;
+        const currentPageURL = window.location.href;
+        const twitterText = `Minu trükkimiskiirus on ${score} sekundi pealt!`;
+        const twitterURL = `https://twitter.com/intent/tweet?text=${
+            encodeURIComponent(twitterText)}&url=${encodeURIComponent(currentPageURL)}`;
+        
+        const twitterButton = document.getElementById('twitter');
+        twitterButton.href = twitterURL;
+        twitterButton.setAttribute("target", "_blank");
+        twitterButton.style.display = "inline-block";
+    } //laenatud ChatGPT-lt
+        //prompt: how to create a share link for Twitter in javascript
+
+    showConfetti() {
+        confetti({
+            particleCount: 200,
+            angle: 90,
+            spread: 70,
+            origin: { x: 0.5, y: 0.5 }
+        });
+    } //laenatud ChatGPT-lt
+        //prompt: how to create confetti animation in javascript
 
     saveToFile(){
         $.post('server.php', {save: this.allResults}).fail(

@@ -6,6 +6,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js" 
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
         crossorigin="anonymous"></script>
+        <script src=
+            "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,7 +28,7 @@
             Siia tuleb sõnade arv 1/5
         </div>
     </div>
-
+    <img id="resultPhoto" style="display:none;">
     <div id="buttonsContainer">
         <button id="showResults" class="winky-rough-font">Laadi tulemusi</button>
         <br>
@@ -42,8 +44,10 @@
               <span class="words">Sõnu</span>
           </div>
           <div id="results"></div>
+          <a id="twitter" style="display:none;" class="winky-rough-font">Jaga Twitteris</a>
       </div>
     </div>
+    
     <audio style="display:none;" id="start-audio" src=
         "gamestart-272829.mp3"></audio>
     <audio style="display:none;" id="resultsAudio" src=
