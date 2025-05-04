@@ -1,3 +1,7 @@
+// 9. Kolm featuret omaltpoolt on: 1. helinupp, saab vastavalt valida kas soovid mängu mängida heliga või ei. 
+// 2.-ks saab edetabelis vaadata sõnade arvu alusel tulemusi. 3. Mängu alguses on võimalik valida mitut sõna soovid mängus.
+
+
 console.log("scripti fail õigesti ühendatud")
 
 let playerName = "";
