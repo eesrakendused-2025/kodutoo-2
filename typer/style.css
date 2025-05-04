@@ -1,54 +1,213 @@
+/* Aja ja oskuste taha jäänud mõte vajas gpt-ga täiendust ,et retro stiilis mõte lõpuni viia. */
+/* 6. punkt "muuda lehe css-i vastavalt... */
 
-body{
-    margin:0;
+body {
+    margin: 0;
     padding: 0;
-    font-family: "Tuffy", sans-serif;
+    font-family: "Orbitron", sans-serif;  /* google font kasutus */
+    background-color: #0d0d0d;
+    color: #ffffff;
 }
 
-#container{
+#container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 60vh;
-    background-color: lightblue;
+    background-color: #1a1a1a;
+    border: 4px solid #00ffff;
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 0 20px #00ffff;
+    border-radius: 12px;
 }
 
-#infoContainer{
+#infoContainer {
     width: 100vw;
-    font-size: 32px;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.wrong-button{
-    background-color: red !important;
-}
-
-.right-button{
-    background-color: lightgreen !important;
-}
-
-.right-word{
-    background-color: green !important;
-}
-
-
-#results{
-    width: 100vw;
-    font-size: 20px;
+    font-size: 28px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    
+    gap: 20px;
+    padding: 20px;
+    background-color: #111;
+    border-top: 2px solid #ff00ff;
+}
+  
+button {
+    background-color: #ff00ff;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff00ff;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+button:hover {
+    background-color: #cc00cc;
+    box-shadow: 0 0 20px #ff00ff;
 }
 
-#wordDiv{
-    font-size: 36px;
+#wordDiv {
+    font-size: 40px;
+    text-shadow: 0 0 5px #00ffff;
 }
-
-#score{
+  
+#score {
+    font-size: 28px;
     display: none;
+}
+
+/* modal disain */
+.modal-content {
+    background-color: #1e1e1e;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 0 25px #ff00ff;
+    position: relative;
+    color: #fff;
+}
+
+#resultsModal {
+    display: none;
+}
+  
+#results {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+  
+.result-card {
+    background-color: #2a2a2a;
+    padding: 12px 16px;
+    border-left: 6px solid #00ffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #00ffff66;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.result-image {
+    width: 100px;
+    display: block;
+    margin: 20px auto;
+    filter: drop-shadow(0 0 10px #ff0);
+}
+
+.close-button {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff00ff;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+  
+.close-button:hover {
+    transform: scale(1.2);
+    color: #ffffff;
+}
+
+/* erinevad pseudo classid: nuppude hover, klikud nupu stiil, esimene element loendis esile tõstetud, Iga teine tulemus teistsugune, kasutajanime highlight */
+/* 7 punkt pseudo classide kasutus - w3schools ja ideid internetist*/
+
+#results div:nth-child(even) {
+    background-color: #75496f;
+}
+
+button:hover {
+    background-color: #00ffb3;
+    transform: scale(1.05);
+}
+
+#results div:first-child {
+    font-weight: bold;
+    color: gold;
+}
+
+button:active {
+    background-color: #ffee00;
+}
+
+.result-image:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 0 20px gold;
+}
+
+/* viimane punkt 3 feature esimene restart nupp. */
+#restartBtn {
+    background-color: #00ffff;
+    color: #000;
+    padding: 12px 24px;
+    font-size: 22px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00ffff;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 20px auto;
+    display: block;
+}
+
+#restartBtn:hover {
+    background-color: #00cccc;
+    box-shadow: 0 0 25px #00ffff;
+}
+
+/* 5. punk media queries */
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+    }
+
+    #container {
+        height: auto;
+        width: 90%;
+        margin: 10px auto;
+        padding: 15px;
+        box-shadow: 0 0 10px #00ffff;
+    }
+
+    #infoContainer {
+        flex-direction: column;
+        font-size: 22px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    #wordDiv {
+        font-size: 30px;
+    }
+
+    button, #restartBtn {
+        width: 100%;
+        font-size: 18px;
+        padding: 10px;
+    }
+
+    .modal-content {
+        padding: 20px;
+        width: 95%;
+    }
+
+    .result-image {
+        width: 80px;
+    }
+
+    #results {
+        font-size: 16px;
+    }
 }
