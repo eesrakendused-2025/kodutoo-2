@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Typer</title>
+  <!-- 1. kasuta google fonti -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div id="difficultyContainer">
+    <h2>Vali raskusaste</h2>
+    <!-- tasemete valik -->
+    <button class="difficulty-btn" data-words="3">3 sõna</button>
+    <button class="difficulty-btn" data-words="5">5 sõna</button>
+    <button class="difficulty-btn" data-words="10">10 sõna</button>
+  </div>
+  <div id="container">
+    <div id="timer">Aeg: 0.00 sek</div> <!-- 9 samm timeri lisamine-->
+    <div id="wordDiv">Siia tuleb sõna</div>
+    <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+  </div>
+  <div id="infoContainer">
+    <div id="info">Siia tuleb sõnade arv 1/5</div>
+    <button id="loadResults">Leaderboard</button>
+  </div>
+  <!-- 2. Modal kasutus tulemustele -->
+  <div id="resultsModal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Tulemused</h2>
+      <div id="results"></div>
+    </div>
+  </div>
+  <!-- 8 samm helid -->
+  <audio id="startSound" src="helid/gamestart.mp3"></audio>
+  <audio id="correctWord" src="helid/correct.mp3"></audio>
+  <audio id="wrongLetter" src="helid/wrongletter.mp3"></audio>
+  <audio id="endSound" src="helid/gameend.mp3"></audio>
+  <button id="restartBtn" style="display:none;">Alusta uuesti</button>
+</body>
+</html>
