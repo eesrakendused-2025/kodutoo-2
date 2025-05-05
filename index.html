@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <title>Typer</title>
+</head>
+<body class="raleway-font">
+    <div id="container">
+        <div id="wordDiv">
+            Siia tuleb sõna
+        </div>
+        <div id="score">
+            Kuvame aega, mis kulus trükkimiseks
+        </div>
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+            1/3
+        </div>
+    </div>
+    <div id="resultsContainer" class="raleway-font">
+        <button id="resultsBtn">Kuva kõik tulemused</button>
+        <div id="resultsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Kõik tulemused</h2>
+                <div class="results">
+                    <h3>Nimi</h3>
+                    <h3>Aeg</h3>
+                    <h3>Sõnu</h3>
+                    <h3>WPM</h3>
+                    <div id="results-name">
+                        Siia tulevad nimed
+                    </div>
+                    <div id="results-time">
+                        Siia tulevad ajad
+                    </div>
+                    <div id="results-words">
+                        Siia tulevad sõnade arv
+                    </div>
+                    <div id="results-wpm">
+                        Siia tulevad trükkimiskiirused
+                    </div>
+                </div>
+                <button type="button" id="loadResults">Laadi tulemusi</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
