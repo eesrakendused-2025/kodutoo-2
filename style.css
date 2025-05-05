@@ -1,0 +1,648 @@
+/* Suurem osa CSS on saadud ChatGPT köest ning siis on asju muudetud enda silmale vastavalt
+andsin inspo pildi ning sellejärgi lõi mulle mängu kujunduse*/
+
+
+@media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  }
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  
+  :root {
+    --primary-pink: #f8b1ea;
+    --secondary-yellow: #ffd252;
+    --accent-blue: #8ce3ff;
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --border-radius: 12px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    background-color: var(--primary-pink);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60vh;
+    background-color: var(--secondary-yellow);
+    z-index: -1;
+    border-top-left-radius: 50% 60px;
+    border-top-right-radius: 50% 60px;
+  }
+  
+  #container {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+    border: 2px solid var(--text-dark);
+  }
+  
+  #wordDiv {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    letter-spacing: 1px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+  }
+  
+  /* Timer stiil */
+  #timer {
+    position: absolute;
+    top: -12px;
+    right: 30px;
+    background-color: var(--secondary-yellow);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    border: 2px solid var(--text-dark);
+    font-size: 1.2rem;
+  }
+    
+  /* Start nupu stiil */
+  #startButton {
+    background-color: var(--secondary-yellow);
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1.6rem;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 20px auto;
+    display: block;
+  }
+    
+  #startButton:hover {
+    transform: translateY(-3px);
+    background-color: #ffdb6f;
+  }
+    
+  #startButton:active {
+    transform: translateY(1px);
+  }
+  
+  #score {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    padding: 10px 15px;
+    background-color: var(--accent-blue);
+    border-radius: var(--border-radius);
+    display: inline-block;
+    margin: 20px 0;
+    font-weight: 600;
+    border: 2px solid var(--text-dark);
+  }
+  
+  #infoContainer {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--shadow);
+    width: 90%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 2px solid var(--text-dark);
+  }
+  
+  #info {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  
+  /* Show Results Button */
+  #showResultsButton, #openModal {
+    background-color: var(--accent-blue);
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    margin-bottom: 20px;
+    display: inline-block;
+  }
+  
+  #showResultsButton:hover, #openModal:hover {
+    transform: translateY(-3px);
+    background-color: #9deaff;
+  }
+  
+  #showResultsButton:active, #openModal:active {
+    transform: translateY(1px);
+  }
+  
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid var(--text-dark);
+    width: 90%;
+    max-width: 600px;
+    border-radius: var(--border-radius);
+    position: relative;
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .close-btn, .close-end-game {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: var(--text-dark);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-pink);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--text-dark);
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  
+  .close-btn:hover, .close-end-game:hover {
+    transform: scale(1.1);
+    background-color: #f9c0f0;
+  }
+  
+  .modal-content h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+  
+  #results, #modal-results {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 5px;
+  }
+  
+  #loadResults {
+    background-color: var(--secondary-yellow);
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  #loadResults:hover {
+    transform: translateY(-3px);
+    background-color: #ffdb6f;
+  }
+  
+  #loadResults:active {
+    transform: translateY(1px);
+  }
+  
+  /* Tulemuste kaartide stiilid */
+  .result-card {
+    background-color: var(--primary-pink);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    border: 2px solid var(--text-dark);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .result-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  }
+  
+  .result-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .result-position {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: var(--text-dark);
+  }
+  
+  .result-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+  }
+  
+  .result-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--text-dark);
+  }
+  
+  .result-stat {
+    display: flex;
+    align-items: center;
+  }
+  
+  .stat-label {
+    font-weight: bold;
+    color: var(--text-dark);
+    margin-right: 5px;
+  }
+  
+  .result-speed-image {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+  
+  .speed-badge {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Tulemuste tabel modaalis */
+  .results-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px 100px 100px;
+    background-color: var(--secondary-yellow);
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--text-dark);
+    margin-bottom: 15px;
+  }
+  
+  .results-row {
+    display: grid;
+    grid-template-columns: 50px 1fr 100px 100px 100px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid var(--text-dark);
+    margin-bottom: 8px;
+    align-items: center;
+    transition: transform 0.2s;
+  }
+  
+  .results-row:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+  
+  .top-result {
+    background-color: var(--accent-blue);
+  }
+  
+  .result-position, .header-position {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .result-name, .header-name {
+    font-weight: 600;
+  }
+  
+  .result-score, .header-score, 
+  .result-words, .header-words {
+    text-align: center;
+  }
+  
+  .result-speed, .header-speed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .speed-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* Game state background colors */
+  .wrong-button {
+    background-color: #ff8989 !important;
+    transition: background-color 0.2s;
+  }
+  
+  .right-button {
+    background-color: #8aff89 !important;
+    transition: background-color 0.2s;
+  }
+  
+  .right-word {
+    background-color: #89b4ff !important;
+    transition: background-color 0.2s;
+  }
+  
+  /* Add some decoration elements similar to the Super Hello website */
+  #container::before {
+    content: '⚡';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: var(--secondary-yellow);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--text-dark);
+  }
+  
+  .modal-content::before {
+    content: '🏆';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: var(--secondary-yellow);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--text-dark);
+  }
+  
+  /* End game modal */
+  #endGameModal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .end-result {
+    background-color: var(--primary-pink);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin: 20px 0;
+    border: 2px solid var(--text-dark);
+  }
+  
+  .end-result p {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .speed-image {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .speed-image img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    border: 2px solid var(--text-dark);
+    border-radius: 50%;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .btn {
+    background-color: var(--secondary-yellow);
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 10px;
+  }
+  
+  .btn:hover {
+    transform: translateY(-3px);
+    background-color: #ffdb6f;
+  }
+  
+  .btn:active {
+    transform: translateY(1px);
+  }
+  
+  #playAgain {
+    background-color: var(--secondary-yellow);
+  }
+  
+  #viewAllResults {
+    background-color: var(--accent-blue);
+  }
+  
+  .motivational-message {
+    font-style: italic;
+    margin-top: 10px;
+    color: var(-text-dark);
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+  
+  /* Media Queries */
+  @media (min-width: 768px) {
+    #results {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Animation for elements loading in */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  #container, #infoContainer {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  #infoContainer {
+    animation-delay: 0.2s;
+  }
+  
+  /* Stiilid mängi uuesti kastile */
+  .play-again-prompt {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 25px;
+    text-align: center;
+    z-index: 1000;
+    min-width: 300px;
+    animation: fadeIn 0.3s ease-in-out;
+    border: 2px solid var(--text-dark);
+  }
+  
+  .play-again-prompt::before {
+    content: '🎮';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    background-color: var(--accent-blue);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 2px solid var(--text-dark);
+  }
+  
+  .prompt-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .prompt-content h3 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  
+  #playAgainBtn {
+    background-color: var(--secondary-yellow);
+    color: var(--text-dark);
+    border: 2px solid var(--text-dark);
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: transform 0.2s, background-color 0.2s;
+    margin: 10px auto;
+  }
+  
+  #playAgainBtn:hover {
+    transform: translateY(-3px);
+    background-color: #ffdb6f;
+  }
+  
+  #playAgainBtn:active {
+    transform: translateY(1px);
+  }
+  
+  /* Lisa see CSS oma olemasolevasse stiililehte */
+  
+  .countdown-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 150px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .countdown-active {
+    display: flex;
+    animation: pulse 1s infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+  }

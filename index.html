@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typer - Trükkimiskiiruse test</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="fireworks.css">
+  <script src="fireworks.js" defer></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+  <div id="infoContainer">
+    <div id="info"></div>
+  </div>
+
+  <div id="container">
+    <div id="timer">0.00s</div>
+    <h1>Typer - Trükkimiskiiruse test</h1>
+    <div id="wordDiv">START</div>
+    <div id="score" style="display: none;"></div>
+    <button id="startButton">Alusta</button>
+  </div>
+    <!-- Tulemuste modaal/ kasutasin ChatGPT abi -->
+  <div id="resultsModal" class="modal">
+    <div class="modal-content">
+      <h2>Kõik tulemused</h2>
+      <span class="close-btn">&times;</span>
+      <div id="results"></div>
+      <button id="loadResults">Lae rohkem tulemusi</button>
+      <button id="playAgain">Mängi uuesti</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
