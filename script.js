@@ -17,7 +17,9 @@ class Typer{
         this.score = 0;
         this.bonus = 0;
         this.bonusKoef = 200;
-        this.resultCount = 30;
+        this.resultCount = 5;
+        this.charactersTyped = 0;
+        this.cpm = 0;
 
         this.loadFromFile();
         //this.showResults(this.resultCount);
@@ -115,6 +117,7 @@ class Typer{
 
     shortenWords(keyCode){
         console.log(keyCode);
+        this.charactersTyped++;
         if(keyCode != this.word.charAt(0)){
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
@@ -154,7 +157,14 @@ class Typer{
     calculateAndShowScore(){
         console.log(this.bonus, this.endTime, this.startTime)
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
+        this.cpm = (this.charactersTyped / ((this.endTime - this.startTime) / 1000) * 60).toFixed(2);
         $("#score").html(this.score).show();
+        if(this.cpm >= 150){
+            $("#image").attr("src", "images/thumbs_up.png");
+        } else{
+            $("#image").attr("src", "images/thumbs_down.png");
+        }
+        $("#image").show();
         this.saveResult();
     }
 
@@ -162,7 +172,8 @@ class Typer{
         let result = {
             name: this.name,
             score: this.score,
-            words: this.wordsInGame
+            words: this.wordsInGame,
+            cpm : this.cpm
         }
         this.allResults.push(result);
         this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
@@ -180,6 +191,7 @@ class Typer{
                         <th>Nimi</th>
                         <th>Kiirus (sek)</th>
                         <th>Sõnade arv</th>
+                        <th>Sümbolit minutis</th>
                     </tr>
                 </thead>
                 <tbody id="resultsBody"></tbody>
@@ -192,6 +204,7 @@ class Typer{
                     <td>${result.name}</td>
                     <td>${result.score}</td>
                     <td>${result.words}</td>
+                    <td>${result.cpm}</td>
                 </tr>
             `);
         }
