@@ -96,7 +96,7 @@ class Typer{
     drawWord(){
         $("#wordDiv").html(this.word);
     }
-
+    
     selectWord(){
         this.word = this.typeWords[this.typeCount];
         this.typeCount++;
@@ -156,14 +156,13 @@ class Typer{
         console.log(this.scoreInMinutes);
         this.wordsPerMinute = (this.wordsInGame / this.scoreInMinutes).toFixed(2);
         if(this.wordsPerMinute >= 50 && this.wordsPerMinute < 60){
-            $("#scorePic").show();
-            this.scorePicture.style.background = "url('./Public/good-job.jpg')"
+            $("#scorePic").append("<img src=./Public/good-job.jpg alt='Väga hästi'></img>");
         }else if(this.wordsPerMinute >= 60 && this.wordsPerMinute < 70){
-            $("#scorePic").html("WMP: "+this.wordsPerMinute).show();
+            $("#scorePic").append("<img src=./Public/fast_as_fck.jpg alt='Kiire oled'></img>");
         }else if(this.wordsPerMinute < 50){
-            $("#scorePic").html("WMP: "+this.wordsPerMinute).show();
+            $("#scorePic").append("<img src=./Public/sloth.webp alt='Aeglane oled'></img>");
         }
-        $("#score").html(this.score).show();
+        $("#score").html(this.score + " -- " + "WPM: " + this.wordsPerMinute).show();
         this.saveResult();
     }
 

@@ -14,7 +14,7 @@ table, th, td {
     align-items: center;
     flex-direction: column;
     height: 60vh;
-    background-color: lightblue;
+    background-color: rgb(201, 153, 48);
 }
 
 #infoContainer{
@@ -26,7 +26,7 @@ table, th, td {
 }
 
 #containerBelow{
-    background-color: rgb(128, 4, 29);
+    background-color: rgb(153, 23, 49);
     color:white;
     display: none;
 }
@@ -60,7 +60,9 @@ table, th, td {
     display: none;
 }
 #scorePic{
-    display: none;
+    display: flex;
+    height: 200px;
+    width: 200px;
 }
 
 .tagesschrift-regular {
