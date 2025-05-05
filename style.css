@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&family=Pacifico&display=swap');
+
+
+body{
+    margin: 0px;
+    padding: 0px;
+    background-color: blanchedalmond;
+    width: auto;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    background-color: rgb(255, 180, 94);
+    padding: 0px;
+    margin: 0px;
+}
+
+#infoContainer{
+    width: 100vw;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.wrong-button{
+    background-color: red !important;
+}
+
+.right-word{
+    background-color: lightgreen !important;
+}
+
+.right-button{
+    background-color: green !important;
+}
+
+#results{
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Pacifico", cursive;
+    
+}
+
+#wordDiv{
+    font-size: 36px;
+    font-family: "Sans Cal", sans-serif;
+}
+
+#score{
+    display:none;
+    font-family: "Sans Cal", sans-serif;
+    font-size: 50px;
+}
+
+#loadResults{
+    margin: 0;
+    background: lightgreen;
+    border-color: black;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    font-size: 25px;
+    margin-left: 40%;
+    margin-right: 40%;
+    width: 20%;
+}
+#loadResults:hover{
+    background: lightblue;
+}
+
+
+
+/* modal saadud lingilt */
+/* https://www.w3schools.com/howto/howto_css_modals.asp */
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+padding-top: 100px; /* Location of the box */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+max-height: calc(100vh - 100px);
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+background-color: blanchedalmond;
+margin: auto;
+padding: 20px;
+border: 1px solid #888;
+width: 50%;
+}
+
+/* The Close Button */
+.close {
+color: #aaaaaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+color: #000;
+text-decoration: none;
+cursor: pointer;
+}
+
+
+table{
+    border: 4px solid;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th{
+    border: 4px solid black;
+    background-color: aqua;
+    font-family: "Pacifico", cursive;
+}
+
+td{
+    border: 2px solid black;
+    font-family: "Pacifico", cursive;
+}
+
+#performanceDiv{
+    font-size: 60px;
+    display: flex;
+    flex-direction: row;
+    visibility: hidden;
+}
+
+#averageSpeed{
+    color: lightgreen;
+}
+
+#aboveAverageSpeed{
+    color: green;
+}
+
+#productiveSpeed{
+    color: yellow;
+}
+
+#highSpeed{
+    color: orange;
+}
+
+#competitiveSpeed{
+    color: red;
+}
+
+
+
+#averageSpeedText{
+    color: lightgreen;
+}
+
+#aboveAverageSpeedText{
+    color: green;
+}
+
+#productiveSpeedText{
+    color: yellow;
+}
+
+#highSpeedText{
+    color: orange;
+}
+
+#competitiveSpeedText{
+    color: red;
+}
+
+
+
+#explanationDiv{
+    top: 10px;
+    right: 10px;
+    position: fixed;
+    text-align: right;
+    font-size: 25px;
+    color:rgb(183, 0, 255);
+    margin: 0px;
+    padding: 0px;
+}
+
+#explanation{
+    opacity: 0;
+    transition: all 1s ease-out;
+    color: #000;
+}
+
+#explanationDiv:hover > #explanation{
+    /* https://stackoverflow.com/questions/44536213/css3-fade-in-on-hover-and-fade-out-when-hover-is-gone */
+    transition: all 1s ease-in;
+    opacity: 1;
+}
+
+mark{
+    background: none;
+}
+
+#addWords{
+    font-size: 40px;
+    border-radius: 20px;
+    background-color: rgb(133, 215, 240);
+    border: none;
+}
+
+#removeWords{
+    font-size: 40px;
+    border-radius: 20px;
+    background-color: rgb(255, 178, 178);
+    border: none;
+}
+
+#restartButton{
+    font-size: 50px;
+    /* https://cssgradient.io/ */
+    background: linear-gradient(0deg,rgba(42, 155, 136, 1) 0%, rgba(237, 83, 229, 1) 100%);
+    border-radius: 20px;
+    border: none;
+}
+
+#addWords:hover, #removeWords:hover, #restartButton:hover{
+    border: #000 solid;
+    border-width: 2px;
+}
+
+@media only screen and (max-width: 600px) {
+    #loadResults{
+        margin: 0;
+        background: lightgreen;
+        border-color: black;
+        border-width: 5px;
+        border-style: solid;
+        border-radius: 10px;
+        font-size: 20px;
+        margin-left: 30%;
+        margin-right: 30%;
+        width: 40%;
+    }
+
+    .modal-content {
+        background-color: blanchedalmond;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
+        }
+
+    #performanceDiv{
+        font-size: 40px;
+        display: flex;
+        flex-direction: row;
+        visibility: hidden;
+    }
+
+    #addWords{
+        font-size: 20px;
+    }
+
+    #removeWords{
+        font-size: 20px;
+    }
+
+    #restartButton{
+        font-size: 25px;
+    }
+
+    #explanationDiv{
+        font-size: 15px;
+    }
+  }

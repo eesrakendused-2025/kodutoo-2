@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script data-main="script.js" src="require.js" defer></script> -->
+    <script src="script.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="container">
+        <div id="explanationDiv">
+            ?
+            <div id="explanation">
+                <div><mark id="averageSpeedText">•</mark> - Keskmine kiirus</div>
+                <div><mark id="aboveAverageSpeedText">•</mark> - Keskmisest kiirem</div>
+                <div><mark id="productiveSpeedText">•</mark> - Töökas kiirus</div>
+                <div><mark id="highSpeedText">•</mark> - Väga kiire</div>
+                <div><mark id="competitiveSpeedText">•</mark> - Võistlemise kiirus</div>
+            </div> <!-- End of explanation -->
+        </div> <!-- End of explanation div -->
+        <div id="performanceDiv">
+            <div id="averageSpeed">•</div>
+            <div id="aboveAverageSpeed">•</div>
+            <div id="productiveSpeed">•</div>
+            <div id="highSpeed">•</div>
+            <div id="competitiveSpeed">•</div>
+         </div> <!-- End of performance div -->
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+    </div> <!-- End of container div -->
+    <div id="infoContainer">
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div> <!-- End of info -->
+       
+    </div> <!-- End of infocontainer div -->
+    <!-- <div id="resultsContainer">
+        <div id="results">
+            <div>tulemus</div>
+            <div>tulemus</div>
+            <div>tulemus</div>
+            <div>tulemus</div>
+        </div> -->
+        <button id="loadResults">Laadi tulemusi</button>
+
+        <div id="resultsModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modalTableContainer">
+                       <table>
+                        <tr>
+                            <th>Nimi</th>
+                            <th>Tulemus</th>
+                            <th>Sõnade arv</th>
+                        </tr>
+                        <tbody id="addedResults">
+                        </tbody>
+                       </table>
+                </div> <!-- End of modalTableContainer div -->
+            </div> <!-- End of modal-content div -->
+        </div> <!-- End of resultsModal div -->
+        <div id="wordNumSelector">
+            <button id="addWords">+</button>
+            <button id="removeWords">-</button>
+        </div>
+        <div id="restartContainer">
+            <button id="restartButton">Uuesti</button>
+        </div>
+    </div> <!-- End of container div -->
+
+    <audio id="startGame" style="display: none;" src="sounds/gameStart.mp3"></audio>
+    <audio id="keyboardClick" style="display: none;" src="sounds/click.mp3"></audio>
+    <audio id="endGame" style="display: none;" src="sounds/gameEnd.mp3"></audio>
+    <audio id="modalSound" style="display: none;" src="sounds/openModal.mp3"></audio>
+</body>
+</html>
