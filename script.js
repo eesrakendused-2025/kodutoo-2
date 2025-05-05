@@ -26,9 +26,10 @@ class Typer{
         this.score = 0;
         this.bonus = 0;
         this.bonusKoef = 200;
-        this.resultCount = 30;
+        this.resultCount = 5; // Muudetud: Alguses näitame ainult 5 tulemust
         this.gameActive = false;
         this.timerInterval = null;
+        //Palusin ChatGPT-lt lisada kiirusmooduli, et kuvada pilte vastavalt kiirusest
         this.speedRanges = [
             { max: 2, image: "images/speed1.jpg", text: "Eksperdiklass - Välgukiirus!" },
             { max: 3, image: "images/speed2.jpg", text: "Professionaal - Väga kiire!" },
@@ -36,7 +37,7 @@ class Typer{
             { max: 5, image: "images/speed4.jpg", text: "Keskmine - Arenev!" },
             { max: 1000, image: "images/speed5.jpg", text: "Algaja - Harjuta veel!" }
         ];
-        this.topScoreThreshold = 10; // Edetabeli esimesed 10 kohta
+        this.topScoreThreshold = 10;
 
         this.loadFromFile();
     }
@@ -100,12 +101,9 @@ class Typer{
         
         // Lisame laadimise nupu funktsionaalsuse
         $('#loadResults').click(() => {
-            this.resultCount = this.resultCount + 50;
-            console.log(this.allResults.length, this.resultCount)
-            if(this.resultCount >= this.allResults.length){
-                this.resultCount = this.allResults.length;
-                $("#loadResults").hide();
-            }
+            // Muudetud: "Lae rohkem" nupuga laeme kohe kõik tulemused
+            this.resultCount = this.allResults.length;
+            $("#loadResults").hide();
             this.showResults(this.resultCount);
         });
         
@@ -340,7 +338,7 @@ class Typer{
         }
         return this.speedRanges[this.speedRanges.length - 1];
     }
-    
+    //Palusin CHatGPT-lt lisada motivatsioonilised sõnumid
     getRandomMotivationalMessage() {
         const messages = [
             "Harjutamine teeb meistriks!",
@@ -357,7 +355,7 @@ class Typer{
         const randomIndex = Math.floor(Math.random() * messages.length);
         return messages[randomIndex];
     }
-
+    //ChatGPT loodud lõik
     showEndGameModal(isHighScore) {
         // Eemaldame olemasoleva modaali, kui see on juba DOM-is
         $("#endGameModal").remove();
@@ -368,7 +366,6 @@ class Typer{
         const endGameModal = `
             <div id="endGameModal" class="modal">
                 <div class="modal-content">
-                    <span class="close-end-game">&times;</span>
                     <h2>Mäng läbi!</h2>
                     <div class="end-result">
                         <p><strong>Nimi:</strong> ${this.name}</p>
@@ -423,7 +420,7 @@ class Typer{
         this.saveToFile();
         this.showResults(this.resultCount);
     }
-
+    //ChatGPT-lt palusin tulemusi kuvada ilusamalt
     showResults(count) {
         $('#results').html("");
         const showCount = Math.min(count, this.allResults.length);
@@ -452,8 +449,29 @@ class Typer{
                 </div>
             `);
         }
+        
+        // Kui on rohkem tulemusi kui näidatud, näitame "Lae rohkem" nuppu
+        if (this.allResults.length > showCount) {
+            // Kui "Lae rohkem" nupp juba eksisteerib, siis näitame seda
+            if ($("#loadResults").length) {
+                $("#loadResults").show();
+            } else {
+                // Lisame "Lae rohkem" nupu tulemuste alla
+                $('#results').after('<button id="loadResults" class="load-more-btn">Lae kõik tulemused</button>');
+                
+                // Lisame uuesti click handleri
+                $('#loadResults').click(() => {
+                    this.resultCount = this.allResults.length;
+                    $("#loadResults").hide();
+                    this.showResults(this.resultCount);
+                });
+            }
+        } else {
+            // Kui kõik tulemused on näidatud, peidame nupu
+            $("#loadResults").hide();
+        }
     }
-
+// chatGPT-lt palusin kuvada tulemused ilusalt
     showAllResults(){
         $('#modal-results').html("");
         
@@ -494,5 +512,3 @@ class Typer{
 }
 
 let typer = new Typer(playerName);
-
-
