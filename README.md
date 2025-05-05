@@ -7,11 +7,7 @@ autor: Maria Rjabtseva
 
 2. Modal või sidebar ✓
 
-    Lisasin modali, mis näeb välja nagu iDroidi kasutajaliides mängust Metal Gear Solid V
-
-    Inspireeritud sellest menüüst:
-
-  <iframe width="1000" height="500" src="https://www.youtube.com/embed/PbUlhICtma4" title="METAL GEAR SOLID V: THE DEFINITIVE EXPERIENCE options menu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    Lisasin modali, mis näeb välja nagu [iDroidi kasutajaliides](https://www.youtube.com/embed/PbUlhICtma4) mängust Metal Gear Solid V
 
 3. Kuva tulemused paremini välja, kui praegu ✓
 
@@ -44,8 +40,7 @@ autor: Maria Rjabtseva
     
 ![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4l8d6ILXYfjRCrjcZxo-018XTKsY6XgR6kA&s)
 
-  See on näide, kuidas see radio töötab (aga teises mängus)
-<iframe width="1000" height="500" src="https://www.youtube.com/embed/W8Aet4sG4nI" title="MGS2 HD Snake Sleep Talks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  [See on näide, kuidas see radio töötab (aga teises mängus)](https://www.youtube.com/embed/W8Aet4sG4nI)
 
 7. 5 erinevad pseudo class-id ❌😢
 
