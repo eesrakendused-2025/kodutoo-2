@@ -7,10 +7,16 @@ class Typer{
         if(this.wordsInGame < 1){
             this.wordsInGame = 1;
             $("#wordsInGame").val(this.wordsInGame);
+        } else if(this.wordsInGame > 31){
+            this.wordsInGame = 31;
+            $("#wordsInGame").val(this.wordsInGame);
         }
-        this.startingWordLength = 31 - this.wordsInGame;
+        this.startingWordLength = parseInt($("#startingWordLength").val()) || 3;
         if(this.startingWordLength < 1){
             this.startingWordLength = 1;
+            $("#startingWordLength").val(this.startingWordLength);
+        } else if(this.startingWordLength + this.wordsInGame > 31){
+            this.startingWordLength = 31 - this.wordsInGame;
             $("#startingWordLength").val(this.startingWordLength);
         }
         this.words = [];
@@ -161,7 +167,9 @@ class Typer{
     calculateAndShowScore(){
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
         this.cpm = (this.charactersTyped / ((this.endTime - this.startTime) / 1000) * 60).toFixed(2);
-        $("#score").html(this.score).show();
+        $("#time").html(this.score);
+        $("#cpm").html(this.cpm);
+        $("#score").css("display", "flex");
         if(this.cpm >= 150){
             $("#image").attr("src", "images/thumbs_up.png");
         } else{
@@ -191,7 +199,7 @@ class Typer{
                 <thead>
                     <tr>
                         <th>Nimi</th>
-                        <th>Kiirus (sek)</th>
+                        <th>Skoor</th>
                         <th>Sõnade arv</th>
                         <th>Sümbolit minutis</th>
                     </tr>

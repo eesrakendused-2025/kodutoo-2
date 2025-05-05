@@ -15,11 +15,19 @@
     <div id="settings">
         <label for="wordsInGame">Sõnade arv </label>
         <input type="number" id="wordsInGame" name="wordsInGame" min="1" max="31" value="1">
+        <label for="startingWordLength">Esimese sõna pikkus </label>
+        <input type="number" id="startingWordLength" name="startingWordLength" min="1" max="31" value="1">
         <button id="startButton">Mängi</button>
     </div>
     <div id="container">
         <div id="wordDiv">Siia tuleb sõna</div>
-        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+        <div id="score">
+            <span>Skoor: </span>
+            <div id="time">Kuvame skoori</div>
+            <br>
+            <span>Sümboleid minutis: </span>
+            <div id="cpm">Kuvame sümbolite arvu minutis</div>
+        </div>
         <div>
             <img id="image" src="images/placeholder.png" alt="Placeholder image">
         </div>
