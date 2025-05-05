@@ -133,7 +133,6 @@ class Typer{
         });
     }
     
-
     generateWords(){
         for(let i = 0; i < this.wordsInGame; i++){
             const wordLength = this.startingWordLength + i;
@@ -234,16 +233,16 @@ class Typer{
         let levelText = "";
         
         if (wpm < 20) {
-            imgSrc = "https://greeny.cs.tlu.ee/~sophniko/typer/slow.jpg";
+            imgSrc = "img/slow.jpg";
             levelText = "SLOW   =_=";
         } else if (wpm >= 20 && wpm < 40) {
-            imgSrc = "https://greeny.cs.tlu.ee/~sophniko/typer/average.jpg";
+            imgSrc = "img/average.jpg";
             levelText = "AVERAGE   ¯\_(ツ)_/¯ ";
         } else if (wpm >= 40 && wpm < 60) {
-            imgSrc = "https://greeny.cs.tlu.ee/~sophniko/typer/fast.png";
+            imgSrc = "img/fast.png";
             levelText = "FAST   ٩( ^ᴗ^ )۶ ";
         } else {
-            imgSrc = "https://greeny.cs.tlu.ee/~sophniko/typer/pro.jpg";
+            imgSrc = "img/pro.jpg";
             levelText = "PRO   ミヽ（。＞＜）ノ";
         }
     
