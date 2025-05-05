@@ -1,51 +1,70 @@
-body{
-    margin:0;
-    padding: 0;
+body {
+    display: flex;
+    margin: 0;
+    padding: 10px;
     font-family: 'Tagesschrift', sans-serif;
+    background-color: black;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    flex-direction: column;
+    box-shadow: inset 0 0 20px rgb(88, 0, 0);
 }
 
-#container{
+#container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 60vh;
-    background-color: lightblue;
+    background-color: black;
 }
 
-#infoContainer{
-    width: 100vw;
+#infoContainer {
     font-size: 32px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 15px;
+    color: white;
+    background-color: black;
 }
 
-.wrong-button{
-    background-color: red !important;
+#restartButton {
+    display: none;
 }
 
-.right-button{
-    background-color: lightgreen !important;
+.wrong-button {
+    background-color: rgb(255, 0, 0) !important;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    box-shadow: 0 0 10px crimson;
 }
 
-.right-word{
-    background-color: green !important;
+.right-word {
+    background-color: crimson !important;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    box-shadow: 0 0 10px crimson;
 }
 
-
-#results{
+#results {
     font-size: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    color: white;
+    background-color: black;
+    border: 2px solid crimson;
+    padding: 10px;
+    box-shadow: 0 0 15px crimson;
 }
 
-#wordDiv{
+#wordDiv {
     font-size: 36px;
+    color: rgb(88, 0, 0);
+    text-shadow: 0 0 10px rgb(88, 0, 0);
 }
 
-#score, #image{
+#score, #image {
     display: none;
 }
 
@@ -58,68 +77,105 @@ body{
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0, 0, 0, 0.8); 
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: black;
     margin: 15% auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 2px solid crimson;
     width: 80%;
     position: relative;
+    color: white;
+    box-shadow: 0 0 20px crimson;
 }
 
 #close {
     position: absolute;
     top: 40px;
     right: 40px;
-    color: #aaa;
-    float: right;
+    color: crimson;
     font-size: 60px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #close:hover, #close:focus {
-    color: black;
+    color: rgb(88, 0, 0);
     text-decoration: none;
-    cursor: pointer;
-    background-color: red;
+    background-color: black;
 }
 
-results-table {
+.results-table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border: 2px solid crimson;
 }
 
 .results-table th, .results-table td {
-    border: 1px solid #ddd;
+    border: 1px solid crimson;
     padding: 8px;
-    text-align: center;
 }
 
 .results-table th {
-    background-color: #f4f4f4;
+    background-color: crimson;
+    color: white;
     font-weight: bold;
 }
 
 .results-table tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+button {
+    background-color: crimson;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px crimson;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(88, 0, 0);
+    color: black;
+    box-shadow: 0 0 15px rgb(88, 0, 0);
+    transition: 0.3s ease;
+}
+
+.results-table tr:first-child {
+    background-color: black;
+    color: goldenrod;
+    font-size: 20px;
+}
+
+.results-table tr:nth-child(2) {
+    color: silver;
+}
+
+.results-table tr:nth-child(3) {
+    color: #cd7f32;;
 }
 
 .results-table tr:hover {
-    background-color: #f1f1f1;
+    background-color: crimson;
+    color: white;
 }
 
 @media (max-width: 600px) {
     #container {
         height: auto;
         padding: 20px;
-        background-color: lightcoral;
+        background-color: black;
     }
 
     #infoContainer {
@@ -144,7 +200,6 @@ results-table {
     }
 
     .results-table {
-        top: 60px;
         font-size: 14px;
     }
 }

@@ -1,5 +1,3 @@
-console.log("scripti fail õigesti ühendatud")
-
 let playerName = prompt("Palun sisesta oma nimi");
 
 class Typer{
@@ -30,12 +28,10 @@ class Typer{
         $.get("database.txt", (data) => {
             let content = JSON.parse(data).content;
             this.allResults = content;
-            console.log(content);
         })
     }
 
     getWords(data){
-        //console.log(data);
         const dataFromFile = data.split("\n");
         this.separateWordsByLength(dataFromFile);
     }
@@ -50,9 +46,6 @@ class Typer{
 
             this.words[wordLength].push(data[i]);
         }
-
-        console.log(this.words);
-
         this.startTyper();
     }
 
@@ -61,22 +54,20 @@ class Typer{
         if(urlParams.get("words")){
             this.wordsInGame = urlParams.get("words");
         }
-        console.log(urlParams.get("words"));
         this.generateWords();
         this.startTime = performance.now();
         $(document).keypress((event) => {this.shortenWords(event.key)});
         $('#loadResults').click(() => {
             this.resultCount = this.resultCount + 50;
-            console.log(this.allResults.length, this.resultCount)
             if(this.resultCount >= this.allResults.length){
                 this.resultCount = this.allResults.length;
                 $("#loadResults").hide();
             }
             this.showResults(this.resultCount);
-        })
+        });
         $('#showResults').click(()=>{
             $('#resultsModal').css("display", "block");
-        })
+        });
         $(window).click((event) => {
             if ($(event.target).is('#resultsModal')) {
                 $('#resultsModal').css("display", "none");
@@ -84,7 +75,11 @@ class Typer{
         });
         $('#close').click(()=>{
             $('#resultsModal').css("display", "none");
-        })
+        });
+        $('#restartButton').click(()=>{
+            restartGame();
+
+        });
         this.showResults(this.resultCount);
     }
 
@@ -92,9 +87,7 @@ class Typer{
         for(let i = 0; i <this.wordsInGame; i++){
             const wordLength = this.startingWordLength + i;
             const randomWord = Math.round(Math.random() * this.words[wordLength].length);
-            //console.log(i, randomWord, this.words[wordLength]);
             this.typeWords[i] = this.words[wordLength][randomWord];
-            //console.log(this.typeWords)
         }
         this.selectWord();
         
@@ -116,14 +109,12 @@ class Typer{
     }
 
     shortenWords(keyCode){
-        console.log(keyCode);
         this.charactersTyped++;
         if(keyCode != this.word.charAt(0)){
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
             this.endGame();
-            document.getElementById('audioPlayer').play();
         } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
             this.changeBackground('right-word', 400);
             this.selectWord();
@@ -147,15 +138,14 @@ class Typer{
     }
 
     endGame(){
-        console.log("Mäng läbi");
         this.endTime = performance.now();
         $("#wordDiv").hide();
         //$(document).off(keypress);
         this.calculateAndShowScore();
+        $("#restartButton").show();
     }
 
     calculateAndShowScore(){
-        console.log(this.bonus, this.endTime, this.startTime)
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
         this.cpm = (this.charactersTyped / ((this.endTime - this.startTime) / 1000) * 60).toFixed(2);
         $("#score").html(this.score).show();
@@ -177,7 +167,6 @@ class Typer{
         }
         this.allResults.push(result);
         this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
-        console.log(this.allResults);
         localStorage.setItem('typer', JSON.stringify(this.allResults));
         this.saveToFile();
         this.showResults(this.resultCount);
@@ -231,3 +220,14 @@ class Typer{
 }
 
 let typer = new Typer(playerName);
+
+function restartGame(){
+    $("#score").hide();
+    $("#image").hide();
+    $("#restartButton").hide();
+    $("#wordDiv").show();
+    $('#results').html("");
+    $('#loadResults').show();
+    $('#resultsModal').css("display", "none");
+    typer = new Typer(playerName);
+}

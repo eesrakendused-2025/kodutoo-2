@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,11 +12,12 @@
     <title>Typer</title>
 </head>
 <body>
+    <button id="restartButton">Mängi uuesti</button>
     <div id="container">
         <div id="wordDiv">Siia tuleb sõna</div>
         <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
         <div>
-            <img id="image" src="" alt="Placeholder image">
+            <img id="image" src="images/placeholder.png" alt="Placeholder image">
         </div>
     </div>
     <div id="infoContainer">
@@ -24,14 +25,13 @@
             Siia tuleb sõnade arv 1/5
         </div>
     </div>
-    <button id="showResults">Show results</button>
+    <button id="showResults">Näita tulemusi</button>
     <div id="resultsModal" class="modal">
         <span id="close">&times;</span>
         <div id="resultsContainer" class="modal-content">
             <div id="results"></div>
             <button id="loadResults">Laadi veel tulemusi</button>
         </div>
-
     </div>
 </body>
 </html>
