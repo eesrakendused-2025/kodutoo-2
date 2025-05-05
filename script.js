@@ -3,8 +3,16 @@ let playerName = prompt("Palun sisesta oma nimi");
 class Typer{
     constructor(pname){
         this.name = pname;
-        this.wordsInGame = 3;
-        this.startingWordLength = 3;
+        this.wordsInGame = parseInt($("#wordsInGame").val()) || 3;
+        if(this.wordsInGame < 1){
+            this.wordsInGame = 1;
+            $("#wordsInGame").val(this.wordsInGame);
+        }
+        this.startingWordLength = 31 - this.wordsInGame;
+        if(this.startingWordLength < 1){
+            this.startingWordLength = 1;
+            $("#startingWordLength").val(this.startingWordLength);
+        }
         this.words = [];
         this.word = "START";
         this.typeWords = [];
@@ -18,6 +26,7 @@ class Typer{
         this.resultCount = 5;
         this.charactersTyped = 0;
         this.cpm = 0;
+        $("#settings").hide();
         this.loadFromFile();
     }
 
@@ -82,7 +91,7 @@ class Typer{
     }
 
     generateWords(){
-        for(let i = 0; i <this.wordsInGame; i++){
+        for(let i = 0; i < this.wordsInGame; i++){
             const wordLength = this.startingWordLength + i;
             const randomWord = Math.round(Math.random() * this.words[wordLength].length);
             this.typeWords[i] = this.words[wordLength][randomWord];
@@ -96,7 +105,7 @@ class Typer{
 
     selectWord(){
         this.word = this.typeWords[this.typedCount];
-        this.typedCount++;
+        this.typedCount++; 
         this.drawWord();
         this.updateInfo();
     }
@@ -107,6 +116,14 @@ class Typer{
 
     shortenWords(key){
         this.charactersTyped++;
+        console.log(this.word);
+        if(!this.word || this.word.length == 0){
+            this.selectWord();
+        }
+        if(this.typedCount > this.wordsInGame){
+            this.endGame();
+            return;
+        }
         if(key != this.word.charAt(0)){
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
@@ -137,7 +154,7 @@ class Typer{
         $("#wordDiv").hide();
         $(document).off("keypress", this.handleKeypress);
         this.calculateAndShowScore();
-        $("#startButton").show();
+        $("#settings").show();
         console.log("End of game.");
     }
 
@@ -162,7 +179,7 @@ class Typer{
             cpm : this.cpm
         }
         this.allResults.push(result);
-        this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
+        this.allResults.sort((a, b) => parseFloat(b.cpm) - parseFloat(a.cpm));
         localStorage.setItem('typer', JSON.stringify(this.allResults));
         //this.saveToFile();
         this.showResults(this.resultCount);
@@ -222,7 +239,6 @@ let typer;
 function restartGame(){
     $("#score").hide();
     $("#image").hide();
-    $("#startButton").hide();
     $("#wordDiv").show();
     $('#results').html("");
     $('#loadResults').show();
