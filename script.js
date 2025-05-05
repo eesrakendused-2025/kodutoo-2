@@ -172,7 +172,11 @@ class Typer{
     calculateAndShowScore(){
         console.log(this.bonus, this.endTime, this.startTime)
         this.score = ((this.endTime - this.startTime + this.bonus) / 1000).toFixed(2);
-        $("#score").html(this.score).show();
+
+        let durationInMinutes = (this.endTime - this.startTime) / 60000;
+        let wpm = (this.wordsInGame / durationInMinutes).toFixed(1);
+
+        $("#score").html(`${this.score} sek (${wpm} sõna/min)` ).show();
         this.saveResult();
         this.resultPhoto();
     }
@@ -180,15 +184,15 @@ class Typer{
     resultPhoto(){
         $('#resultPhoto').show();
         if(this.score <= 3){
-            $('#resultPhoto').attr("src", "trophy.jpg");
+            $('#resultPhoto').attr("src", "photos/trophy.jpg");
         } else if(this.score <= 5 && this.score > 3){
-            $('#resultPhoto').attr("src", "cheers.jpg");
+            $('#resultPhoto').attr("src", "photos/cheers.jpg");
         } else if(this.score <= 10 && this.score > 5){
-            $('#resultPhoto').attr("src", "thumbs-up.jpg");
+            $('#resultPhoto').attr("src", "photos/thumbs-up.jpg");
         } else if(this.score <= 20 && this.score > 10){
-            $('#resultPhoto').attr("src", "no.jpg");
+            $('#resultPhoto').attr("src", "photos/no.jpg");
         } else {
-            $('#resultPhoto').attr("src", "thumbs-down.png");
+            $('#resultPhoto').attr("src", "photos/thumbs-down.png");
         }
     }
 

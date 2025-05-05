@@ -7,7 +7,8 @@
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
         crossorigin="anonymous"></script>
         <script src=
-            "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+            "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+        </script>
     <script src="script.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,43 +19,43 @@
     <title>Typer</title>
 </head>
 <body>
-    
-    <div id="container">
-        <div id="wordDiv" class="winky-rough-font">Siia tuleb sõna</div>
-        <div id="score" class="winky-rough-font">Kuvame aega, mis kulus trükkimiseks</div>
-    </div>
-    <div id="infoContainer" class="winky-rough-font">
-        <div id="info">
-            Siia tuleb sõnade arv 1/5
+    <div id="wrapper"></div>
+        <div id="container">
+            <img id="resultPhoto" style="display:none;">
+            <div id="wordDiv" class="winky-rough-font">Siia tuleb sõna</div>
+            <div id="score" class="winky-rough-font" style="display: none;"></div>
         </div>
-    </div>
-    <img id="resultPhoto" style="display:none;">
-    <div id="buttonsContainer">
-        <button id="showResults" class="winky-rough-font">Laadi tulemusi</button>
-        <br>
-        <button id="newGame">Uus mäng</button>
-    </div>
-    
-    <div id="resultsModal" class="modal">
-        <div class="modal-content winky-rough-font">
-          <span id="closeResults" class="close">×</span>
-          <div id="resultsHeader" class="result-row header-row">
-              <span class="name">Nimi</span>
-              <span class="speed">Kiirus</span>
-              <span class="words">Sõnu</span>
-          </div>
-          <div id="results"></div>
-          <a id="twitter" style="display:none;" class="winky-rough-font">Jaga Twitteris</a>
-      </div>
-    </div>
-    
+        <div id="infoContainer" class="winky-rough-font">
+            <div id="info">
+                Siia tuleb sõnade arv 1/5
+            </div>
+        </div>
+        
+        <div id="buttonsContainer">
+            <button id="showResults" class="winky-rough-font">Laadi tulemusi</button>
+            <button id="newGame" class="winky-rough-font">Uus mäng</button>
+        </div>
+        
+        <div id="resultsModal" class="modal">
+            <div class="modal-content winky-rough-font">
+            <span id="closeResults" class="close">×</span>
+            <div id="resultsHeader" class="result-row header-row">
+                <span class="name">Nimi</span>
+                <span class="speed">Kiirus</span>
+                <span class="words">Sõnu</span>
+            </div>
+            <div id="results"></div>
+            <a id="twitter" style="display:none;" class="winky-rough-font">Jaga Twitteris</a>
+        </div>
+        </div>
+    </div>   
     <audio style="display:none;" id="start-audio" src=
-        "gamestart-272829.mp3"></audio>
+        "audios/gamestart-272829.mp3"></audio>
     <audio style="display:none;" id="resultsAudio" src=
-        "new-information-153314.mp3"></audio>
+        "audios/new-information-153314.mp3"></audio>
     <audio style="display:none;" id="typingAudio" src=
-        "keyboard-typing-sound-effect-335503.mp3"></audio>
+        "audios/keyboard-typing-sound-effect-335503.mp3"></audio>
     <audio style="display:none;" id="endgame-audio" src=
-        "level-win-6416.mp3"></audio>
+        "audios/level-win-6416.mp3"></audio>
 </body>
 </html>
