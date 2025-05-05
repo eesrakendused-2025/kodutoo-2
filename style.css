@@ -1,0 +1,335 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 198, 253);
+}
+
+#wrapper{
+    text-align: center;
+}
+
+.winky-rough-font{
+    font-family: "Winky Rough", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+} 
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 80px;
+    min-height: 30vh;
+    width: 40vw;
+    background-color: rgb(255, 145, 251);
+    border: solid 2px rgb(255, 145, 251);
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px 0px rgb(255, 145, 251);
+    transition: min-height 0.5s ease, height 0.5s ease;
+    overflow: hidden;
+}
+
+#infoContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 10vh;
+    width: 40vw;
+    font-size: 18px;
+    background-color: rgb(174, 112, 255);
+    border: solid 3px rgba(174, 112, 255, 0.637);
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px 0px rgb(174, 112, 255);
+}
+
+.wrong-button{
+    background-color: rgb(255, 98, 98) !important;
+}
+
+.right-button{
+    background-color: rgb(164, 230, 164) !important;
+}
+
+.right-word{
+    background-color: rgb(108, 233, 108) !important;
+}
+
+#results{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+#resultsContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.result-row, #resultsHeader{
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+#resultsHeader{
+    font-size: 20px;
+    font-family: "Winky Rough", sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    border-bottom: 2px solid #000;
+    margin-bottom: 10px; 
+}
+
+.result-row{
+    border-bottom: 1px solid #ccc;
+    font-size: 18px;
+    font-family: "Winky Rough", sans-serif;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    margin: 4px 0;
+}
+
+.result-row span{
+    flex: 1;
+    text-align: center;
+}
+
+#results .result-row:first-child{
+    background-color: rgba(255, 235, 119, 0.81);
+}
+
+#results .result-row:last-child{
+    background-color: rgba(249, 94, 94, 0.815);
+}
+
+.result-row .name{
+    text-align: left;
+}
+
+.result-row .speed{
+    text-align: center;
+}
+
+.result-row .words{
+    text-align: right;
+    font-style: italic;
+    color: #444;
+}
+
+#wordDiv{
+    font-size: 28px;
+}
+
+#score{
+    display: none;
+    background-color: rgb(220, 227, 249);
+    color: royalblue;
+    border-radius: 7px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+
+#buttonsContainer{
+    margin: 20px auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    width: 40vw;
+}
+
+#twitter{
+    font-family: "Winky Rough", sans-serif;
+    background-color: #1DA1F2;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+#twitterhover{
+    background-color: #0d8fd1;
+}
+
+#showResults{
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: royalblue;
+    background-color: rgb(220, 227, 249);
+    border: solid 1px royalblue;
+    border-radius: 10px;
+}
+
+#showResults:hover{
+    background-color: rgb(196, 208, 250);
+    color: rgb(40, 86, 225);
+    box-shadow: 0px 4px 8px 0px rgb(40, 86, 225);
+}
+
+#showResults:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 145, 251);
+    border: solid 1px rgb(255, 145, 251);
+    box-shadow: 0px 4px 8px 0px rgb(255, 145, 251);
+}
+
+#showResults:focus{
+    background-color: rgb(255, 224, 254);
+    color: rgb(174, 112, 255);
+    border: solid 1px rgb(174, 112, 255);
+    box-shadow: 0px 4px 8px 0px rgb(174, 112, 255);
+}
+
+#newGame{
+    padding: 10px 20px;
+    margin: 0 auto;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: black;
+    background-color: lightyellow;
+    border: solid 1px #fefe59;
+    border-radius: 10px;
+}
+
+#newGame:hover{
+    background-color: rgb(253, 253, 192);
+    color: black;
+    box-shadow: 0px 4px 8px 0px #fafa3e;
+}
+
+#newGame:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 145, 251);
+    border: solid 1px rgb(255, 145, 251);
+    box-shadow: 0px 4px 8px 0px rgb(255, 145, 251);
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content{
+    overflow-x: auto;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 3px solid #ff66cc;
+    width: 60%;
+    border-radius: 12px;
+    font-family: "Winky Rough", sans-serif;
+}
+
+.close{
+    float: right;
+    cursor: pointer;
+    font-family: "Winky Rough", sans-serif;
+    font-size: 18px;
+    color: royalblue;
+    background-color: rgb(220, 227, 249);
+    border: solid 1px royalblue;
+    border-radius: 10px;
+}
+.close:hover{
+    background-color: rgb(196, 208, 250);
+    color: rgb(40, 86, 225);
+    box-shadow: 0px 4px 8px 0px rgb(40, 86, 225);
+}
+
+.close:active{
+    background-color: rgb(255, 198, 253);
+    color: rgb(255, 145, 251);
+    border: solid 1px rgb(255, 145, 251);
+    box-shadow: 0px 4px 8px 0px rgb(255, 145, 251);
+}
+
+#resultPhoto{
+    display: block;
+    margin: 20px auto; 
+    width: 300px;
+    max-width: 800px;
+    border-radius: 10px;
+}
+
+@media (max-width: 600px){
+    body{
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    #container, #infoContainer, #buttonsContainer{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+        width: 90vw;
+    }
+
+    #wordDiv, #score, #info{
+        font-size: 1.2em;
+        padding: 10px;
+    }
+
+    button{
+        font-size: 1em;
+        padding: 10px 15px;
+        margin: 5px;
+        width: 50%;
+    }
+
+    #resultPhoto{
+        width: 90%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+
+    .modal-content{
+        width: 90%;
+        max-width: none;
+        padding: 10px;
+        font-size: 1em;
+        box-sizing: border-box;
+        overflow-wrap: break-word;
+    }
+    
+    .result-row{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .close{
+        font-size: 24px;
+        right: 10px;
+    }
+} /*laenatud ChatGPT-lt
+        prompt - kuidas teha rakendus paremaks kasutades media queryt*/

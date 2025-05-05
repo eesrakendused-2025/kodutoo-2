@@ -13,7 +13,7 @@ Tähtaeg: 05.05.2025 23:59
 6. Muuda lehe CSS-i vastavalt oma soovidele muutes ära kõik praegu rakenduses kasutusel olevad värvid, teksti suurused ja elementide mõõtmed. Ideid leiad siit: https://www.w3schools.com/css/default.asp
 7. Leia moodus, kuidas kasutada CSS-is vähemalt 5-t erinevat pseudo class-i: https://www.w3schools.com/css/css_pseudo_classes.asp
 8. Rakenda 4 erinevat heliklippi mängu jooksul - alguse jaoks, mängu jooksul, lõpus ja kui tulemus jõuab edetabelisse.
-10. Lisa omaltpoolt veel 3 feature, mida hetkel rakenduses pole.
+9. Lisa omaltpoolt veel 3 feature, mida hetkel rakenduses pole.
 
 ### GitHub'i töövoog kodutöö esitamiseks
 

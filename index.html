@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" 
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" 
+        crossorigin="anonymous"></script>
+        <script src=
+            "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js">
+        </script>
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href=
+        "https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" 
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="wrapper"></div>
+        <div id="container">
+            <img id="resultPhoto" style="display:none;">
+            <div id="wordDiv" class="winky-rough-font">Siia tuleb sõna</div>
+            <div id="score" class="winky-rough-font" style="display: none;"></div>
+        </div>
+        <div id="infoContainer" class="winky-rough-font">
+            <div id="info">
+                Siia tuleb sõnade arv 1/5
+            </div>
+        </div>
+        
+        <div id="buttonsContainer">
+            <button id="showResults" class="winky-rough-font">Laadi tulemusi</button>
+            <button id="newGame" class="winky-rough-font">Uus mäng</button>
+        </div>
+        
+        <div id="resultsModal" class="modal">
+            <div class="modal-content winky-rough-font">
+            <span id="closeResults" class="close">×</span>
+            <div id="resultsHeader" class="result-row header-row">
+                <span class="name">Nimi</span>
+                <span class="speed">Kiirus</span>
+                <span class="words">Sõnu</span>
+            </div>
+            <div id="results"></div>
+            <a id="twitter" style="display:none;" class="winky-rough-font">Jaga Twitteris</a>
+        </div>
+        </div>
+    </div>   
+    <audio style="display:none;" id="start-audio" src=
+        "audios/gamestart-272829.mp3"></audio>
+    <audio style="display:none;" id="resultsAudio" src=
+        "audios/new-information-153314.mp3"></audio>
+    <audio style="display:none;" id="typingAudio" src=
+        "audios/keyboard-typing-sound-effect-335503.mp3"></audio>
+    <audio style="display:none;" id="endgame-audio" src=
+        "audios/level-win-6416.mp3"></audio>
+</body>
+</html>
