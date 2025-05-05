@@ -1,0 +1,411 @@
+/* color scheme võetud: https://colorhunt.co/palette/727d73aab99ad0ddd0f0f0d7 */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #F0F0D7;
+}
+
+#countdown {
+    color: #727D73;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 75vh;
+    background-color: #D0DDD0;
+    overflow: auto;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#infoContainer {
+    max-width: 800px;
+    width: 90%;
+    font-size: 20px;
+    font-family: 'Orbitron', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px auto 2px auto;
+    color: #333;
+
+}
+
+#score {
+    display: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    margin-top: 15px;
+    color: #333;
+}
+
+#speedImage { /*ChatGPT: Kuidas fixida #speedimage, et see ei läheks üle #conteineri*/
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    object-fit: contain;
+}
+
+#resultBox {
+    display: none; 
+    background-color: #F0F0D7;
+    border: 3px solid #727D73;
+    border-radius: 16px;
+    padding: 20px 25px;
+    margin-top: 30px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    font-family: 'Orbitron', sans-serif;
+    color: #333;
+}
+
+#info {
+    justify-content: center !important;
+    margin: 20px auto !important;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+#speedInfo {
+    font-size: 18px;
+    color: #727D73;
+    margin-top: 10px;
+    line-height: 1.6;
+}
+
+.wrong-button {
+    background-color: red !important;
+    color: white;
+}
+
+.right-button {
+    background-color: lightgreen !important;
+    color: #333;
+}
+
+.right-word {
+    background-color: green !important;
+    color: white;
+}
+
+.results-column > div:first-child {
+    background-color: #AAB99A
+}
+
+.results-wrapper {
+    display: flex;
+    padding: 10px;
+    font-family: 'Orbitron', sans-serif;
+    color: #333;
+    margin-top: 20px;
+    background-color: #F0F0D7;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 800px;
+}
+
+.results-column {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+
+.results-header {
+    font-weight: bold;
+    background-color: #AAB99A;
+    padding: 10px;
+    border-bottom: 1px solid #727D73;
+    color: #333;
+    border-radius: 8px 8px 0 0;
+}
+
+.results-column > div {
+    padding: 8px;
+    border-bottom: 1px solid #AAB99A;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 6px;
+    border-bottom: 1px solid #AAB99A;
+    box-sizing: border-box;
+}
+
+.current-player {
+    background-color: rgba(255, 255, 200, 0.4); 
+    border: 2px solid #FFD700; 
+    box-shadow: 0 0 12px 4px rgba(255, 215, 0, 0.6); /* ChatGPT: Kuidas tekitada CSSiga glow efekti borderi */
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.top-player {
+    font-weight: bold;
+    position: relative;
+}
+
+
+.top-player-1 {
+    background-color: rgba(255, 215, 0, 0.2); 
+}
+
+.top-player-2 {
+    background-color: rgba(192, 192, 192, 0.2); 
+}
+
+.top-player-3 {
+    background-color: rgba(205, 127, 50, 0.2); 
+}
+
+.medal-icon { /* ChatGPT: Aita koostada medali ikoonid/emotikonid tabelisse nime kõrvale  */
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background-color: red; 
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.gold-medal {
+    background-color: #FFD700;
+}
+
+.silver-medal {
+    background-color: #C0C0C0;
+}
+
+.bronze-medal {
+    background-color: #CD7F32;
+}
+
+#wordDiv {
+    font-size: 36px;
+    color: #333;
+}
+
+/* Idee: https://uiverse.io/adamgiebl/massive-insect-65 */
+#playAgainBtn {
+    appearance: none;
+    background: linear-gradient(135deg, rgba(170, 185, 154, 0.8), rgba(208, 221, 208, 0.9));
+    border: none;
+    border-radius: 25px;
+    padding: 20px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    color: #333;
+    box-shadow: 
+        0 8px 24px rgba(114, 125, 115, 0.3),
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        inset 0 -2px 4px rgba(114,125,115,0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    user-select: none;
+    margin: 30px auto;
+    display: inline-block;
+}
+
+#playAgainBtn:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 
+        0 12px 30px rgba(114, 125, 115, 0.35),
+        inset 0 -1px 4px rgba(255,255,255,0.2);
+}
+
+#playAgainBtn:active {
+    transform: scale(0.97);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#playAgainBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(170, 185, 154, 0.4);
+}
+
+/* https://www.w3schools.com/howto/howto_css_modals.asp */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #F0F0D7;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #AAB99A;
+    width: 60%;
+    border-radius: 8px;
+    text-align: center;
+    color: #333;
+}
+
+.close {
+    color: #727D73;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+#wordGameBox {
+    background-color: #AAB99A;
+    border-radius: 20px;
+    padding: 30px;
+    margin-top: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+#wordGameBox #wordDiv {
+    font-size: 42px;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Idee: https://uiverse.io/adamgiebl/massive-insect-65 */
+#loadResults {
+    appearance: none;
+    background: linear-gradient(135deg, rgba(170, 185, 154, 0.8), rgba(208, 221, 208, 0.9));
+    border: none;
+    border-radius: 25px;
+    padding: 20px 30px;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+    color: #333;
+    box-shadow: 
+        0 8px 24px rgba(114, 125, 115, 0.3),
+        inset 0 1px 1px rgba(255,255,255,0.4),
+        inset 0 -2px 4px rgba(114,125,115,0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    user-select: none;
+    margin: 30px auto;
+    display: inline-block;
+}
+
+#loadResults:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 
+        0 12px 30px rgba(114, 125, 115, 0.35),
+        inset 0 -1px 4px rgba(255,255,255,0.2);
+}
+
+#loadResults:active {
+    transform: scale(0.97);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+#loadResults:focus {
+    outline: none;
+    box-shadow: 0 0 0 5px rgba(170, 185, 154, 0.4);
+}
+
+/* https://www.w3schools.com/css/css_rwd_mediaqueries.asp */
+@media (max-width: 768px) { 
+    #container {
+        height: auto;
+        min-height: 100vh;
+        padding: 20px;
+        overflow: visible;
+    }
+
+    #infoContainer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 20px;
+    }
+
+    #wordDiv {
+        font-size: 24px;
+    }
+
+    .results-wrapper {
+        flex-direction: column;
+        align-items: center;
+        width: 95%;
+        padding: 5px;
+    }
+
+    .results-column {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+
+    .results-header {
+        border-radius: 8px 8px 0 0;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 30% auto;
+    }
+
+    #speedImage {
+        max-width: 100%;
+    }
+
+    #resultBox {
+        max-width: 90%;
+    }
+    
+    .play-again-btn {
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    #wordGameBox {
+        padding: 20px;
+        margin-top: 20px;
+    }
+
+    #wordGameBox #wordDiv {
+        font-size: 28px;
+    }
+}

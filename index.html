@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Orbitron:wght@400..900&family=Rowdies:wght@300;400;700&family=Single+Day&display=swap" rel="stylesheet">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="container">
+        <div id="countdown" style="font-size: 100px; text-align: center; display: none;"></div>
+        <div id="wordGameBox">
+            <div id="wordDiv"></div>
+            <div id="score">Aeg: 0.00s</div>
+        </div>
+        <div id="resultBox">
+            <img id="speedImage" src="" alt="Tulemuse pilt">
+            <div id="speedInfo"></div>
+            <button id="playAgainBtn" style="display: none; margin-top: 10px;">Play Again</button>
+        </div>
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+        </div>
+    </div>
+    <div class="button-wrapper">
+        <button id="loadResults">Laadi tulemusi</button>
+    </div>
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <div class="results-wrapper">
+                <div class="results-column">
+                    <div class="results-header">#</div>
+                    <div id="result-numbers"></div>
+                </div>
+                <div class="results-column">
+                    <div class="results-header">Player</div>
+                    <div id="result-names"></div>
+                </div>
+                <div class="results-column">
+                    <div class="results-header">Time</div>
+                    <div id="result-times"></div>
+                </div>
+                <div class="results-column">
+                    <div class="results-header">Words</div>
+                    <div id="result-words"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <audio id="countdownAudio" src="https://greeny.cs.tlu.ee/~sophniko/typer/countdown.mp3" preload="auto"></audio>
+    <audio id="ingameAudio" loop src="https://greeny.cs.tlu.ee/~sophniko/typer/ingame.mp3" preload="auto"></audio>
+    <audio id="newgameAudio" src="https://greeny.cs.tlu.ee/~sophniko/typer/newgame.mp3" preload="auto"></audio>
+    <audio id="scoreboardAudio" src="https://greeny.cs.tlu.ee/~sophniko/typer/scoreboard.mp3" preload="auto"></audio>
+
+</body>
+</html>
