@@ -18,17 +18,19 @@ class Typer{
         this.resultCount = 5;
         this.charactersTyped = 0;
         this.cpm = 0;
-
         this.loadFromFile();
-        //this.showResults(this.resultCount);
+    }
+
+    handleKeypress(event){
+        typer.shortenWords(event.key)
     }
 
     loadFromFile(){
         $.get("lemmad2013.txt", (data) => this.getWords(data))
-        $.get("database.txt", (data) => {
+        /*$.get("database.txt", (data) => {
             let content = JSON.parse(data).content;
             this.allResults = content;
-        })
+        })*/
     }
 
     getWords(data){
@@ -56,7 +58,7 @@ class Typer{
         }
         this.generateWords();
         this.startTime = performance.now();
-        $(document).keypress((event) => {this.shortenWords(event.key)});
+        $(document).on("keypress", this.handleKeypress);
         $('#loadResults').click(() => {
             this.resultCount = this.resultCount + 50;
             if(this.resultCount >= this.allResults.length){
@@ -76,10 +78,6 @@ class Typer{
         $('#close').click(()=>{
             $('#resultsModal').css("display", "none");
         });
-        $('#restartButton').click(()=>{
-            restartGame();
-
-        });
         this.showResults(this.resultCount);
     }
 
@@ -90,7 +88,6 @@ class Typer{
             this.typeWords[i] = this.words[wordLength][randomWord];
         }
         this.selectWord();
-        
     }
 
     drawWord(){
@@ -108,41 +105,40 @@ class Typer{
         $('#info').html(this.typedCount + "/" + this.wordsInGame);
     }
 
-    shortenWords(keyCode){
+    shortenWords(key){
         this.charactersTyped++;
-        if(keyCode != this.word.charAt(0)){
+        if(key != this.word.charAt(0)){
             this.changeBackground('wrong-button', 100);
             this.bonus = 0;
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0) && this.typedCount == this.wordsInGame){
+        } else if(this.word.length == 1 && key == this.word.charAt(0) && this.typedCount == this.wordsInGame){
+            this.typedCount = 0;
             this.endGame();
-        } else if(this.word.length == 1 && keyCode == this.word.charAt(0)){
+        } else if(this.word.length == 1 && key == this.word.charAt(0)){
             this.changeBackground('right-word', 400);
             this.selectWord();
             this.bonus = this.bonus - this.bonusKoef;
-        } else if (this.word.length > 0 && keyCode == this.word.charAt(0)){
+        } else if (this.word.length > 0 && key == this.word.charAt(0)){
             this.changeBackground('right-button', 100);
             this.word = this.word.slice(1);
             this.bonus = this.bonus - this.bonusKoef;
         }
-
         this.drawWord();
     }
 
     changeBackground(color, time){
         setTimeout(function(){
             $('#container').removeClass(color);
-        }, time)
-
+        }, time);
         $('#container').addClass(color);
-
     }
 
     endGame(){
         this.endTime = performance.now();
         $("#wordDiv").hide();
-        //$(document).off(keypress);
+        $(document).off("keypress", this.handleKeypress);
         this.calculateAndShowScore();
-        $("#restartButton").show();
+        $("#startButton").show();
+        console.log("End of game.");
     }
 
     calculateAndShowScore(){
@@ -168,7 +164,7 @@ class Typer{
         this.allResults.push(result);
         this.allResults.sort((a, b) => parseFloat(a.score) - parseFloat(b.score));
         localStorage.setItem('typer', JSON.stringify(this.allResults));
-        this.saveToFile();
+        //this.saveToFile();
         this.showResults(this.resultCount);
     }
 
@@ -188,6 +184,7 @@ class Typer{
         `);
         for (let i = 0; i < count; i++) {
             const result = this.allResults[i];
+            console.log(result);
             $('#resultsBody').append(`
                 <tr>
                     <td>${result.name}</td>
@@ -209,7 +206,7 @@ class Typer{
         }
 
     }
-
+/*
     saveToFile(){
         $.post('server.php', {save: this.allResults}).fail(
             function(){
@@ -217,17 +214,22 @@ class Typer{
             }
         )
     }
+*/
 }
 
-let typer = new Typer(playerName);
+let typer;
 
 function restartGame(){
     $("#score").hide();
     $("#image").hide();
-    $("#restartButton").hide();
+    $("#startButton").hide();
     $("#wordDiv").show();
     $('#results').html("");
     $('#loadResults').show();
     $('#resultsModal').css("display", "none");
     typer = new Typer(playerName);
+}
+
+window.onload = function(){
+    $("#startButton").click(restartGame);
 }
