@@ -35,13 +35,10 @@ body{
 
 
 #results{
-    width: 100vw;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
-    
 }
 
 #wordDiv{
@@ -52,31 +49,28 @@ body{
     display: none;
 }
 
-/* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none;
+    position: fixed;
+    z-index: 1;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
 }
 
-/* Modal Content/Box */
 .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
     position: relative;
 }
 
-/* The Close Button */
 #close {
     position: absolute;
     top: 40px;
@@ -119,4 +113,83 @@ results-table {
 
 .results-table tr:hover {
     background-color: #f1f1f1;
+}
+
+@media (max-width: 600px) {
+    #container {
+        height: auto;
+        padding: 20px;
+        background-color: lightcoral;
+    }
+
+    #infoContainer {
+        flex-direction: column;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #wordDiv {
+        font-size: 28px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    #close {
+        font-size: 40px;
+        top: 10px;
+        right: 20px;
+    }
+
+    .results-table {
+        top: 60px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    #container {
+        height: 50vh;
+        padding: 30px;
+    }
+
+    #infoContainer {
+        font-size: 28px;
+    }
+
+    #wordDiv {
+        font-size: 32px;
+    }
+
+    .modal-content {
+        width: 85%;
+    }
+
+    .results-table {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #container {
+        height: 60vh;
+    }
+
+    #infoContainer {
+        font-size: 32px;
+    }
+
+    #wordDiv {
+        font-size: 36px;
+    }
+
+    .modal-content {
+        width: 70%;
+    }
+
+    .results-table {
+        font-size: 18px;
+    }
 }
