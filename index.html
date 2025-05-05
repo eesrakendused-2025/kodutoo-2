@@ -36,7 +36,7 @@
         
     </div>
     <div id="container">
-        <img id="bgGif" src="https://media1.tenor.com/m/M1zaUPdknekAAAAd/metal-gear.gif" style="opacity: 0; position: absolute; z-index: -1; top:0; left:0; width: 100%; height: 100%; object-fit: cover">
+        <img id="bgGif" src="https://media1.tenor.com/m/M1zaUPdknekAAAAd/metal-gear.gif" style="opacity: 0; position: absolute; z-index: -2; top:0; left:0; width: 100%; height: 100%; object-fit: cover">
         
         <div id="wordDiv">Siia tuleb sõna</div>
         <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
@@ -44,7 +44,7 @@
     </div>
     
     <div id="resultModal" class="modal">
-        <div id="modalContainer">
+        <div class="modalContainer">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 
@@ -71,16 +71,19 @@
                     </tr>
                 </table>
                 <audio style="display: none;" id="audioPlayer" src="https://www.myinstants.com/media/sounds/woooo-yeah-baby.mp3"></audio>
-                <button id="loadResults">Laadi tulemusi</button>
+                <!-- <button id="loadResults">Laadi tulemusi</button> -->
             </div>
         </div>
     </div>
 
+    <audio style="display: none;" id="startSound" src="sounds/challenge_update.mp3"></audio>
     <audio style="display: none;" id="endSound" src="sounds/stinger.mp3"></audio>
     <audio style="display: none;" id="correctIput" src="sounds/cursol.mp3"></audio>
     <audio style="display: none;" id="error" src="sounds/buzzer.mp3"></audio>
     <audio style="display: none;" id="music" src="sounds/snakeeater.mp3"></audio>
     <audio style="display: none;" id="moduleOn" src="sounds/power_on.mp3"></audio>
     <audio style="display: none;" id="moduleOff" src="sounds/power_off.mp3"></audio>
+    <audio style="display: none;" id="leaderBoard" src="sounds/amazingsnake.mp3"></audio>
+    <audio style="display: none;" id="leaderBoard3" src="https://www.myinstants.com/media/sounds/excellent-snake.mp3"></audio>
 </body>
 </html>

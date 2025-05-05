@@ -107,22 +107,27 @@ body{
     height: 8vh;
     font-size: 32px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 15px;
+    gap: 70%;
 }
 
 #showResultsBtn{
     font-family: Helvetica, Arial, sans-serif;
     text-transform: uppercase;
-    font-weight: bold;
+    font-size: 25px;
+    font-weight: normal;
     color: #6e8b88;
     background-color: transparent;
     border: transparent;
+    z-index: 2;
 }
 
 #showResultsBtn:hover{
-    color: #b8dad6;
-    transition: 0.2s ease;
+    color: #d1eeeb;
+    text-shadow: 0px 0px 15px #ffffff;
+    font-weight: bolder;
+    transition: 0.1s ease;
 }
 
 .wrong-button {
@@ -155,9 +160,8 @@ body{
 
 .modal {
     font-family: "Lexend", sans-serif;
-    display: none; /* по умолчанию скрыто */
+    display: none;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
@@ -166,10 +170,13 @@ body{
     scrollbar-color: rgb(231, 240, 250) rgba(95, 174, 226, 0.479);
     scrollbar-width: thin;
     background-color: rgba(10, 21, 51, 0.4);
+    z-index: 3;
 }
-#modalContainer{
+
+.modalContainer{
+    z-index: 3;
     height: 100%;
-    width: 20%;
+    max-width: 20%;
     background: #171717;
     background-image: url(ddd.png), radial-gradient(circle,rgba(23, 23, 23, 1) 5%, rgba(0, 0, 0, 0.911) 10%, rgba(2, 2, 2, 0.76) 40%, rgba(78, 78, 78, 0.37) 90%, rgba(121, 121, 121, 0.144) 100%);
     background-repeat: no-repeat;
@@ -178,6 +185,7 @@ body{
 }
 
 .modal-content {
+    z-index: 3;
     height: 100%;
     background: #076499b7;
     background-image: url(dot.png), url(dot.png);
@@ -188,8 +196,7 @@ body{
     /*margin: 15% auto;*/
     padding: 20px;
     border: 1px solid #4ca0ff;
-    width: 20%;
-    max-width: 600px;
+    max-width: 100%;
 }
 
 .close {
@@ -227,15 +234,19 @@ td {
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    width: 90%;
 }
 
 @media only screen and (max-width: 600px) {
-    #container, #infoContainer, .codec{
+    #container, #infoContainer, .codec, .module{
     width: 100%;
+    max-width: 100vh;
     box-sizing: border-box;
     }
 
+    .resultGif{
+        max-width: 75%;
+    }
     .codec {
         height: 20vh;
     }
@@ -243,7 +254,7 @@ table {
     .modal {
         display: none;
         position: fixed;
-        z-index: 1;
+        z-index: 3;
         left: 0;
         top: 0;
         width: 100%;
@@ -252,122 +263,17 @@ table {
         box-sizing: border-box;
     }
 
-    #modalContainer{
+    .modalContainer{
         width: 100%;
         max-height: 100vh;
+        max-width: 100vh;
     }
     .modal-content{
-        max-width: none;
+        z-index: 3;
         padding: 3px;
         width: 100%;
         max-height: 100vh;
         overflow: auto;
         box-sizing: border-box;
     }
-
-    /*#container,
-    #infoContainer{
-    width: 100%;
-    box-sizing: border-box;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: auto;
-    }
-    .modal-content{
-        padding: 5px;
-        width: 95%;
-    }
-    #container{
-        height: 85vh;
-    }
-    table {
-        width: 80%;
-        height: 80%;
-    } */
 }
-@media only screen and (min-width: 600px) {
-    #container, #infoContainer, .codec{
-        width: 100%;
-        box-sizing: border-box;
-        }
-    
-        .codec {
-            height: 40vh;
-        }
-    
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            max-height: 100vh;
-            overflow: auto;
-            box-sizing: border-box;
-        }
-
-        #infoContainer{
-            height: 20vh;
-        }
-    
-        #modalContainer{
-            width: 100%;
-            max-height: 100vh;
-            background: #171717;
-            background-image: url(ddd.png), radial-gradient(circle,rgba(23, 23, 23, 1) 5%, rgba(0, 0, 0, 0.911) 10%, rgba(2, 2, 2, 0.76) 40%, rgba(78, 78, 78, 0.37) 90%, rgba(121, 121, 121, 0.144) 100%);
-            background-repeat: no-repeat;
-            background-position: center;
-        }
-        .modal-content{
-            max-width: none;
-            padding: 3px;
-            width: 100%;
-            max-height: 100vh;
-            overflow: auto;
-            box-sizing: border-box;
-        }
-          
-    /* * {
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    #infoContainer{
-        height: 15vh;
-    }
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100vw;
-        height: 100vh;
-        overflow: auto;
-    }
-    #modalContainer{
-        width: 100%;
-        max-height: 100vh;
-    }
-    .modal-content, .modal{
-        overflow: auto;
-        height: 100%;
-        max-height: none;
-    }
-
-    #container {
-        height: 70vh;
-    }
-
-    .codec{
-        height: 40vh;
-    }*/
-  }

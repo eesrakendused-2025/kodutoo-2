@@ -1,64 +1,78 @@
 # kodutoo-2
-Täiusta tunnis loodud typer'i rakendust.
+autor: Maria Rjabtseva
+## Tasks:
+1. Google font ✓
 
-Tähtaeg: 05.05.2025 23:59
+    Helvetica, Lexend
 
-# Kõik nõuded täidetud, siis 30 punkti.
+2. Modal või sidebar ✓
 
-1. Kasuta veebilehel mõnda Google fonti: https://fonts.google.com/
-2. Tulemused peavad tulema välja nupule vajutades ja minema peitu x vajutades. Võimalus kasutada tavalist modalit või sidebari. https://www.w3schools.com/howto/howto_css_modals.asp
-3. Kuva tulemused paremini välja, kui praegu. Praegu lihtsalt tühikutega eraldatud tulemused, aga paiguta need eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, et saaks aru, mis osaga on tegemist (nimi, kiirus jne).
-4. Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas. Näiteks võib võtta antud lingilt vahemikud ja vastavalt sellele kuvada erinevat pilti: https://www.typingpal.com/en/blog/good-typing-speed
-5. Teha rakendus paremini kasutatavaks ka mobiilivaatest kasutades media query't: https://www.w3schools.com/css/css_rwd_mediaqueries.asp
-6. Muuda lehe CSS-i vastavalt oma soovidele muutes ära kõik praegu rakenduses kasutusel olevad värvid, teksti suurused ja elementide mõõtmed. Ideid leiad siit: https://www.w3schools.com/css/default.asp
-7. Leia moodus, kuidas kasutada CSS-is vähemalt 5-t erinevat pseudo class-i: https://www.w3schools.com/css/css_pseudo_classes.asp
-8. Rakenda 4 erinevat heliklippi mängu jooksul - alguse jaoks, mängu jooksul, lõpus ja kui tulemus jõuab edetabelisse.
-10. Lisa omaltpoolt veel 3 feature, mida hetkel rakenduses pole.
+    Lisasin modali, mis näeb välja nagu iDroidi kasutajaliides mängust Metal Gear Solid V
 
-### GitHub'i töövoog kodutöö esitamiseks
+    Inspireeritud sellest menüüst:
 
-1. *Fork*'i ülesande/projekti repositoorium (leiab [https://github.com/eesrakendused-2025/](https://github.com/eesrakendused-2025/)).
-1. *Clone*'i see repositoorium enda arvutisse/serverisse ja määra repositooriumi URL kuhu edaspidi muudatusi salvestad.
-  ```
-  git clone https://YOURUSERNAME@github.com/YOURUSERNAME/REPOSITORY.git
+  <iframe width="1000" height="500" src="https://www.youtube.com/embed/PbUlhICtma4" title="METAL GEAR SOLID V: THE DEFINITIVE EXPERIENCE options menu" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-  nt esimese iseseisva töö puhul:
-  git clone https://jukujuurikas@github.com/jukujuurikas/1kodutoo.git
-  ```
-1. Lisa vajdusel oma nimi ja email repositooriumi omanikuks ([Setting your username](https://help.github.com/articles/setting-your-username-in-git/)). Vajadusel hangi endale privaatne e-post @users.noreply.github.com lõpuga (https://github.com/settings/emails)
-  ```
-  git config --global user.name "Tauri Kirsipuu"
-  git config --global user.email taurikirsipuu@users.noreply.github.com
-  ```
-1. Muuda faile ülesande lahendamiseks ja *Commit*'i iga olulisem muudatus, kasutades kahte käsku.
-  ```
-  git add .
-  ```
-  ```
-  git commit -m "Added this functionality to the app"
-  ```
-1. Veendu, et kogu kood on *Commit*'itud.
-  ```
-  git status
-  ```
-1. *Push/sync*'i muudatused GitHub'i.
-  ```
-  git push origin
-  ```
-1. [Ava *pull request*](https://help.github.com/articles/creating-a-pull-request) ülesande originaalses repositooriumis. Järgi üleasende esitamise tähtaega
-1. Muudatusi ja täiendusi võib *push*'ida repositooriumisse, kuni ette antud kuupäevani.
+3. Kuva tulemused paremini välja, kui praegu ✓
 
-Tagasisidet saab otse *pull request*'i millele ootan Sinupoolseid kommentaare/mõtteid/küsimusi. Võid julgselt avada *pull request*'i kohe kui hakkad kodutöö kallal tegelama ja siis kui hätta jääd võid esitada sinna küsimuse. Maini kommentaaris minu kasutajat `@taurikirsipuu` siis jõuan sellele kiiremini vastata.
+    Tulemused kuvatakse selgelt tabeli kujul
 
-### Nõuded
+4. Kiirusele vastav pilt ✓
 
-* Peab järgma "head programmeerimise stiili"
-    * Muutujate nimed peavad kirjeldama muutujat ning peavad olema inglise keeles
-    * Funktsiooni nimi peab olema "lühike"
-    * Optimeeri koodi lugemiseks (real ~80 tähemärki)
-    * Projektide jaoks tuleb kasutada objektorienteeritud lähenemist
-    * Laenatud koodile tuleb viidata
-* Boonuspunktid:
-    * Loomingulisus (NB! nõuded peavad olema täidetud)
+    Trükkimiskiirusest sõltuvalt kuvatakse erinev pilt:
+
+    [Väga kiire: gifs/tc.gif](gifs/tc.gif)
+
+    [Tavaline kiirus: gifs/gibberish.gif](gifs/gibberish.gif)
+
+    [Päris aeglane: gifs/yakuza-kiryu.gif](gifs/yakuza-kiryu.gif)
+
+    [Väga aeglane: gifs/monkey.gif](gifs/monkey.gif)
 
 
+5. media query ✓
+
+    Lisasin @media only screen and (max-width: 600px)
+
+6. Isikupärane kujundus ✓
+
+    Tahaksin teha veebilehe teistsuguse temaatikaga. Kujundus põhineb Metal Gear Solid mängu raadiomenüül (codec). Idee on see, et kasutaja on Solid Snake (pilt vasakul), ning alaosas on tema "monoloog" – kui sõna õigesti trükitakse, muutub pilt, nagu Snake räägiks.
+
+    Tean, et see võib tunduda imelik neile, kes sellest mängust ei tea mitte midagi, aga mulle meeldib (ausalt öeldes üsna naljakas)
+
+    Raadio näide mängust:
+    
+![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4l8d6ILXYfjRCrjcZxo-018XTKsY6XgR6kA&s)
+
+  See on näide, kuidas see radio töötab (aga teises mängus)
+<iframe width="1000" height="500" src="https://www.youtube.com/embed/W8Aet4sG4nI" title="MGS2 HD Snake Sleep Talks" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+7. 5 erinevad pseudo class-id ❌😢
+
+    Ainult :hover ja :focus. Rohkemate lisamiseks jäi aega vähe – kulus palju aega tulemuste salvestamise probleemide lahendamiseks ja mul lihtsalt polnud ideid
+
+
+8. 4 erinevat heliklipid ✓
+
+
+    [Algus: sounds/challenge_update.mp3](sounds/challenge_update.mp3)
+
+    [Lõpp: sounds/stinger.mp3](sounds/stinger.mp3)
+
+    [Õige täht: sounds/cursol.mp3](sounds/cursol.mp3)
+
+    [Vale täht: sounds/buzzer.mp3](sounds/buzzer.mp3)
+
+    [Taustamuusika: sounds/snakeeater.mp3](sounds/snakeeater.mp3)
+
+    [Modali avanemine: sounds/power_on.mp3](sounds/power_on.mp3)
+
+    [Modali sulgemine: sounds/power_off.mp3](sounds/power_off.mp3)
+
+    [Esikoht: sounds/amazingsnake.mp3](sounds/amazingsnake.mp3)
+
+    [Top 3: excellent-snake.mp3](https://www.myinstants.com/media/sounds/excellent-snake.mp3)
+
+10. Lisa omaltpoolt veel 3 feature, mida hetkel rakenduses pole. ❌
+
+    Ma ei tea, kas neid asjad mida ma tegin on sobivad. Tundub, et mitte, aga vähemalt oli päris lõbus projekt
