@@ -1,0 +1,50 @@
+/* mobile.css - mobiilivaade*/
+@media only screen and (max-width: 600px) {
+    #container {
+      height: auto;
+      padding: 20px 10px;
+    }
+  
+    #wordDiv {
+      font-size: 28px;
+      text-align: center;
+    }
+  
+    #score {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+  
+    #infoContainer {
+      flex-direction: column;
+      align-items: center;
+      font-size: 24px;
+      padding: 10px;
+    }
+  
+    #showResultsBtn {
+      width: 90%;
+      font-size: 18px;
+      padding: 10px;
+      margin: 20px auto;
+      display: block;
+    }
+  
+    .modal-content {
+      width: 95%;
+      margin: 30% auto;
+      font-size: 16px;
+      padding: 15px;
+    }
+  
+    .results-table th,
+    .results-table td {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  
+    #speedImage img {
+      max-width: 100px;
+    }
+  }
+  
