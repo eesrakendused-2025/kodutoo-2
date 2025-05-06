@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+        Siia tuleb sõnade arv 1/5
+        </div>
+    </div>
+    <div id="resultsContainer">
+        <div id="results">
+            <div>tulemus</div>
+            <div>tulemus</div>
+            <div>tulemus</div>
+            <div>tulemus</div>
+    </div>
+<!-- Open the modal-->
+    <button id="loadResults">Load all results</button>
+
+    <div id="Modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <div id="results"></div> <!-- Results should appear here-->
+            </div>
+            <div class="modal-body">    
+                <p>Tulemused</p>
+        </div>
+        <div class="modal-footer">
+            <h3></h3>
+        </div>
+    </div>
+    <audio style="display:none;" id="audioPlayer" src=
+    "https://media.geeksforgeeks.org/wp-content/uploads/20240912183739/chatbot-response.mp3"></audio>
+</body>
+</html>
