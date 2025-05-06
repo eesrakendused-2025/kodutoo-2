@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap" rel="stylesheet">
+    <title>Typer</title>
+</head>
+
+<body>
+    <div id="speed-feedback"></div>
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">
+    <div id="speed-feedback"></div>Kuvame aega, mis kulus trükkimiseks</div>
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div>
+    </div>
+
+
+
+    <!-- Button to open the modal -->
+    <button id="openModalBtn">Show Results</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Game Results</h2>
+            <!-- The results will be dynamically loaded here -->
+            <div id="modal-results">
+                <!-- Results content will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+
+<audio id="startSound" src="audio/start.mp3"></audio>
+<audio id="typingSound" src="audio/typing.mp3"></audio>
+<audio id="endSound" src="audio/end.mp3"></audio>
+<audio id="highscoreSound" src="audio/highscore.mp3"></audio>
+</body>
+
+
+</html>
