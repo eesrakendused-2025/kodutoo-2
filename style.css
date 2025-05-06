@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #0B132B;
+    color: #fff;
+  }
+  
+  #container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    background-color: #0B132B;
+    padding: 20px;
+  }
+  
+  #wordDiv {
+    font-size: 52px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  #score {
+    display: none;
+    font-size: 32px;
+    font-weight: 600;
+    margin-top: 10px;
+    text-align: center;
+  }
+  
+  #infoContainer {
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-color: #0B132B;
+    flex-wrap: wrap;
+  }
+  
+  #info {
+    font-size: 20px;
+    font-weight: 400;
+    opacity: 0.95;
+  }
+  
+  #showResultsBtn,
+  #restartBtn {
+    background-color: #D4A017;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    border-radius: 0;
+  }
+  
+  #showResultsBtn:hover,
+  #restartBtn:hover {
+    background-color: #B8860B;
+    transform: translateY(-2px);
+  }
+  
+  #showResultsBtn:active,
+  #restartBtn:active {
+    background-color: #a26f00;
+    transform: scale(0.95);
+  }
+  
+  .wrong-button {
+    background-color: #ffa500 !important;
+  }
+  
+  .right-button,
+  .right-word {
+    background-color: #800080 !important;
+  }
+  
+  #results {
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    background-color: #1C1F2B;
+    color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #444;
+    width: 80%;
+    max-width: 600px;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: white;
+  }
+  
+  .results-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+  }
+  
+  .results-table th,
+  .results-table td {
+    padding: 12px 24px;
+  }
+  
+  .results-table th {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #2A2E3C;
+    border-bottom: 2px solid #555;
+  }
+  
+  .results-table th:nth-child(2) {
+    color: #FFAA00; /* Aeg (sekundites) pealkiri */
+  }
+  
+  .results-table td:nth-child(2) {
+    color: #FFAA00; /* Aeg (sekundites) väärtused */
+    font-weight: bold;
+  }
+  
+  .results-table th:nth-child(3),
+  .results-table td:nth-child(3) {
+    color: #fff; /* Sõnade arv – alati valge */
+  }
+  
+  .results-table tr:nth-child(even) {
+    background-color: #1A1D26;
+  }
+  
+  .results-table tr:last-child td {
+    font-style: italic;
+    opacity: 0.7;
+  }
+  
+  .modal-content *:first-child {
+    color: #FFD700;
+    font-weight: bold;
+  }
+  
+  
+  #speedImage {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  #speedImage img {
+    max-width: 200px;
+    height: auto;
+    margin-top: 10px;
+    background-color: transparent;
+  }
+  
+  @keyframes shake {
+    0% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+    100% { transform: translate(0, 0); }
+  }
+  
+  img[src$=".png"]:hover {
+    animation: shake 0.15s infinite;
+    cursor: pointer;
+  }
+  
+  #countdownOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(11, 19, 43, 0.9); /* tumedam toon */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    font-size: 64px;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 2px 2px 8px black;
+  }
+  
+  #countdownText {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="mobile.css"
+      media="only screen and (max-width: 600px)"
+    />
+    <title>Typer</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="wordDiv">Siia tuleb sõna</div>
+      <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+      <div id="speedImage"></div>
+      <!-- ← siia lisandub pilt ja hinnang -->
+    </div>
+    <div id="countdownOverlay">
+      <div id="countdownText"></div>
+    </div>
+
+    <div id="infoContainer">
+      <button id="restartBtn">Uus mäng</button>
+      <div id="info">Siia tuleb sõnade arv 1/3</div>
+      <button id="showResultsBtn">Näita tulemusi</button>
+    </div>
+
+    <audio id="startSound" src="sounds/start.mp3"></audio>
+    <audio id="errorSound" src="sounds/error.mp3"></audio>
+    <audio id="correctSound" src="sounds/correct.mp3"></audio>
+    <audio id="finishSound" src="sounds/finish.mp3"></audio>
+    <div id="countdownOverlay">
+      <div id="countdownText"></div>
+    </div>
+
+    <!-- Tulemuste nupp -->
+
+    <!-- Modal -->
+    <div id="resultsModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="modalResults"><!-- siia tulevad tulemused --></div>
+      </div>
+    </div>
+  </body>
+</html>
