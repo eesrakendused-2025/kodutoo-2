@@ -86,6 +86,8 @@ table, th, td {
     font-style: normal;
   }
 
+
+/*Modal võetud kasutusele w3school lehelt*/
   .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
