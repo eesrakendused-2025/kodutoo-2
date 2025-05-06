@@ -1,0 +1,226 @@
+/* Basic Reset */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Cal Sans", sans-serif;
+}
+
+/* Main container */
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    background-color: lightblue;
+}
+
+/* Information container (for game progress) */
+#infoContainer {
+    width: 100vw;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+/* Results container */
+#results {
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Word display */
+#wordDiv {
+    font-size: 36px;
+}
+
+/* Score display (hidden initially) */
+#score {
+    display: none;
+}
+
+/* Modal styles (Background and content) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal content (box with results) */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Width of the modal box */
+}
+
+/* The close button for the modal */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Close button hover effect */
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#openModalBtn {
+    font-size: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+
+    /* Centering the button horizontally within its container */
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* Ensures the button behaves like a block element */
+}
+
+#openModalBtn:hover {
+    background-color: #45a049;
+}
+
+/* Styling for results inside the modal */
+#modal-results {
+    font-size: 18px;
+    line-height: 2;
+}
+
+/* General game info styling */
+.cal-sans-regular {
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#speed-feedback {
+    text-align: center;
+    margin: 20px auto;
+    font-size: 20px;
+}
+
+#speed-feedback img {
+    max-width: 100px;
+    margin-top: 10px;
+}
+
+.result-card {
+    background-color: #e3f2fd;
+    border: 2px solid #90caf9;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-field {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    #container {
+        padding: 20px;
+        height: auto;
+    }
+
+    #wordDiv {
+        font-size: 24px;
+    }
+
+    #infoContainer {
+        font-size: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .result-card {
+        width: 90%;
+    }
+}
+
+/* Custom colors, font sizes and dimensions */
+body {
+    background-color: #f7f9fc;
+    color: #1e1e2f;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+/* Pseudo-classes */
+button:hover {
+    background-color: #3e8e41;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.result-card:first-child {
+    border-color: #66bb6a;
+}
+
+.result-card:last-child {
+    border-color: #ef5350;
+}
+
+.result-card:nth-child(even) {
+    background-color: #f1f8e9;
+}
+.result-card {
+    background-color: #e3f2fd;
+    border: 2px solid #90caf9;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-field {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+#speed-feedback {
+    text-align: center;
+    margin: 20px auto;
+    font-size: 20px;
+}
+
+#speed-feedback img {
+    max-width: 100px;
+    margin-top: 10px;
+}
