@@ -38,7 +38,7 @@ autor: Maria Rjabtseva
 
     Raadio näide mängust:
     
-![alt text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4l8d6ILXYfjRCrjcZxo-018XTKsY6XgR6kA&s)
+![metal gear solid 1 codec](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4l8d6ILXYfjRCrjcZxo-018XTKsY6XgR6kA&s)
 
   [See on näide, kuidas see radio töötab (aga teises mängus)](https://www.youtube.com/embed/W8Aet4sG4nI)
 
@@ -71,3 +71,9 @@ autor: Maria Rjabtseva
 10. Lisa omaltpoolt veel 3 feature, mida hetkel rakenduses pole. ❌
 
     Ma ei tea, kas neid asjad mida ma tegin on sobivad. Tundub, et mitte, aga vähemalt oli päris lõbus projekt
+
+
+
+
+My honest reaction:
+![absolute cinema](https://pbs.twimg.com/media/GNon_-_XgAAeJWT.jpg)
