@@ -20,6 +20,12 @@ class Typer{
         this.wordsPerMinute = 0;
         this.scorePicture = document.getElementById("scorePic");
 
+        //Modal-->
+        this.modal = document.getElementById("myModal");
+        this.modalButton = document.getElementById("modalButton");
+        this.modalClose = document.getElementsByClassName("close")[0];
+        
+
         this.loadFromFile();
         this.showResults(this.resultCount);
     }
@@ -80,6 +86,19 @@ class Typer{
             }
             this.showResults(this.resultCount);
         })
+        this.modalButton.addEventListener('click', () => {
+            this.modal.style.display = "block";
+        });
+        
+        this.modalClose.addEventListener('click', () => {
+            this.modal.style.display = "none";
+        });
+        
+        window.addEventListener('click', (event) => {
+            if (event.target == this.modal) {
+                this.modal.style.display = "none";
+            }
+        });
     }
 
     generateWords(){
@@ -204,7 +223,6 @@ class Typer{
             }
         )
     }
-
 }
 
 let typer = new Typer(playerName);
