@@ -1,4 +1,4 @@
-# kodutoo-2
+# kodutoo-2, Mattias Tamm
 Täiusta tunnis loodud typer'i rakendust.
 
 Tähtaeg: 05.05.2025 23:59
@@ -60,5 +60,4 @@ Tagasisidet saab otse *pull request*'i millele ootan Sinupoolseid kommentaare/m�
     * Laenatud koodile tuleb viidata
 * Boonuspunktid:
     * Loomingulisus (NB! nõuded peavad olema täidetud)
-
 

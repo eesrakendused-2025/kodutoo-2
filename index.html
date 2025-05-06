@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tagesschrift&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="settings">
+        <label for="wordsInGame">Sõnade arv </label>
+        <input type="number" id="wordsInGame" name="wordsInGame" min="1" max="31" value="1">
+        <label for="startingWordLength">Esimese sõna pikkus </label>
+        <input type="number" id="startingWordLength" name="startingWordLength" min="1" max="31" value="1">
+        <button id="startButton">Mängi</button>
+    </div>
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">
+            <span>Skoor: </span>
+            <div id="time">Kuvame skoori</div>
+            <br>
+            <span>Sümboleid minutis: </span>
+            <div id="cpm">Kuvame sümbolite arvu minutis</div>
+        </div>
+        <div>
+            <img id="image" src="images/placeholder.png" alt="Placeholder image">
+        </div>
+    </div>
+    <div id="infoContainer">
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div>
+    </div>
+    <button id="showResults">Näita tulemusi</button>
+    <div id="resultsModal" class="modal">
+        <span id="close">&times;</span>
+        <div id="resultsContainer" class="modal-content">
+            <div id="results"></div>
+            <button id="loadResults">Laadi veel tulemusi</button>
+        </div>
+    </div>
+</body>
+</html>

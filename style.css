@@ -1,0 +1,260 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Tagesschrift', sans-serif;
+    background-color: black;
+    color: white;
+    box-sizing: border-box;
+    border: 2px solid rgb(88, 0, 0);
+    flex-direction: column;
+    box-shadow: inset 0 0 20px rgb(88, 0, 0);
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 20px rgb(88, 0, 0), 0 0 20px rgb(88, 0, 0);
+    flex-direction: column;
+    height: 60vh;
+    background-color: black;
+}
+
+#infoContainer {
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
+    box-shadow: inset 0 0 20px rgb(88, 0, 0);
+    padding: 15px;
+    color: white;
+    background-color: black;
+}
+
+#restartButton {
+    display: none;
+}
+
+#score{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrong-button {
+    background-color: rgb(255, 0, 0) !important;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    box-shadow: 0 0 10px crimson;
+}
+
+.right-word {
+    background-color: crimson !important;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    box-shadow: 0 0 10px crimson;
+}
+
+#results {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    background-color: black;
+    border: 2px solid crimson;
+    padding: 10px;
+    box-shadow: 0 0 15px crimson;
+}
+
+#wordDiv {
+    font-size: 36px;
+    color: rgb(88, 0, 0);
+    text-shadow: 0 0 10px rgb(88, 0, 0);
+}
+
+#score, #image {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); 
+}
+
+.modal-content {
+    background-color: black;
+    margin: 15% auto;
+    padding: 20px;
+    border: 2px solid crimson;
+    width: 80%;
+    position: relative;
+    color: white;
+    box-shadow: 0 0 20px crimson;
+}
+
+#close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    color: crimson;
+    font-size: 60px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#close:hover, #close:focus {
+    color: rgb(88, 0, 0);
+    text-decoration: none;
+    background-color: black;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    background-color: black;
+    border: 2px solid crimson;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid crimson;
+    padding: 8px;
+}
+
+.results-table th {
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+button {
+    background-color: crimson;
+    color: white;
+    border: 2px solid rgb(88, 0, 0);
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px crimson;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(88, 0, 0);
+    color: black;
+    box-shadow: 0 0 15px rgb(88, 0, 0);
+    transition: 0.3s ease;
+}
+
+.results-table tr:first-child {
+    background-color: black;
+    color: goldenrod;
+    font-size: 20px;
+}
+
+.results-table tr:nth-child(2) {
+    color: silver;
+}
+
+.results-table tr:nth-child(3) {
+    color: #cd7f32;;
+}
+
+.results-table tr:hover {
+    background-color: crimson;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    #container {
+        height: auto;
+        padding: 20px;
+        background-color: black;
+    }
+
+    #infoContainer {
+        flex-direction: column;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #wordDiv {
+        font-size: 28px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 10% auto;
+    }
+
+    #close {
+        font-size: 40px;
+        top: 10px;
+        right: 20px;
+    }
+
+    .results-table {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    #container {
+        height: 50vh;
+        padding: 30px;
+    }
+
+    #infoContainer {
+        font-size: 28px;
+    }
+
+    #wordDiv {
+        font-size: 32px;
+    }
+
+    .modal-content {
+        width: 85%;
+    }
+
+    .results-table {
+        font-size: 16px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #container {
+        height: 60vh;
+    }
+
+    #infoContainer {
+        font-size: 32px;
+    }
+
+    #wordDiv {
+        font-size: 36px;
+    }
+
+    .modal-content {
+        width: 70%;
+    }
+
+    .results-table {
+        font-size: 18px;
+    }
+}
