@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- ChatGPT prompt: Soovin kasutada html lehel google fonti roboto-->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Typer</title>
+</head>
+<body>
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+        <!-- ChatGPT prompt: Kuva kasutajel vastavalt trükkimiskiirusele pilti tulemuste osas -->
+        <div id="speedImageContainer">
+            <img id="speedImage" src="" alt="Tulemus vastavalt kiirusele">
+        </div>                
+    </div>
+    <div id="infoContainer">
+        <div id="liveTimer">⏱ Aeg: 0.0 s</div>
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div>
+    </div>
+    <!--ChatGPT prompt: Soovin teha nii, et tulemused tuleksid välja nupule vajutades ja läheksid peitu x vajutades. 
+    Peaksin kasutama tavalist modalit või sidebari. -->
+    <div id="resultsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeResults">&times;</span>
+            <div class="results-wrapper">
+                <div id="results"></div>
+                <button id="loadResults" class="sparkle">Laadi rohkem tulemusi</button>
+            </div>
+        </div>
+        </div>
+        <button id="showResultsButton" class="sparkle results-button">Näita tulemusi</button>
+<!-- ChatGPT prompt: lisa helifailid mängu algusesse, siis kui kasutaja trükib sõna ära, mängu lõppedes ja siis
+ kui kasutaja tulemus on edetabelis -->
+<audio id="startSound" src="audio/start.mp3"></audio>
+<audio id="wordSound" src="audio/word.mp3"></audio>
+<audio id="endSound" src="audio/end.mp3"></audio>
+<audio id="topResultSound" src="audio/top.mp3"></audio>
+
+<div id="endPopup" style="
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff0f6;
+  border: 2px solid #f783ac;
+  padding: 20px;
+  border-radius: 12px;
+  font-size: 20px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  z-index: 999;
+"></div>
+
+</body>
+</html>
+

@@ -1,0 +1,13 @@
+{
+  "content": [
+    { "name": "Maria", "score": 2.34, "words": 3 },
+    { "name": "Joosep", "score": 2.58, "words": 3 },
+    { "name": "Kalle", "score": 2.58, "words": 3 },
+    { "name": "Liisa", "score": 2.42, "words": 3 },
+    { "name": "Mihkel", "score": 2.71, "words": 3 },
+    { "name": "Anna", "score": 2.29, "words": 3 },
+    { "name": "Tarmo", "score": 2.66, "words": 3 },
+    { "name": "Grete", "score": 2.48, "words": 3 },
+    { "name": "Karl", "score": 2.60, "words": 3 }
+  ]
+}

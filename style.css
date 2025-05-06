@@ -1,0 +1,317 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background-color: #fff0f5;
+    color: #5e335d; 
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 65vh;
+    background-color: #fcd5ce; 
+    padding: 30px;
+}
+
+#infoContainer {
+    width: 100vw;
+    font-size: 28px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #fae1dd; 
+    border-bottom: 2px solid #f4acb7;
+    color: #5c2a50;
+}
+
+.wrong-button {
+    background-color: #ff6b6b !important;
+    color: white;
+}
+
+.right-button {
+    background-color: #b5ead7 !important; 
+    color: #2f3e46;
+}
+
+.right-word {
+    background-color: #9ad0c2 !important;
+    color: white;
+}
+
+#results {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    font-size: 18px;
+}
+
+/* ChatGPT prompt: muuda kõige kõrgem tulemus tumedamaks ja lisa emoji */
+.result-row.highlight {
+    background-color: #ff2962;
+    font-weight: bold;
+    position: relative;
+}
+
+.result-row.highlight::after {
+    content: "👑";
+    color: gold;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+}
+
+/* ChatGPT prompt: muuda kasutaja sisestatud rida heledamaks ja lisa emoji */
+.result-row.last {
+    background-color: #eee;
+}
+.result-row.last::after {
+    content: "🤡";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #888;
+}
+
+#wordDiv {
+    font-size: 42px;
+    font-weight: 600;
+    margin: 20px 0;
+    color: #6d597a;
+}
+
+#score {
+    display: none;
+}
+
+/* ChatGPT prompt: Soovin teha nii, et tulemused tuleksid välja nupule vajutades ja läheksid peitu x vajutades. 
+    Peaksin kasutama tavalist modalit või sidebari. */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fffafa;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 650px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+/* ChatGPT prompt: lisa hover ristile */
+.close-button {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    color: #b5838d;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.close-button:hover {
+    color: #6d6875;
+}
+
+/* ChatGPT prompt: paiguta tulemused eraldi elementidesse ja kujunda selgemalt. Lisa ka pealkirjad igale osale, 
+    et saaks aru, mis osaga on tegemist (nimi, kiirus jne). */
+.results-wrapper {
+    margin: 20px auto 0 auto;
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.result-header {
+    font-weight: bold;
+    background-color: #ffe5ec; 
+    border-bottom: 2px solid #ffcad4;
+    font-size: 20px;
+}
+
+.result-row {
+    border-bottom: 1px solid #f3d2d2;
+    background-color: #fff0f3; 
+}
+
+/* Lisa veidi sisemist ruumi, et tekst ei jookseks vastu ääri */
+.result-header,
+.result-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 12px 18px;
+    font-size: 18px;
+    text-align: left;
+}
+
+.result-header > div,
+.result-row > div {
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ChatGPT prompt: Muuda nupp ilusamaks */
+#loadResults {
+    display: block;
+    margin: 24px auto 0 auto;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4acb7;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+}
+
+#loadResults:hover {
+    background-color: #e5989b;
+    transform: scale(1.05);
+}
+
+
+/* ChatGPT prompt: Tee rakendus paremini kasutatavaks mobiilivaatest kasutades media query't */
+@media screen and (max-width: 600px) {
+
+    #infoContainer {
+        font-size: 18px;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20% auto;
+        padding: 20px;
+    }
+
+    .close-button {
+        font-size: 26px;
+        top: 6px;
+        right: 12px;
+    }
+
+    .result-header,
+    .result-row {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .result-header > div,
+    .result-row > div {
+        padding: 6px 6px;
+        font-size: 16px;
+    }
+
+    #loadResults {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    #wordDiv {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    body {
+        font-size: 16px;
+    }
+}
+
+/* ChatGPT prompt: soovin lisada nuppudele sädeluse efekti */
+@keyframes sparkle {
+    0% {
+      box-shadow: 0 0 5px #ffc0cb, 0 0 10px #ffb6c1, 0 0 15px #f9c2ff;
+    }
+    50% {
+      box-shadow: 0 0 10px #ffb6c1, 0 0 20px #ff69b4, 0 0 30px #e0aaff;
+    }
+    100% {
+      box-shadow: 0 0 5px #ffc0cb, 0 0 10px #ffb6c1, 0 0 15px #f9c2ff;
+    }
+}
+  
+.sparkle {
+    animation: sparkle 2s infinite ease-in-out;
+}
+
+/* ChatGPT prompt: soovin teha pildid suuremaks */
+#speedImage {
+    width: 250px;      
+    height: auto;        
+    display: none;       
+}
+
+/* ChatGPT prompt: Lisa taimer*/
+#liveTimer {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ffe3ec;
+    color: #c9184a;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px 16px;
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* ChatGPT prompt: loo taimerile pulsiefekt*/
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ChatGPT prompt: muuda nupp ülejäänud stiiliga sarnaseks*/
+.results-button {
+    display: block;
+    margin: 24px auto 0 auto;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    background-color: #f4acb7;
+    color: white;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.results-button:hover {
+    background-color: #e5989b;
+    transform: scale(1.05);
+}
