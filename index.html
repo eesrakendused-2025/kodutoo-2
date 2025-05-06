@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <title>Typer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>Typer</h1>
+    <div id="infoContainer">
+      <div>
+        <span id="wordCount">Sõnade arv: 1/5</span>
+      </div>
+      <div>
+        <span id="timer">Aeg: 0.00s</span>
+      </div>
+    </div>
+    <div id="wordDiv">Siia tuleb sõna</div>
+    <input id="inputBox" type="text" autocomplete="off" placeholder="Kirjuta sõna siia..." />
+    <div id="avatarSection">
+      <label for="avatarInput">Vali avatar:</label>
+      <input type="file" id="avatarInput" accept="image/*">
+      <img id="avatarPreview" src="default-avatar.png" alt="Avatar" />
+    </div>
+    <button id="showResultsBtn">Vaata tulemused</button>
+    <div id="scoreSection" style="display:none;">
+      <h2>Tulemused</h2>
+      <div id="score"></div>
+      <div id="accuracy"></div>
+      <img id="speedImage" src="" alt="Kiiruse pilt" />
+    </div>
+  </div>
+
+  <div id="resultsModal" class="modal">
+    <div class="results-modal-content">
+      <span class="close">&times;</span>
+      <h2>Edetabel</h2>
+      <div id="filterSection">
+        <button class="filterBtn" data-filter="all">Kõik</button>
+        <button class="filterBtn" data-filter="top">Parimad</button>
+        <button class="filterBtn" data-filter="recent">Viimased</button>
+      </div>
+      <div id="resultsList"></div>
+    </div>
+  </div>
+
+  <div id="audio">
+    <audio id="startSound" src="start.mp3"></audio>
+    <audio id="typingSound" src="typing.mp3"></audio>
+    <audio id="endSound" src="end.mp3"></audio>
+    <audio id="highscoreSound" src="highscore.mp3"></audio>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
