@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Typer</title>
+</head>
+<body>
+    <div class="codec">
+        <div class="snake">
+            <img id="snakeSprite" src="https://media1.tenor.com/m/DwaJbYyLGyYAAAAC/solid-snake-blink.gif" alt="snake codec gif">
+        </div>
+        <div class="interface">
+            <div id="codecInterface" ></div>
+            <!-- <img id="codecInterface" src="gifs/codec.gif" alt="codec call gif"> -->
+        </div>
+        <div class="colonel">
+            <div id="colonelImg"></div>
+            <!-- <img id="colonelSprite" src="gifs/colonel.gif" alt="colonel codec call gif"> -->
+        </div>
+    </div>
+    <div id="infoContainer">
+        <button id="showResultsBtn">Show Results</button>
+        <div id="info">
+            Siia tuleb sõnade arv 1/5
+        </div>
+        
+    </div>
+    <div id="container">
+        <img id="bgGif" src="https://media1.tenor.com/m/M1zaUPdknekAAAAd/metal-gear.gif" style="opacity: 0; position: absolute; z-index: -2; top:0; left:0; width: 100%; height: 100%; object-fit: cover">
+        
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+        <img id="resultImage">
+    </div>
+    
+    <div id="resultModal" class="modal">
+        <div class="modalContainer">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                
+                <!--
+                    <div id="results">
+                        <div>tulemus</div>
+                        <div>tulemus</div>
+                        <div>tulemus</div>
+                        <div>tulemus</div>
+                    </div>
+                    <table id="tableNames">
+                        <tr>
+                            <th>name</th>
+                            <th>time</th>
+                            <th>words</th>
+                        </tr>
+                    </table>
+                    -->
+                <table id="results">
+                    <tr>
+                        <th>name</th>
+                        <th>time</th>
+                        <th>words</th>
+                    </tr>
+                </table>
+                <audio style="display: none;" id="audioPlayer" src="https://www.myinstants.com/media/sounds/woooo-yeah-baby.mp3"></audio>
+                <!-- <button id="loadResults">Laadi tulemusi</button> -->
+            </div>
+        </div>
+    </div>
+
+    <audio style="display: none;" id="startSound" src="sounds/challenge_update.mp3"></audio>
+    <audio style="display: none;" id="endSound" src="sounds/stinger.mp3"></audio>
+    <audio style="display: none;" id="correctIput" src="sounds/cursol.mp3"></audio>
+    <audio style="display: none;" id="error" src="sounds/buzzer.mp3"></audio>
+    <audio style="display: none;" id="music" src="sounds/snakeeater.mp3"></audio>
+    <audio style="display: none;" id="moduleOn" src="sounds/power_on.mp3"></audio>
+    <audio style="display: none;" id="moduleOff" src="sounds/power_off.mp3"></audio>
+    <audio style="display: none;" id="leaderBoard" src="sounds/amazingsnake.mp3"></audio>
+    <audio style="display: none;" id="leaderBoard3" src="https://www.myinstants.com/media/sounds/excellent-snake.mp3"></audio>
+</body>
+</html>
