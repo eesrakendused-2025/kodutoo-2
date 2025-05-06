@@ -207,9 +207,10 @@ class Typer{
                 <tbody id="resultsBody"></tbody>
             </table>
         `);
+        if(count>this.allResults.length){count = this.allResults.length};
         for (let i = 0; i < count; i++) {
             const result = this.allResults[i];
-            console.log(result);
+            //console.log(result);
             $('#resultsBody').append(`
                 <tr>
                     <td>${result.name}</td>
