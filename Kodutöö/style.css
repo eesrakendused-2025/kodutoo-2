@@ -1,0 +1,127 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: lightblue;
+    font-family: 'Roboto', sans-serif;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 60vh;
+    background-color: lightpink;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: 20px;
+}
+
+#infoContainer {
+    width: 100vw;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.wrong-button {
+    background-color: red !important;
+}
+
+.right-button {
+    background-color: lightgreen;
+}
+
+.right-word {
+    background-color: green !important;
+}
+
+#results {
+    width: 100vw;
+    max-width: 600px;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    box-sizing: border-box;
+}
+
+#wordDiv {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+#score {
+    display: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.result-entry {
+    background-color: #f1f1f1;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+#closeResults {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d32f2f;
+    cursor: pointer;
+    align-self: flex-end;
+    margin: 10px 20px;
+    transition: transform 0.2s ease;
+    text-align: right;
+}
+
+#closeResults:hover {
+    transform: scale(1.2);
+}
+
+@media (max-width: 600px) {
+    #container {
+        padding: 10px;
+    }
+    #infoContainer {
+        flex-direction: column;
+        font-size: 24px;
+        align-items: center;
+    }
+    .result-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+    #closeResults {
+        font-size: 32px;
+    }
+}
+
+#clockContainer {
+    position: fixed;
+    top: 10px;
+    right: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}

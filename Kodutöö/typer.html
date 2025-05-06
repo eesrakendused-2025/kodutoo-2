@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+    <title>Typer</title>
+    <style>
+        #cornerPic {
+          position: fixed;
+          top: 10px;
+          left: 20px;
+          width: 100px;
+          height: auto;
+          z-index: 2000;
+        }
+      </style>
+      
+</head>
+<body>
+    <img id="cornerPic" src="img/cut cat serhio 02-1813x1811-720x719" alt="Nurga pilt">
+
+    <div id="clockContainer"><span id="clock"></span></div>
+
+    <div id="container">
+        <div id="wordDiv">Siia tuleb sõna</div>
+        <div id="score">Kuvame aega, mis kulus trükkimiseks</div>
+    </div>
+
+    <div id="infoContainer">
+        <div id="info">Siia tuleb sõnade arv 1/5</div>
+    </div>
+
+    <button id="showResultsBtn">Näita tulemusi</button>
+
+    <div id="results">
+        <div id="closeResults">×</div>
+        <div id="resultsList"></div>
+    </div>
+    <audio id="audioStart" src="sounds/mixkit-little-birds-singing-in-the-trees-17"></audio>
+    <audio id="audioKeypress" src="sounds/mixkit-keyboard-typing-1386"></audio>
+    <audio id="audioEnd" src="sounds/mixkit-arcade-retro-game-over-213"></audio>
+    <audio id="audioHighscore" src="sounds/mixkit-retro-game-emergency-alarm-1000"></audio>
+</body>
+</html>
