@@ -5,7 +5,7 @@ body{
     font-weight: 400;
     font-style: normal;
     color: whitesmoke;
-}v
+}
 
 #container{
     display: flex;
@@ -27,15 +27,16 @@ body{
     right: 10%
 }
 
-/*pseudoklass 5: link*/
+/*pseudoklass 1: link*/
 a:link{
     color: blanchedalmond;    
 }
 
-/*pseudoklass 4: visited*/
+/*pseudoklass 2: visited*/
 a:visited{
     color: goldenrod;
 }
+
 #level{
     position: relative;
     top:50%;
@@ -68,7 +69,7 @@ a:visited{
     cursor: pointer;
     border-radius: 25%
 }
-
+/*pseudoklass 3: hover*/
 #playButton:hover {
     background-color: #948979;
 }
@@ -95,15 +96,12 @@ a:visited{
     position: absolute;
     top: 2%;
     left: 25%;
-
 }
-
 
 #styleRating{
     position: absolute;
     top: 1%;
-    left: 0%;
-        
+    left: 0%; 
 }
 
 #restartButton{
@@ -129,8 +127,6 @@ a:visited{
     background-color: #948979 !important;
 }
 
-
-
 .wrong-button{
     background-color: #750E21 !important;
 }
@@ -143,7 +139,6 @@ a:visited{
     background-color: #E3651D !important;
 }
 
-
 #results{
     width: 100vw;
     font-size: 20px;
@@ -151,7 +146,6 @@ a:visited{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 #resultsTable {
@@ -169,7 +163,7 @@ a:visited{
     background-color: #948979;
     font-weight: bold;
 }
-/* Pseudoklass 2, nth-child */
+/* Pseudoklass 4, nth-child */
 #resultsTable tr:nth-child(even) {
     background-color: #948979;
 }
@@ -181,7 +175,6 @@ a:visited{
 #resultsTable th:hover{
     background-color: #DFD0B8;
 }
-
 
 #wordDiv{
     font-size: 56px;
@@ -210,13 +203,10 @@ a:visited{
     border-top-right-radius: 30%;
 }
 
-/* Pseudoklass 1  hover*/
 #modalButton:hover {
         background-color: #948979 !important;
 }
 
-
-/* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -228,8 +218,7 @@ a:visited{
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
   }
-  
-  /* Modal Content */
+
   .modal-content {
     position: absolute;
       top: 18%;
@@ -241,7 +230,6 @@ a:visited{
     width: 80%;
   }
   
-  /* The Close Button */
   .close {
     color: #000000;
     float: right;
@@ -249,7 +237,7 @@ a:visited{
     font-weight: bold;
   }
   
-  /* Pseudoklass 3 focus */
+  /* Pseudoklass 5 focus */
   .close:hover,
   .close:focus {
     color: cyan;
@@ -257,265 +245,50 @@ a:visited{
     cursor: pointer;
   }
   
-  /* Klotsidele*/
+  /* Telefoni Kasutajatele Restyle*/
 @media only screen and (max-width: 768px) {
-    body {
-        font-size: 10px;
+
+    #musicContainer{
+        bottom: -70vh;
+        left: 20vh;
+        font-size: 20px;
+        scale: 75%;
     }
-body{
-    margin:0;
-    padding: 0;
-    font-family: "Cal Sans", sans-serif;
-    font-weight: 200;
-    font-style: normal;
-    color: whitesmoke;
-}
 
-#container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #191919;
-}
-
-#infoContainer{
-    width: 100vw;
-    font-size: 32px;
-    display: flex;
-    justify-content: space-between;
-    padding: 15px;
-    position: absolute;
-    top: 15%;
-    right: 10%
-}
-
-#level{
-    position: relative;
-    top:-30%;
-    font-size: 20px;
-    
-}
-#score{
-    font-size: 50px;
-    color: goldenrod;
-}
-
-#musicContainer{
-    display: flex;
-    position: absolute;
-    bottom: -70vh;
-    left: 20vh;
-    align-items: center;
-    font-size: 20px;
-    scale: 75%;
-}
-
-#playButton{
-    background-color: #393E46;
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: sandybrown;
-    display: inline-block;
-    font-size: 16px;
-    margin: 2px 2px;
-    cursor: pointer;
-    border-radius: 25%
-        
-}
-
-#playButton:hover {
-    background-color: #948979;
-}
-
-#skipButton{
-    background-color: #393E46;
-    border: none;
-    color: white;
-    padding: 15px 15px;
-    text-align: center;
-    text-decoration: sandybrown;
-    display: inline-block;
-    font-size: 16px;
-    margin: 2px 2px;
-    cursor: pointer;
-    border-radius: 25%
-}
-
-#skipButton:hover {
-    background-color: #948979;
-}
-
-#speedRating{
-    position: absolute;
-    top: 2%;
-    left: 25%;
-
-}
+    #speedRating{
+        position: absolute;
+        top: 2%;
+        left: 25%;
+    }
 
 
-#styleRating{
-    position: absolute;
-    top: -5%;
-    left: -35%;
-    scale: 50%;
-        
-}
+    #styleRating{
+        left: -20%;
+        scale: 50%;
+    }
 
-#restartButton{
-    position: absolute;
-    top: 350%;
+    #restartButton{
+        top: 350%;
+        left: 4.5%;
+        scale: 75%;
+    }
+
+    #results{
+        width: 70vw;
+        font-size: 30px;
+        scale: 50%;
+
+    }
+
+    #modalButton{
+        top: 100%;
+        left: 1%;
+        scale: 75%;
+    }
+
+    .modal-content {
+    top: 18%;
     left: 5%;
-    rotate: 90deg;
-    background-color: #393E46;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: sandybrown;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-top-left-radius: 30%;
-    border-top-right-radius: 30%;
-    scale: 75%;
-}
-
-#restartButton:hover {
-    background-color: #948979 !important;
-}
-
-
-
-.wrong-button{
-    background-color: #750E21 !important;
-}
-
-.right-button{
-    background-color: #BED754 !important;
-}
-
-.right-word{
-    background-color: #E3651D !important;
-}
-
-
-#results{
-    width: 60vw;
-    font-size: 20px;
-    display: absolute;
-    justify-content: left;
-    align-items: left;
-    flex-direction: column;
-    scale: 50%;
-
-}
-
-#resultsTable {
-    width: 30%;
-    border-collapse: collapse;
-}
-
-#resultsTable th, #resultsTable td {
-    border: 0px;;
-    padding: 8px;
-    text-align: left;
-}
-
-#resultsTable th {
-    background-color: #948979;
-    font-weight: bold;
-}
-/* Pseudoklass 4 */
-#resultsTable tr:nth-child(even) {
-    background-color: #948979;
-}
-/* Pseudoklass 3 */
-#resultsTable tr:hover {
-    background-color: #DFD0B8;
-}
-/*pseudoklass 5*/
-#resultsTable th:hover{
-    background-color: #DFD0B8;
-}
-
-
-#wordDiv{
-    font-size: 56px;
-}
-
-#score{
-    display: none;
-}
-
-#modalButton{
-    position: absolute;
-    top: 100%;
-    left: 0%;
-    rotate: 90deg;
-    background-color: #393E46;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: sandybrown;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-top-left-radius: 30%;
-    border-top-right-radius: 30%;
-    scale: 75%;
-}
-
-/* Pseudoklass 1 */
-#modalButton:hover {
-        background-color: #948979 !important;
-}
-
-
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-  }
-  
-  /* Modal Content */
-  .modal-content {
-    position: absolute;
-      top: 18%;
-      left: 5%;
-    background-color: #393E46;
-    margin: auto;
-    padding: 20px;
-    border: 3px solid #222831;
-    width: 60%;
-  }
-  
-  /* The Close Button */
-  .close {
-    color: #000000;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  /* Pseudoklass 2 */
-  .close:hover,
-  .close:focus {
-    color: cyan;
-    text-decoration: none;
-    cursor: pointer;
-  }
+    width: 70%;
+    }
 }
