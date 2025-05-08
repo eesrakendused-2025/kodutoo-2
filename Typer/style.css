@@ -1,0 +1,294 @@
+body{
+    margin:0;
+    padding: 0;
+    font-family: "Cal Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: whitesmoke;
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #191919;
+}
+
+#infoContainer{
+    width: 100vw;
+    font-size: 32px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    position: absolute;
+    top: 15%;
+    right: 10%
+}
+
+/*pseudoklass 1: link*/
+a:link{
+    color: blanchedalmond;    
+}
+
+/*pseudoklass 2: visited*/
+a:visited{
+    color: goldenrod;
+}
+
+#level{
+    position: relative;
+    top:50%;
+    font-size: 25px;
+    
+}
+#score{
+    font-size: 100px;
+    color: goldenrod;
+}
+
+#musicContainer{
+    display: flex;
+    position: absolute;
+    bottom: -60vh;
+    left: 30vh;
+    align-items: center;
+}
+
+#playButton{
+    background-color: #393E46;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: sandybrown;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 25%
+}
+/*pseudoklass 3: hover*/
+#playButton:hover {
+    background-color: #948979;
+}
+
+#skipButton{
+    background-color: #393E46;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: sandybrown;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px 2px;
+    cursor: pointer;
+    border-radius: 25%
+}
+
+#skipButton:hover {
+    background-color: #948979;
+}
+
+#speedRating{
+    position: absolute;
+    top: 2%;
+    left: 25%;
+}
+
+#styleRating{
+    position: absolute;
+    top: 1%;
+    left: 0%; 
+}
+
+#restartButton{
+    position: absolute;
+    top: 400%;
+    left: 9%;
+    rotate: 90deg;
+    background-color: #393E46;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: sandybrown;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+#restartButton:hover {
+    background-color: #948979 !important;
+}
+
+.wrong-button{
+    background-color: #750E21 !important;
+}
+
+.right-button{
+    background-color: #BED754 !important;
+}
+
+.right-word{
+    background-color: #E3651D !important;
+}
+
+#results{
+    width: 100vw;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#resultsTable {
+    width: 50%;
+    border-collapse: collapse;
+}
+
+#resultsTable th, #resultsTable td {
+    border: 0px;;
+    padding: 8px;
+    text-align: left;
+}
+
+#resultsTable th {
+    background-color: #948979;
+    font-weight: bold;
+}
+/* Pseudoklass 4, nth-child */
+#resultsTable tr:nth-child(even) {
+    background-color: #948979;
+}
+
+#resultsTable tr:hover {
+    background-color: #DFD0B8;
+}
+
+#resultsTable th:hover{
+    background-color: #DFD0B8;
+}
+
+#wordDiv{
+    font-size: 56px;
+}
+
+#score{
+    display: none;
+}
+
+#modalButton{
+    position: absolute;
+    top: 200%;
+    left: 8%;
+    rotate: 90deg;
+    background-color: #393E46;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: sandybrown;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+#modalButton:hover {
+        background-color: #948979 !important;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+  }
+
+  .modal-content {
+    position: absolute;
+      top: 18%;
+      left: 10%;
+    background-color: #393E46;
+    margin: auto;
+    padding: 20px;
+    border: 3px solid #222831;
+    width: 80%;
+  }
+  
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  /* Pseudoklass 5 focus */
+  .close:hover,
+  .close:focus {
+    color: cyan;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Telefoni Kasutajatele Restyle*/
+@media only screen and (max-width: 768px) {
+
+    #musicContainer{
+        bottom: -70vh;
+        left: 20vh;
+        font-size: 20px;
+        scale: 75%;
+    }
+
+    #speedRating{
+        position: absolute;
+        top: 2%;
+        left: 25%;
+    }
+
+
+    #styleRating{
+        left: -20%;
+        scale: 50%;
+    }
+
+    #restartButton{
+        top: 350%;
+        left: 4.5%;
+        scale: 75%;
+    }
+
+    #results{
+        width: 70vw;
+        font-size: 30px;
+        scale: 50%;
+
+    }
+
+    #modalButton{
+        top: 100%;
+        left: 1%;
+        scale: 75%;
+    }
+
+    .modal-content {
+    top: 18%;
+    left: 5%;
+    width: 70%;
+    }
+}
