@@ -5,7 +5,7 @@ body{
     font-weight: 400;
     font-style: normal;
     color: whitesmoke;
-}
+}v
 
 #container{
     display: flex;
@@ -25,6 +25,16 @@ body{
     position: absolute;
     top: 15%;
     right: 10%
+}
+
+/*pseudoklass 5: link*/
+a:link{
+    color: blanchedalmond;    
+}
+
+/*pseudoklass 4: visited*/
+a:visited{
+    color: goldenrod;
 }
 #level{
     position: relative;
@@ -159,15 +169,15 @@ body{
     background-color: #948979;
     font-weight: bold;
 }
-/* Pseudoklass 4 */
+/* Pseudoklass 2, nth-child */
 #resultsTable tr:nth-child(even) {
     background-color: #948979;
 }
-/* Pseudoklass 3 */
+
 #resultsTable tr:hover {
     background-color: #DFD0B8;
 }
-/*pseudoklass 5*/
+
 #resultsTable th:hover{
     background-color: #DFD0B8;
 }
@@ -200,7 +210,7 @@ body{
     border-top-right-radius: 30%;
 }
 
-/* Pseudoklass 1 */
+/* Pseudoklass 1  hover*/
 #modalButton:hover {
         background-color: #948979 !important;
 }
@@ -239,7 +249,7 @@ body{
     font-weight: bold;
   }
   
-  /* Pseudoklass 2 */
+  /* Pseudoklass 3 focus */
   .close:hover,
   .close:focus {
     color: cyan;
