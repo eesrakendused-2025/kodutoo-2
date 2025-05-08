@@ -1,7 +1,7 @@
 body{
     margin: 0;
     padding: 0;
-    font-family: "Tagesschrift";
+    font-family: "Tagesschrift"; /* google font*/ 
 }
 
 table, th, td {
@@ -43,14 +43,14 @@ table, th, td {
     background-color: green !important;
 }
 
-#results{
+/* #results{
     width: 100vw;
     font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
+} */
 
 
 #wordDiv{
@@ -76,8 +76,8 @@ table, th, td {
     width: 300px;
 }
 
-#loadResults:hover, #hideResults:hover{
-    background-color: Red;
+#showResults:hover, #WPM-modalButton:hover{
+    background-color: rgb(128, 183, 11);
 }
 
 .tagesschrift-regular {
@@ -103,7 +103,7 @@ table, th, td {
   }
   
   /* Modal Content */
-  .modal-content {
+  .WPM-modal-content {
     position: relative;
     background-color: #fefefe;
     margin: auto;
@@ -129,25 +129,78 @@ table, th, td {
   }
   
   /* The Close Button */
-  .close {
+  .WPM-close {
     color: white;
     float: right;
     font-size: 28px;
     font-weight: bold;
   }
   
-  .close:hover,
-  .close:focus {
+  .WPM-close:hover,
+  .WPM-close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
   }
   
-  .modal-header {
+  .WPM-modal-header {
     padding: 2px 16px;
     background-color: #5cb85c;
     color: white;
   }
   
-  .modal-body {padding: 2px 16px;}
+  .WPM-modal-body {padding: 2px 16px;}
+
+  .results-modal-content {
+    position: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 30%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
+  }
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .results-close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .results-close:hover,
+  .results-close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .results-modal-header {
+    padding: 2px 16px;
+    background-color: #5cb85c;
+    color: white;
+  }
+  
+  .results-modal-body {
+    padding: 2px 16px;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
   

@@ -21,9 +21,13 @@ class Typer{
         this.scorePicture = document.getElementById("scorePic");
 
         //Modal-->
-        this.modal = document.getElementById("myModal");
-        this.modalButton = document.getElementById("modalButton");
-        this.modalClose = document.getElementsByClassName("close")[0];
+        this.WPMModal = document.getElementById("WPM-modal");
+        this.modalButton = document.getElementById("WPM-modalButton");
+        this.modalClose = document.getElementsByClassName("WPM-close")[0];
+
+        this.resultsModal = document.getElementById("results-modal");
+        this.resultsModalButton = document.getElementById("showResults");
+        this.closeResults = document.getElementsByClassName("results-close")[0];
         
 
         this.loadFromFile();
@@ -87,18 +91,26 @@ class Typer{
             this.showResults(this.resultCount);
         })
         this.modalButton.addEventListener('click', () => {
-            this.modal.style.display = "block";
+            this.WPMModal.style.display = "block";
         });
         
         this.modalClose.addEventListener('click', () => {
-            this.modal.style.display = "none";
+            this.WPMModal.style.display = "none";
         });
         
         window.addEventListener('click', (event) => {
-            if (event.target == this.modal) {
-                this.modal.style.display = "none";
+            if (event.target == this.WPMModal) {
+                this.WPMModal.style.display = "none";
             }
         });
+
+        this.resultsModalButton.addEventListener("click", () => {
+            this.resultsModal.style.display = "block";
+        })
+        this.closeResults.addEventListener('click', () => {
+            this.resultsModal.style.display = "none";
+        });
+        
     }
 
     generateWords(){
@@ -207,14 +219,6 @@ class Typer{
                 this.allResults[i].words + "</td>" +"</tr>");
         }
     }
-
-/*     showAllResults(){
-        $("#results").html("");
-        for (let i=0; i<this.allResults.length; i++){
-            $("#results").append("<div>" + this.allResults[i].name + ": " + this.allResults[i].score +
-                 " ( " + this.allResults[i].words+ " )"+"</div>");
-        }
-    } */
 
     saveToFile(){
         $.post("server.php", {save: this.allResults}).fail(

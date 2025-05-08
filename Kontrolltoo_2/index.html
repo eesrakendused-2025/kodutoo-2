@@ -15,17 +15,34 @@
     <title>Typer</title>
 </head>
 <body>
-    <button id="modalButton">Vaata keskmiseid kiiruseid</button>
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
+    <div id="WPM-modal" class="modal">
+        <div class="WPM-modal-content">
+            <div class="WPM-modal-header">
+                <span class="WPM-close">&times;</span>
                 <h2>Keskmised kiirused</h2>
             </div>
-            <div class="Modal-body">
+            <div class="WPM-modal-body">
                 <p>Keskmine WPM - 40 kuni 49</p>
                 <p>Keskmisest kiirem WPM - 50 kuni 59</p>
                 <p>Produktiivne WPM kiirus - 60 ja rohkem</p>
+            </div>
+        </div>
+    </div>
+    <div id="results-modal" class="modal">
+        <div class="results-modal-content">
+            <div class="results-modal-header">
+                <span class="results-close">&times;</span>
+                <h2>Tulemused</h2>
+            </div>
+            <div class="results-modal-body">
+                    <div id="results">
+                        <div>Tulemus</div>
+                        <div>Tulemus</div>
+                        <div>Tulemus</div>
+                        <div>Tulemus</div>
+                    </div>
+                    <button id="loadResults">Lae tulemusi juurde</button>
+                    <button id="hideResults">&times;</button>
             </div>
         </div>
     </div>
@@ -38,15 +55,8 @@
     <div id="infoContainer">
         <div id="info">Siia tuleb sõnade arv 1/5</div>
         </div>
-        <div id="resultsContainer">
-            <div id="results">
-                <div>Tulemus</div>
-                <div>Tulemus</div>
-                <div>Tulemus</div>
-                <div>Tulemus</div>
-            </div>
-            <button id="loadResults">Laadi tulemusi</button>
-            <button id="hideResults">X</button>
+            <button id="showResults">vaata tulemusi</button>
+            <button id="WPM-modalButton">Vaata keskmiseid kiiruseid</button>
         </div>
         </div>
         <audio style="display: none" id="audiPlayer"
