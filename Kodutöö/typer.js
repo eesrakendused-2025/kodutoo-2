@@ -27,12 +27,22 @@ class Typer {
 
     loadFromFile(){
         $.get("lemmad2013.txt", (data) => this.getWords(data));
+
+        // Kui database.txt puudub, ära peata programmi
         $.get("database.txt", (data) => {
-            let content = JSON.parse(data).content;
-            this.allResults = content;
+            try {
+                let content = JSON.parse(data).content;
+                this.allResults = content;
+            } catch (e) {
+                console.warn("Vigane database.txt formaat, kasutatakse localStorage andmeid.");
+            }
             this.showResults(this.resultCount); 
+        }).fail(() => {
+            console.warn("database.txt puudub – kasutatakse ainult localStorage andmeid.");
+            this.showResults(this.resultCount);
         });
     }
+
 
     getWords(data){
         const dataFromFile = data.split("\n");
